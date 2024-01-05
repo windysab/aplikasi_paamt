@@ -160,11 +160,13 @@ class GugatanCeraiController extends Controller
         $templateProcessor->setValue('tanggal', date('d') . ' ' . $bulan . ' ' . date('Y'));
         $templateProcessor->setValue('nama_penggugat', $gugatanCerai->nama_penggugat);
         $templateProcessor->setValue('umur_penggugat', $gugatanCerai->umur_penggugat);
+        $templateProcessor->setValue('agama_penggugat', $gugatanCerai->agama_penggugat);
         $templateProcessor->setValue('pekerjaan_penggugat', $gugatanCerai->pekerjaan_penggugat);
         $templateProcessor->setValue('pendidikan_penggugat', $gugatanCerai->pendidikan_penggugat);
         $templateProcessor->setValue('alamat_penggugat', $gugatanCerai->alamat_penggugat);
         $templateProcessor->setValue('nama_tergugat', $gugatanCerai->nama_tergugat);
         $templateProcessor->setValue('umur_tergugat', $gugatanCerai->umur_tergugat);
+        $templateProcessor->setValue('agama_tergugat', $gugatanCerai->agama_tergugat);
         $templateProcessor->setValue('pekerjaan_tergugat', $gugatanCerai->pekerjaan_tergugat);
         $templateProcessor->setValue('pendidikan_tergugat', $gugatanCerai->pendidikan_tergugat);
         $templateProcessor->setValue('alamat_tergugat', $gugatanCerai->alamat_tergugat);
@@ -172,7 +174,7 @@ class GugatanCeraiController extends Controller
 
 
         // Buat nama file hasil replace yang baru
-        $filename = 'gugatan_cerai_' . $id . $gugatanCerai->nama_penggugat. '.docx';
+        $filename = 'gugatan_cerai_' . $gugatanCerai->nama_penggugat. '.docx';
 
         // Tentukan lokasi penyimpanan file hasil replace
         $destinationFolder = 'C:\\Users\\user\\Documents\\uji coba\\';

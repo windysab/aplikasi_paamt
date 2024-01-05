@@ -14,11 +14,21 @@
                     <h4>Informasi Penggugat</h4>
                     <p><strong>Nama Penggugat:</strong> {{ $gugatanCerai->nama_penggugat }}</p>
                     <p><strong>Umur Penggugat:</strong> {{ $gugatanCerai->umur_penggugat }}</p>
+                    <p><strong>Agama Penggugat:</strong> {{ $gugatanCerai->agama_penggugat }}</p>
+                    <p><strong>Pekerjaan Penggugat:</strong> {{ $gugatanCerai->pekerjaan_penggugat }}</p>
+                    <p><strong>Pendidikan Penggugat:</strong> {{ $gugatanCerai->pendidikan_penggugat }}</p>
+                    <p><strong>Alamat Penggugat:</strong> {{ $gugatanCerai->alamat_penggugat }}</p>
+
                     <!-- Add more fields as needed -->
 
                     <h4>Informasi Tergugat</h4>
                     <p><strong>Nama Tergugat:</strong> {{ $gugatanCerai->nama_tergugat }}</p>
                     <p><strong>Umur Tergugat:</strong> {{ $gugatanCerai->umur_tergugat }}</p>
+                    <p><strong>Agama Tergugat:</strong> {{ $gugatanCerai->agama_tergugat }}</p>
+                    <p><strong>Pekerjaan Tergugat:</strong> {{ $gugatanCerai->pekerjaan_tergugat }}</p>
+                    <p><strong>Pendidikan Tergugat:</strong> {{ $gugatanCerai->pendidikan_tergugat }}</p>
+                    <p><strong>Alamat Tergugat:</strong> {{ $gugatanCerai->alamat_tergugat }}</p>
+                    
                     <!-- Add more fields as needed -->
 
                     <h4>Informasi Lainnya</h4>

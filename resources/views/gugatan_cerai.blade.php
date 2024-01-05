@@ -30,6 +30,20 @@
                                 required>
                         </div>
 
+
+                        <!-- Agama -->
+                        <div class="form-group">
+                            <label for="agama_penggugat">Agama:</label>
+                            <select name="agama_penggugat" id="agama_penggugat" class="form-control" required>
+                                <option value="islam">Islam</option>
+                                <option value="kristen">Kristen</option>
+                                <option value="katolik">Katolik</option>
+                                <option value="hindu">Hindu</option>
+                                <option value="budha">Budha</option>
+                                <!-- Tambahkan opsi lain sesuai dengan kebutuhan -->
+                            </select>
+                        </div>
+
                         <!-- Pekerjaan Penggugat -->
                         <div class="form-group">
                             <label for="pekerjaan_penggugat">Pekerjaan Penggugat:</label>
@@ -64,6 +78,18 @@
                         <div class="form-group">
                             <label for="umur_tergugat">Umur Tergugat:</label>
                             <input type="number" name="umur_tergugat" id="umur_tergugat" class="form-control" required>
+                        </div>
+                        <!-- Agama -->
+                        <div class="form-group">
+                            <label for="agama_tergugat">Agama:</label>
+                            <select name="agama_tergugat" id="agama_tergugat" class="form-control" required>
+                                <option value="islam">Islam</option>
+                                <option value="kristen">Kristen</option>
+                                <option value="katolik">Katolik</option>
+                                <option value="hindu">Hindu</option>
+                                <option value="budha">Budha</option>
+                                <!-- Tambahkan opsi lain sesuai dengan kebutuhan -->
+                            </select>
                         </div>
 
                         <!-- Pekerjaan Tergugat -->
@@ -106,7 +132,7 @@
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Kirim Gugatan</button>
                         </div>
-                        
+
                     </form>
                 </div>
             </div>
