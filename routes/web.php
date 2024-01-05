@@ -16,9 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\GugatanCeraiController;
 
+
+
 //Route::get('/gugatan_cerai', [GugatanCeraiController::class, 'create'])->name('gugatan_cerai.create');
- Route::get('/gugatan_cerai/form', [GugatanCeraiController::class, 'create'])->name('gugatan_cerai.form');
+ Route::get('/gugatan_cerai', [GugatanCeraiController::class, 'create'])->name('gugatan_cerai.form');
 
 Route::post('/gugatan_cerai/submit', [GugatanCeraiController::class, 'store'])->name('gugatan_cerai.submit');
 
 // Route::get('/gugatan_cerai/detail/{id}', [GugatanCeraiController::class, 'show'])->name('gugatan_cerai.detail');
+Route::get('/gugatan_cerai/detail/{id}', [GugatanCeraiController::class, 'show'])->name('gugatan_cerai.detail');
+Route::get('/gugatan_cerai/generate-word/{id}', [GugatanCeraiController::class, 'generateWordDocument'])->name('gugatan_cerai.generate_word');
+Route::get('/export-gugatan-cerai', [GugatanCeraiController::class, 'exportGugatanCerai']);

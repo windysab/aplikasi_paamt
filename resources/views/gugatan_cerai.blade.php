@@ -106,13 +106,7 @@
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Kirim Gugatan</button>
                         </div>
-
-                        {{-- <div class="form-group">
-                            <a href="{{ route('gugatan_cerai') }}" class="btn btn-danger">Batal</a>
-                        </div>
-                        <div class="form-group">
-                            <a href="{{ route('gugatan_cerai_detail') }}" class="btn btn-success">Show data</a>
-                        </div> --}}
+                        
                     </form>
                 </div>
             </div>
