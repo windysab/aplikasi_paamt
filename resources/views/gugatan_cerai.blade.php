@@ -9,6 +9,7 @@
             <div class="card">
                 <div class="card-header">Formulir Pendaftaran Gugatan Cerai</div>
 
+
                 <div class="card-body">
                     <!-- Formulir Pendaftaran Gugatan Cerai -->
                     <form method="POST" action="{{ route('gugatan_cerai.submit') }}">
@@ -17,6 +18,24 @@
                         <!-- Informasi Penggugat -->
                         <h4>Informasi Penggugat</h4>
 
+                            <div id="personal-data" class="collapse show">
+                                <div class="p-4 border-top">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3 mb-4">
+                                            <label class="form-label" for="personal-data-nik">NIK</label>
+                                            <input type="text" class="form-control" id="personal-data-nik" name="nik"
+                                                placeholder="Masukkan NIK" value="{{ old('nik') }}" required>
+                                            @error('nik')
+                                            <div class="alert alert-warning" role="alert">
+                                                <strong>Peringatan!</strong>
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- Nama Penggugat -->
                         <div class="form-group">
                             <label for="nama_penggugat">Nama Penggugat:</label>
