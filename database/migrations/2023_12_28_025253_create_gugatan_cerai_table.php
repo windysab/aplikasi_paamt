@@ -16,12 +16,14 @@ class CreateGugatanCeraiTable extends Migration
         Schema::create('gugatan_cerai', function (Blueprint $table) {
             $table->id();
             $table->string('nama_penggugat');
+            $table->string('binti_penggugat');
             $table->integer('umur_penggugat');
             $table->string('agama_penggugat');
             $table->string('pekerjaan_penggugat');
             $table->string('pendidikan_penggugat');
             $table->string('alamat_penggugat');
             $table->string('nama_tergugat');
+
             $table->integer('umur_tergugat');
             $table->string('agama_tergugat');
             $table->string('pekerjaan_tergugat');

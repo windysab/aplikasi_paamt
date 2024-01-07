@@ -3,110 +3,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="main">
 
-    <div class="container">
-        <div class="signup-content">
-            <div class="signup-img">
-                <img src="images/form-img.jpg" alt="">
-                <div class="signup-img-content">
-                    <h2>Register now </h2>
-                    <p>while seats are available !</p>
-                </div>
-            </div>
-            <div class="signup-form">
-                <form method="POST" class="register-form" id="register-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <div class="form-input">
-                                <label for="first_name" class="required">First name</label>
-                                <input type="text" name="first_name" id="first_name" />
-                            </div>
-                            <div class="form-input">
-                                <label for="last_name" class="required">Last name</label>
-                                <input type="text" name="last_name" id="last_name" />
-                            </div>
-                            <div class="form-input">
-                                <label for="company" class="required">Company</label>
-                                <input type="text" name="company" id="company" />
-                            </div>
-                            <div class="form-input">
-                                <label for="email" class="required">Email</label>
-                                <input type="text" name="email" id="email" />
-                            </div>
-                            <div class="form-input">
-                                <label for="phone_number" class="required">Phone number</label>
-                                <input type="text" name="phone_number" id="phone_number" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-select">
-                                <div class="label-flex">
-                                    <label for="meal_preference">meal preference</label>
-                                    <a href="#" class="form-link">Lunch detail</a>
-                                </div>
-                                <div class="select-list">
-                                    <select name="meal_preference" id="meal_preference">
-                                        <option value="Vegetarian">Vegetarian</option>
-                                        <option value="Kosher">Kosher</option>
-                                        <option value="Asian Vegetarian">Asian Vegetarian</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-radio">
-                                <div class="label-flex">
-                                    <label for="payment">Payment Mode</label>
-                                    <a href="#" class="form-link">Payment Detail</a>
-                                </div>
-                                <div class="form-radio-group">
-                                    <div class="form-radio-item">
-                                        <input type="radio" name="payment" id="cash" checked>
-                                        <label for="cash">Cash</label>
-                                        <span class="check"></span>
-                                    </div>
-                                    <div class="form-radio-item">
-                                        <input type="radio" name="payment" id="cheque">
-                                        <label for="cheque">Cheque</label>
-                                        <span class="check"></span>
-                                    </div>
-                                    <div class="form-radio-item">
-                                        <input type="radio" name="payment" id="demand">
-                                        <label for="demand">Demand Draf</label>
-                                        <span class="check"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-input">
-                                <label for="chequeno">DD / Cheque No.</label>
-                                <input type="text" name="chequeno" id="chequeno" />
-                            </div>
-                            <div class="form-input">
-                                <label for="blank_name">Drawn on ( Bank Name)</label>
-                                <input type="text" name="blank_name" id="blank_name" />
-                            </div>
-                            <div class="form-input">
-                                <label for="payable">Payable at</label>
-                                <input type="text" name="payable" id="payable" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="donate-us">
-                        <label>Donate us</label>
-                        <div class="price_slider ui-slider ui-slider-horizontal">
-                            <div id="slider-margin"></div>
-                            <span class="donate-value" id="value-lower"></span>
-                        </div>
-                    </div>
-                    <div class="form-submit">
-                        <input type="submit" value="Submit" class="submit" id="submit" name="submit" />
-                        <input type="submit" value="Reset" class="submit" id="reset" name="reset" />
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-</div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -123,7 +20,6 @@
                             <h4>Informasi Penggugat</h4>
                             <div class="container">
 
-
                                 <!-- Nama Penggugat -->
                                 <div id="personal-data" class="collapse show">
                                     <div class="row">
@@ -134,6 +30,20 @@
                                                     name="nama_penggugat" placeholder="Masukkan Nama Penggugat"
                                                     value="{{ old('nama_penggugat') }}" required>
                                                 @error('nama_penggugat')
+                                                <div class="alert alert-warning" role="alert">
+                                                    <strong>Peringatan!</strong>
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-3 mb-4">
+                                                <label class="form-label" for="binti_penggugat">Binti:</label>
+                                                <input type="text" class="form-control" id="binti_penggugat"
+                                                    name="binti_penggugat" placeholder="Masukkan Binti"
+                                                    value="{{ old('binti_penggugat') }}" required>
+                                                @error('binti_penggugat')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -213,12 +123,15 @@
                                 </div>
 
                                 <!-- Pendidikan Penggugat -->
+
                                 <div id="personal-data" class="collapse show">
                                     <div class="row">
                                         <div class="col-lg-5">
                                             <div class="mb-3 mb-4">
-                                                <label class="form-label" for="pendidikan_penggugat">Pendidikan Penggugat:</label>
-                                                <select name="pendidikan_penggugat" id="pendidikan_penggugat" class="form-control" required onchange="checkOther(this)">
+                                                <label class="form-label" for="pendidikan_penggugat">Pendidikan
+                                                    Penggugat:</label>
+                                                <select name="pendidikan_penggugat" id="pendidikan_penggugat"
+                                                    class="form-control" required onchange="checkOther(this)">
                                                     <option value="sd">SD</option>
                                                     <option value="tidak_tamat_sd">Tidak Tamat SD</option>
                                                     <option value="sltp">SLTP</option>
@@ -229,7 +142,9 @@
                                                     <option value="sarjana">Sarjana</option>
                                                     <option value="lain-lain">Lain-lain</option>
                                                 </select>
-                                                <input type="text" id="otherField" class="form-control" name="pendidikan_penggugat" style="display: none;" placeholder="Masukkan Pendidikan">
+                                                <input type="text" id="otherField" class="form-control"
+                                                    name="pendidikan_penggugat" style="display: none;"
+                                                    placeholder="Masukkan Pendidikan">
                                                 @error('pendidikan_penggugat')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
@@ -242,15 +157,16 @@
                                 </div>
 
                                 <script>
-                                function checkOther(select) {
-                                    var otherInput = document.getElementById("otherField");
-                                    if (select.value == "lain-lain") {
-                                        otherInput.style.display = "block";
-                                    } else {
-                                        otherInput.style.display = "none";
+                                    function checkOther(select) {
+                                        var otherInput = document.getElementById("otherField");
+                                        if (select.value.toLowerCase() === "lain-lain") {
+                                            otherInput.style.display = "block";
+                                            otherInput.value = ""; // clear the input field when "Lain-lain" is selected
+                                        } else {
+                                            otherInput.style.display = "none";
+                                            otherInput.value = select.options[select.selectedIndex].text; // set the value of the input field to the selected option's text
+                                        }
                                     }
-
-                                }
                                 </script>
 
                                 <!-- Alamat Penggugat -->

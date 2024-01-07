@@ -25,9 +25,22 @@ class GugatanCeraiController extends Controller
 
         $request->validate([
             'nama_penggugat' => 'required',
+            'binti_penggugat' => 'required',
             'umur_penggugat' => 'required|integer',
             'pekerjaan_penggugat' => 'required',
-            'pendidikan_penggugat' => 'required',
+            // 'pendidikan_penggugat' => 'required',
+            'pendidikan_penggugat' => [
+                'required',
+                function ($attribute, $value, $fail) use ($request) {
+                    // Check if 'pendidikan_penggugat' is 'lain-lain'
+                    if ($value == 'lain-lain') {
+                        // If 'lain-lain', check if 'other_pendidikan_penggugat' is provided
+                        if (!$request->filled('pendidikan_penggugat')) {
+                            $fail('The ' . $attribute . ' field is required when "Lain-lain" is selected.');
+                        }
+                    }
+                },
+            ],
             'alamat_penggugat' => 'required',
             'nama_tergugat' => 'required',
             'umur_tergugat' => 'required|integer',
@@ -159,6 +172,7 @@ class GugatanCeraiController extends Controller
         $bulan = $bulanIndonesia[date('n') - 1]; // Mengambil nama bulan dari array berdasarkan bulan saat ini
         $templateProcessor->setValue('tanggal', date('d') . ' ' . $bulan . ' ' . date('Y'));
         $templateProcessor->setValue('nama_penggugat', $gugatanCerai->nama_penggugat);
+        $templateProcessor->setValue('binti_penggugat', $gugatanCerai->binti_penggugat);
         $templateProcessor->setValue('umur_penggugat', $gugatanCerai->umur_penggugat);
         $templateProcessor->setValue('agama_penggugat', $gugatanCerai->agama_penggugat);
         $templateProcessor->setValue('pekerjaan_penggugat', $gugatanCerai->pekerjaan_penggugat);
@@ -174,7 +188,7 @@ class GugatanCeraiController extends Controller
 
 
         // Buat nama file hasil replace yang baru
-        $filename = 'gugatan_cerai_' . $gugatanCerai->nama_penggugat. '.docx';
+        $filename = 'gugatan_cerai_' . $gugatanCerai->nama_penggugat . '.docx';
 
         // Tentukan lokasi penyimpanan file hasil replace
         $destinationFolder = 'C:\\Users\\user\\Documents\\uji coba\\';
@@ -193,5 +207,4 @@ class GugatanCeraiController extends Controller
     {
         return Excel::download(new GugatanCeraiExport, 'gugatan_cerai.xlsx');
     }
-
 }
