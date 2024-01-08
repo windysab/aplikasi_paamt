@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\GugatanCeraiController;
 
-
+Route::get('/', function () {
+    return view('tampilan');
+});
 
 //Route::get('/gugatan_cerai', [GugatanCeraiController::class, 'create'])->name('gugatan_cerai.create');
  Route::get('/gugatan_cerai', [GugatanCeraiController::class, 'create'])->name('gugatan_cerai.form');
