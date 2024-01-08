@@ -22,6 +22,8 @@ use App\Http\Controllers\GugatanCeraiController;
  Route::get('/gugatan_cerai', [GugatanCeraiController::class, 'create'])->name('gugatan_cerai.form');
 
 Route::post('/gugatan_cerai/submit', [GugatanCeraiController::class, 'store'])->name('gugatan_cerai.submit');
+Route::get('/gugatan_cerai/{id}/edit', [GugatanCeraiController::class, 'edit'])->name('gugatan_cerai.edit');
+Route::put('/gugatan_cerai/{id}', [GugatanCeraiController::class, 'update'])->name('gugatan_cerai.update');
 
 // Route::get('/gugatan_cerai/detail/{id}', [GugatanCeraiController::class, 'show'])->name('gugatan_cerai.detail');
 Route::get('/gugatan_cerai/detail/{id}', [GugatanCeraiController::class, 'show'])->name('gugatan_cerai.detail');

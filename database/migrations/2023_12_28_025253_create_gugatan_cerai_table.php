@@ -25,6 +25,7 @@ class CreateGugatanCeraiTable extends Migration
             $table->string('nama_tergugat');
 
             $table->integer('umur_tergugat');
+            $table->string('bin_tergugat');
             $table->string('agama_tergugat');
             $table->string('pekerjaan_tergugat');
             $table->string('pendidikan_tergugat');

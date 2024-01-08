@@ -57,7 +57,7 @@
                                 <!-- Umur Penggugat -->
                                 <div id="personal-data" class="collapse show">
                                     <div class="row">
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-6">
                                             <div class="mb-3 mb-4">
                                                 <label class="form-label" for="umur_penggugat">Umur Penggugat:</label>
                                                 <input type="number" class="form-control" id="umur_penggugat"
@@ -71,22 +71,19 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
 
-                                <!-- Agama -->
-                                <div id="personal-data" class="collapse show">
-                                    <div class="row">
-                                        <div class="col-lg-3">
+                                        <!-- Agama -->
+
+                                        <div class="col-lg-6">
                                             <div class="mb-3 mb-4">
                                                 <label class="form-label" for="agama_penggugat">Agama:</label>
                                                 <select name="agama_penggugat" id="agama_penggugat" class="form-control"
                                                     required>
-                                                    <option value="islam">Islam</option>
-                                                    <option value="kristen">Kristen</option>
-                                                    <option value="katolik">Katolik</option>
-                                                    <option value="hindu">Hindu</option>
-                                                    <option value="budha">Budha</option>
+                                                    <option value="Islam">Islam</option>
+                                                    <option value="Kristen">Kristen</option>
+                                                    <option value="Katolik">Katolik</option>
+                                                    <option value="Hindu">Hindu</option>
+                                                    <option value="Budha">Budha</option>
                                                     <!-- Tambahkan opsi lain sesuai dengan kebutuhan -->
                                                 </select>
                                                 @error('agama_penggugat')
@@ -99,6 +96,7 @@
                                         </div>
                                     </div>
                                 </div>
+
 
                                 <!-- Pekerjaan Penggugat -->
                                 <div id="personal-data" class="collapse show">
@@ -119,21 +117,19 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
 
-                                <!-- Pendidikan Penggugat -->
 
-                                <div id="personal-data" class="collapse show">
-                                    <div class="row">
-                                        <div class="col-lg-5">
+                                        <!-- Pendidikan Penggugat -->
+
+
+                                        <div class="col-lg-6">
                                             <div class="mb-3 mb-4">
                                                 <label class="form-label" for="pendidikan_penggugat">Pendidikan
                                                     Penggugat:</label>
                                                 <select name="pendidikan_penggugat" id="pendidikan_penggugat"
                                                     class="form-control" required onchange="checkOther(this)">
-                                                    <option value="sd">SD</option>
                                                     <option value="tidak_tamat_sd">Tidak Tamat SD</option>
+                                                    <option value="sd">SD</option>
                                                     <option value="sltp">SLTP</option>
                                                     <option value="slta">SLTA</option>
                                                     <option value="d1">D-1</option>
@@ -142,6 +138,7 @@
                                                     <option value="sarjana">Sarjana</option>
                                                     <option value="lain-lain">Lain-lain</option>
                                                 </select>
+                                                <br>
                                                 <input type="text" id="otherField" class="form-control"
                                                     name="pendidikan_penggugat" style="display: none;"
                                                     placeholder="Masukkan Pendidikan">
@@ -180,11 +177,39 @@
                                 <h4>Informasi Tergugat</h4>
 
                                 <!-- Nama Tergugat -->
-                                <div class="form-group">
-                                    <label for="nama_tergugat">Nama Tergugat:</label>
-                                    <input type="text" name="nama_tergugat" id="nama_tergugat" class="form-control"
-                                        required>
+                                <div id="personal-data" class="collapse show">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3 mb-4">
+                                                <label class="form-label" for="nama_tergugat">Nama Penggugat:</label>
+                                                <input type="text" class="form-control" id="nama_tergugat"
+                                                    name="nama_tergugat" placeholder="Masukkan Nama Tergugat"
+                                                    value="{{ old('nama_tergugat') }}" required>
+                                                @error('nama_tergugat')
+                                                <div class="alert alert-warning" role="alert">
+                                                    <strong>Peringatan!</strong>
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-3 mb-4">
+                                                <label class="form-label" for="bin_tergugat">Bin:</label>
+                                                <input type="text" class="form-control" id="bin_tergugat"
+                                                    name="bin_tergugat" placeholder="Masukkan Binti"
+                                                    value="{{ old('bin_tergugat') }}" required>
+                                                @error('bin_tergugat')
+                                                <div class="alert alert-warning" role="alert">
+                                                    <strong>Peringatan!</strong>
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+
 
                                 <!-- Umur Tergugat -->
                                 <div class="form-group">
