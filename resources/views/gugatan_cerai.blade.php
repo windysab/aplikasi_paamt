@@ -8,16 +8,18 @@
             <div class="col-md-8">
                 <div class="custom-accordion">
                     <div class="card">
-                        <div class="card-header">Formulir Pendaftaran Gugatan Cerai</div>
+                        <div class="card-header bg-danger font-weight-bold text-center">
+                            <h4>Pendaftaran Gugatan Cerai</h4>
+                        </div>
 
-                        <div class="card-body">
+                        <div class="card-body bg-success" >
                             <!-- Formulir Pendaftaran Gugatan Cerai -->
                             <form method="POST" action="{{ route('gugatan_cerai.submit') }}">
                                 @csrf
 
                                 <!-- Informasi Penggugat -->
                                 <h4>Informasi Penggugat</h4>
-                                <div class="container">
+                                <div class="container" >
 
                                     <!-- Nama Penggugat -->
                                     <div id="personal-data" class="collapse show">

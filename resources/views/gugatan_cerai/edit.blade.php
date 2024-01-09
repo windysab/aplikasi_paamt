@@ -36,13 +36,18 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div>
+                                    <div id="personal-data" class="collapse show">
+                                    </div>
+                                </div>
 
 
                             </div>
                             <!-- ... Add other form fields here ... -->
                             <h4>Informasi Tergugat</h4>
 
-                            
+
+
 
 
 
