@@ -66,8 +66,9 @@ class GugatanCeraiController extends Controller
 
 
         $gugatanCerai = GugatanCerai::find($id);
+        // $gugatanCerai = GugatanCerai::distinct()->get();
 
-
+        // return view('gugatan_cerai_detail', ['gugatanCerai' => $gugatanCerai]);
 
 
         return view('gugatan_cerai_detail', compact('gugatanCerai'));
@@ -144,10 +145,14 @@ class GugatanCeraiController extends Controller
     public function update(Request $request, $id)
     {
         $gugatanCerai = GugatanCerai::find($id);
-        // Update the gugatanCerai with the data from the request
-        // ...
-        $gugatanCerai->save();
+        $gugatanCerai->update($request->all());
 
-        return redirect()->route('gugatan_cerai.index');
+        return redirect()->route('gugatan_cerai.detail', ['id' => $gugatanCerai->id])
+            ->with('success', 'Gugatan Cerai berhasil diupdate!');
+    }
+    public function index()
+    {
+        $gugatanCerai = GugatanCerai::all();
+        return view('gugatan_cerai.index', compact('gugatanCerai'));
     }
 }
