@@ -72,12 +72,18 @@
                         <!-- Add more fields as needed -->
                     </ul>
                 </div>
+
                 <div class="card-footer">
                     <a href="{{ route('gugatan_cerai.generate_word', ['id' => $gugatanCerai->id]) }}"
                         class="btn btn-danger">Download Word</a>
                     {{-- <a href="{{ route('gugatan_cerai') }}" class="btn btn-secondary">Kembali</a> --}}
-                    <a href="{{ route('gugatan_cerai.edit', ['id' => $gugatanCerai->id]) }}" class="btn btn-primary">Edit</a>
+                    <a href="{{ route('gugatan_cerai.edit', ['id' => $gugatanCerai->id]) }}"
+                        class="btn btn-primary">Edit</a>
+                    <p>Setelah file diunduh, buka file di Microsoft Word dan pilih File > Print untuk mencetak.</p>
+
                 </div>
+                
+
             </div>
         </div>
     </div>
