@@ -66,12 +66,7 @@ class GugatanCeraiController extends Controller
 
 
         $gugatanCerai = GugatanCerai::find($id);
-        // $gugatanCerai = GugatanCerai::distinct()->get();
-
-        // return view('gugatan_cerai_detail', ['gugatanCerai' => $gugatanCerai]);
-
-
-        return view('gugatan_cerai_detail', compact('gugatanCerai'));
+        return view('gugatan_cerai.detail', compact('gugatanCerai'));
     }
 
 

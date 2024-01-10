@@ -20,12 +20,43 @@
             <li class="nav-item active">
                 <a class="nav-link" href="{{ url('/') }}">Home</a>
             </li>
-            <!-- Add more links here as needed -->
+
         </ul>
     </div>
 </nav>
 <div class="container">
-    <!-- The main content of your page goes here -->
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center mt-3">Laporan Bulanan Perkara</h1>
+            <h1 class="text-center mt-3">Pengadilan Agama Tanjung</h1>
+            <h1 class="text-center mt-3">Kabupaten Tabalong</h1>
+            <h1 class="text-center mt-3">Tahun 2021</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Bulan</th>
+                        <th scope="col">Jumlah Perkara</th>
+                        <th scope="col">Jumlah Perkara Yang Selesai</th>
+                        <th scope="col">Jumlah Perkara Yang Belum Selesai</th>
+                        <th scope="col">Jumlah Perkara Yang Di Tolak</th>
+                        <th scope="col">Jumlah Perkara Yang Di Setujui</th>
+                        <th scope="col">Jumlah Perkara Yang Di Tolak</th>
+                        <th scope="col">Jumlah Perkara Yang Di Setujui</th>
+                        <th scope="col">Jumlah Perkara Yang Di Tolak</th>
+                        <th scope="col">Jumlah Perkara Yang Di Setujui</th>
+                        <th scope="col">Jumlah Perkara Yang Di Tolak</th>
+                        <th scope="col">Jumlah Perkara Yang Di Setujui</th>
+                        <th scope="col">Jumlah Perkara Yang Di Tolak</th>
+                        <th scope="col">Jumlah Perkara Yang Di Setujui</th>
+                        <th scope="col">Jumlah Perkara Yang Di Tolak</th>
+                        <th scope="col">Jumlah Perkara Yang Di Setujui</th>
+                        <th scope="col">Jumlah Perkara Yang Di Tolak</th>
+                        <th scope="col">Jumlah Perkara Yang Di Setujui</th>
 </div>
 @endsection
 
