@@ -36,10 +36,49 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div>
-                                    <div id="personal-data" class="collapse show">
+                                <div id="personal-data" class="collapse show">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3 mb-4">
+                                                <label class="form-label" for="umur_penggugat">Umur Penggugat:</label>
+                                                <input type="number" class="form-control" id="umur_penggugat"
+                                                    name="umur_penggugat" placeholder="Masukkan Umur"
+                                                    value="{{ $gugatanCerai->umur_penggugat}}" required>
+                                                @error('umur_penggugat')
+                                                <div class="alert alert-warning" role="alert">
+                                                    <strong>Peringatan!</strong>
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <!-- Agama -->
+
+                                        <div class="col-lg-6">
+                                            <div class="mb-3 mb-4">
+                                                <label class="form-label" for="agama_penggugat">Agama:</label>
+                                                <select name="agama_penggugat" id="agama_penggugat" class="form-control"
+                                                    required>
+                                                    <option value="Islam">Islam</option>
+                                                    <option value="Kristen">Kristen</option>
+                                                    <option value="Katolik">Katolik</option>
+                                                    <option value="Hindu">Hindu</option>
+                                                    <option value="Budha">Budha</option>
+                                                    <!-- Tambahkan opsi lain sesuai dengan kebutuhan -->
+                                                </select>
+                                                @error('agama_penggugat')
+                                                <div class="alert alert-warning" role="alert">
+                                                    <strong>Peringatan!</strong>
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
+
 
 
                             </div>
