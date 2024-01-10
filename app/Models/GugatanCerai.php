@@ -15,4 +15,5 @@ class GugatanCerai extends Model
     // app/Models/GugatanCerai.php
 
     protected $fillable = ['nama_penggugat','binti_penggugat', 'umur_penggugat','agama_penggugat', 'pekerjaan_penggugat', 'pendidikan_penggugat', 'alamat_penggugat', 'nama_tergugat','bin_tergugat',  'umur_tergugat', 'agama_tergugat', 'pekerjaan_tergugat', 'pendidikan_tergugat', 'alamat_tergugat', 'alasan_cerai', 'tempat_menikah'];
+    
 }

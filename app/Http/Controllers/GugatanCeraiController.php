@@ -66,12 +66,7 @@ class GugatanCeraiController extends Controller
 
 
         $gugatanCerai = GugatanCerai::find($id);
-        // $gugatanCerai = GugatanCerai::distinct()->get();
-
-        // return view('gugatan_cerai_detail', ['gugatanCerai' => $gugatanCerai]);
-
-
-        return view('gugatan_cerai_detail', compact('gugatanCerai'));
+        return view('gugatan_cerai.detail', compact('gugatanCerai'));
     }
 
 
@@ -150,6 +145,27 @@ class GugatanCeraiController extends Controller
         return redirect()->route('gugatan_cerai.detail', ['id' => $gugatanCerai->id])
             ->with('success', 'Gugatan Cerai berhasil diupdate!');
     }
+    // public function update(Request $request, $id)
+    // {
+    //     $gugatanCerai = GugatanCerai::find($id);
+
+    //     $pendidikan_penggugat = $request->input('pendidikan_penggugat');
+    //     if ($pendidikan_penggugat === 'lain-lain') {
+    //         $pendidikan_penggugat = $request->input('pendidikan_penggugat');
+    //     }
+
+    //     // Check that pendidikan_penggugat is not null
+    //     if ($pendidikan_penggugat === null) {
+    //         return redirect()->back()->with('error', 'Pendidikan Penggugat tidak boleh kosong');
+    //     }
+
+    //     $request->merge(['pendidikan_penggugat' => $pendidikan_penggugat]);
+
+    //     $gugatanCerai->update($request->all());
+
+    //     return redirect()->route('gugatan_cerai.detail', ['id' => $gugatanCerai->id])
+    //         ->with('success', 'Gugatan Cerai berhasil diupdate!');
+    // }
     public function index()
     {
         $gugatanCerai = GugatanCerai::all();

@@ -25,11 +25,22 @@
                             <div class="row">
                                 <div class="col-md-6"><strong>Umur :</strong> {{
                                     $gugatanCerai->umur_penggugat }} Tahun</div>
-                                <div class="col-md-6"><strong>Pekerjaan :</strong> {{
-                                    $gugatanCerai->pekerjaan_penggugat }}</div>
+                                <div class="col-md-6"><strong>Agama :</strong> {{
+                                    $gugatanCerai->agama_penggugat }}</div>
                             </div>
 
                         </li>
+                        <li class="list-group-item">
+                            <div class="row">
+
+                                <div class="col-md-6"><strong>Pekerjaan :</strong> {{
+                                    $gugatanCerai->pekerjaan_penggugat }}</div>
+                                <div class="col-md-6"><strong>Pendidikan :</strong> {{
+                                    $gugatanCerai->pendidikan_penggugat }}</div>
+                            </div>
+
+                        </li>
+
 
                         <li class="list-group-item"><strong>Alamat :</strong> {{
                             $gugatanCerai->alamat_penggugat }}
@@ -52,8 +63,17 @@
                             <div class="row">
                                 <div class="col-md-6"><strong>Umur :</strong> {{
                                     $gugatanCerai->umur_tergugat }} Tahun</div>
+                                <div class="col-md-6"><strong>Agama:</strong> {{
+                                    $gugatanCerai->agama_tergugat }}</div>
+                            </div>
+
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row">
                                 <div class="col-md-6"><strong>Pekerjaan :</strong> {{
                                     $gugatanCerai->pekerjaan_tergugat }}</div>
+                                    <div class="col-md-6"><strong>Pendidikan :</strong> {{
+                                        $gugatanCerai->pendidikan_tergugat }}</div>
                             </div>
 
                         </li>
@@ -82,7 +102,7 @@
                     <p>Setelah file diunduh, buka file di Microsoft Word dan pilih File > Print untuk mencetak.</p>
 
                 </div>
-                
+
 
             </div>
         </div>
