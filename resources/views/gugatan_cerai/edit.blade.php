@@ -97,15 +97,11 @@
                                                 @enderror
                                             </div>
                                         </div>
-
-
                                         <!-- Pendidikan Penggugat -->
-
-
-                                        {{-- <div class="col-lg-6">
+                                        <div class="col-lg-6">
                                             <div class="mb-3 mb-4">
                                                 <label class="form-label" for="pendidikan_penggugat">Pendidikan
-                                                    Penggugat:</label>
+                                                    Tergugat:</label>
                                                 <select name="pendidikan_penggugat" id="pendidikan_penggugat"
                                                     class="form-control" required onchange="checkOther(this)">
                                                     <option value="tidak_tamat_sd">Tidak Tamat SD</option>
@@ -118,9 +114,8 @@
                                                     <option value="sarjana">Sarjana</option>
                                                     <option value="lain-lain">Lain-lain</option>
                                                 </select>
-                                                <br>
                                                 <input type="text" id="otherField" class="form-control"
-                                                    name="pendidikan_penggugat" style="display: none;"
+                                                    name="pendidikan_penggugatt" style="display: none;"
                                                     placeholder="Masukkan Pendidikan">
                                                 @error('pendidikan_penggugat')
                                                 <div class="alert alert-warning" role="alert">
@@ -129,7 +124,7 @@
                                                 </div>
                                                 @enderror
                                             </div>
-                                        </div> --}}
+                                        </div>
                                     </div>
                                 </div>
 
@@ -153,10 +148,6 @@
                                     <textarea name="alamat_penggugat" id="alamat_penggugat" class="form-control"
                                         required>{{ $gugatanCerai->alamat_penggugat }}</textarea>
                                 </div>
-
-
-
-
                             </div>
                             <!-- ... Add other form fields here ... -->
                             <h4>Informasi Tergugat</h4>
@@ -241,16 +232,12 @@
                                                 @enderror
                                             </div>
                                         </div>
-
-
-                                        <!-- Pendidikan Penggugat -->
-
-
-                                        {{-- <div class="col-lg-6">
+                                        <!-- Pendidikan Tergugat -->
+                                        <div class="col-lg-6">
                                             <div class="mb-3 mb-4">
-                                                <label class="form-label" for="pendidikan_terggugat">Pendidikan
+                                                <label class="form-label" for="pendidikan_tergugat">Pendidikan
                                                     Tergugat:</label>
-                                                <select name="pendidikan_tergugat" id="pendidikan_terggugat"
+                                                <select name="pendidikan_tergugat" id="pendidikan_tergugat"
                                                     class="form-control" required onchange="checkOther(this)">
                                                     <option value="tidak_tamat_sd">Tidak Tamat SD</option>
                                                     <option value="sd">SD</option>
@@ -263,8 +250,8 @@
                                                     <option value="lain-lain">Lain-lain</option>
                                                 </select>
                                                 <br>
-                                                <input type="text" id="otherField" class="form-control"
-                                                    name="pendidikan_tergugat" style="display: none;"
+                                                <input type="text" id="otherField1" class="form-control"
+                                                    name="pendidikan_tergugat_lain" style="display: none;"
                                                     placeholder="Masukkan Pendidikan">
                                                 @error('pendidikan_tergugat')
                                                 <div class="alert alert-warning" role="alert">
@@ -273,27 +260,14 @@
                                                 </div>
                                                 @enderror
                                             </div>
-                                        </div> --}}
+                                        </div>
                                     </div>
                                 </div>
 
-                                <script>
-                                    function checkOther(select) {
-                                        var otherInputId = select.id === "pendidikan_tergugat" ? "otherField" : "otherField1";
-                                        var otherInput = document.getElementById(otherInputId);
-                                        if (select.value.toLowerCase() === "lain-lain") {
-                                            otherInput.style.display = "block";
-                                            otherInput.value = ""; // clear the input field when "Lain-lain" is selected
-                                        } else {
-                                            otherInput.style.display = "none";
-                                            otherInput.value = select.options[select.selectedIndex]
-                                            .text; // set the value of the input field to the selected option's text
-                                        }
-                                    }
-                                </script>
-                                <!-- Alamat Penggugat -->
+
+                                <!-- Alamat Tergugat -->
                                 <div class="form-group">
-                                    <label for="alamat_penggugat">Alamat Tergugat:</label>
+                                    <label for="alamat_tergugat">Alamat Tergugat:</label>
                                     <textarea name="alamat_tergugat" id="alamat_tergugat" class="form-control"
                                         required>{{ $gugatanCerai->alamat_tergugat }}</textarea>
                                 </div>
@@ -305,13 +279,15 @@
                             <!-- Alasan Cerai -->
                             <div class="form-group">
                                 <label for="alasan_cerai">Alasan Cerai:</label>
-                                <input type="text" name="alasan_cerai" id="alasan_cerai" class="form-control" value="{{ $gugatanCerai->alasan_cerai }}" required>
+                                <input type="text" name="alasan_cerai" id="alasan_cerai" class="form-control"
+                                    value="{{ $gugatanCerai->alasan_cerai }}" required>
                             </div>
 
                             <!-- Tempat Menikah -->
                             <div class="form-group">
                                 <label for="tempat_menikah">Tempat Menikah:</label>
-                                <input type="text" name="tempat_menikah" id="tempat_menikah" class="form-control" value="{{ $gugatanCerai->tempat_menikah }}" required>
+                                <input type="text" name="tempat_menikah" id="tempat_menikah" class="form-control"
+                                    value="{{ $gugatanCerai->tempat_menikah }}" required>
                             </div>
 
                             <div class="form-group">
