@@ -72,9 +72,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-
                                         <!-- Agama -->
-
                                         <div class="col-lg-6">
                                             <div class="mb-3 mb-4">
                                                 <label class="form-label" for="agama_penggugat">Agama:</label>
@@ -98,7 +96,6 @@
                                     </div>
                                 </div>
 
-
                                 <!-- Pekerjaan Penggugat -->
                                 <div id="personal-data" class="collapse show">
                                     <div class="row">
@@ -119,9 +116,7 @@
                                             </div>
                                         </div>
 
-
                                         <!-- Pendidikan Penggugat -->
-
 
                                         <div class="col-lg-6">
                                             <div class="mb-3 mb-4">
@@ -156,17 +151,18 @@
 
                                 <script>
                                     function checkOther(select) {
-                                            var otherInputId = select.id === "pendidikan_penggugat" ? "otherField" : "otherField1";
-                                            var otherInput = document.getElementById(otherInputId);
-                                            if (select.value.toLowerCase() === "lain-lain") {
-                                                otherInput.style.display = "block";
-                                                otherInput.value = ""; // clear the input field when "Lain-lain" is selected
-                                            } else {
-                                                otherInput.style.display = "none";
-                                                otherInput.value = select.options[select.selectedIndex]
+                                        var otherInputId = select.id === "pendidikan_penggugat" ? "otherField" : "otherField1";
+                                        var otherInput = document.getElementById(otherInputId);
+                                        if (select.value.toLowerCase() === "lain-lain") {
+                                            otherInput.style.display = "block";
+                                            otherInput.value = ""; // clear the input field when "Lain-lain" is selected
+                                        } else {
+                                            otherInput.style.display = "none";
+                                            otherInput.value = select.options[select.selectedIndex]
                                                 .text; // set the value of the input field to the selected option's text
-                                            }
                                         }
+                                    }
+
                                 </script>
 
                                 <!-- Alamat Penggugat -->
@@ -257,8 +253,6 @@
                                     </div>
                                 </div>
 
-
-
                                 <!-- Pekerjaan Tergugat -->
 
                                 <div id="personal-data" class="collapse show">
@@ -318,7 +312,68 @@
                                 <div class="form-group">
                                     <label for="alamat_tergugat">Alamat Tergugat:</label>
                                     <textarea name="alamat_tergugat" id="alamat_tergugat" class="form-control"
-                                        placeholder="isi Alamat lengkap" required></textarea>
+                                        placeholder="isi Alamat lengkap" required readonly></textarea>
+                                </div>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModal">
+                                    Klik untuk mengisi alamat
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Alamat</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Jalan <input type="text" name="jalan" id="jalan" class="form-control"
+                                                    required>
+                                                No. <input type="text" name="no" id="no" class="form-control" required>
+                                                RT. <input type="text" name="rt" id="rt" class="form-control" required>
+                                                RW <input type="text" name="rw" id="rw" class="form-control" required>
+                                                Desa/Kelurahan <input type="text" name="desa_kelurahan"
+                                                    id="desa_kelurahan" class="form-control" required>
+                                                Kecamatan <input type="text" name="kecamatan" id="kecamatan"
+                                                    class="form-control" required>
+                                                Kabupaten <input type="text" name="kabupaten" id="kabupaten"
+                                                    class="form-control" required>
+                                            </div>
+                                            <form id="myForm">
+                                                <!-- Your inputs here -->
+                                                <div class="modal-footer">
+
+                                                    <button type="button" class="btn btn-primary" id="saveButton"
+                                                        data-dismiss="modal">Save</button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+                                            </form>
+                                            <script>
+                                                document.getElementById('saveButton').addEventListener('click', function() {
+                                                    var jalan = document.getElementById('jalan').value;
+                                                    var no = document.getElementById('no').value;
+                                                    var rt = document.getElementById('rt').value;
+                                                    var rw = document.getElementById('rw').value;
+                                                    var desa_kelurahan = document.getElementById('desa_kelurahan').value;
+                                                    var kecamatan = document.getElementById('kecamatan').value;
+                                                    var kabupaten = document.getElementById('kabupaten').value;
+
+                                                    var alamat = `Jalan ${jalan}, No. ${no}, RT. ${rt}, RW ${rw}, Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}`;
+
+                                                    document.getElementById('alamat_tergugat').value = alamat;
+                                                    $('#exampleModal').modal('hide');
+                                                });
+
+                                            </script>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <!-- Informasi Lainnya -->
@@ -342,13 +397,13 @@
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Kirim Gugatan</button>
                                 </div>
-                                <div class="container">
+                                {{-- <div class="container">
                                     <h2>Button Elements</h2>
                                     <a href="#" class="btn btn-info" role="button">Link Button</a>
                                     <button type="button" class="btn btn-info">Button</button>
                                     <input type="button" class="btn btn-info" value="Input Button">
                                     <input type="submit" class="btn btn-info" value="Submit Button">
-                                </div>
+                                </div> --}}
 
                         </form>
                     </div>
