@@ -275,8 +275,6 @@
 
 
                                         <!-- Pendidikan Penggugat -->
-
-
                                         <div class="col-lg-6">
                                             <div class="mb-3 mb-4">
                                                 <label class="form-label" for="pendidikan_tergugat">PPendidikan
