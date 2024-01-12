@@ -115,7 +115,7 @@
                                                     <option value="lain-lain">Lain-lain</option>
                                                 </select>
                                                 <input type="text" id="otherField" class="form-control"
-                                                    name="pendidikan_penggugatt" style="display: none;"
+                                                    name="pendidikan_penggugat" style="display: none;"
                                                     placeholder="Masukkan Pendidikan">
                                                 @error('pendidikan_penggugat')
                                                 <div class="alert alert-warning" role="alert">
@@ -251,7 +251,7 @@
                                                 </select>
                                                 <br>
                                                 <input type="text" id="otherField1" class="form-control"
-                                                    name="pendidikan_tergugat_lain" style="display: none;"
+                                                    name="pendidikan_tergugat" style="display: none;"
                                                     placeholder="Masukkan Pendidikan">
                                                 @error('pendidikan_tergugat')
                                                 <div class="alert alert-warning" role="alert">
