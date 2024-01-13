@@ -30,7 +30,7 @@ class CreateGugatanCeraiTable extends Migration
             $table->string('pekerjaan_tergugat');
             $table->string('pendidikan_tergugat');
             $table->string('alamat_tergugat');
-            $table->string('alasan_cerai');
+            $table->text('alasan_cerai');
             $table->string('tempat_menikah');
             $table->timestamps();
         });

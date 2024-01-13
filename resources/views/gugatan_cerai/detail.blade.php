@@ -72,8 +72,8 @@
                             <div class="row">
                                 <div class="col-md-6"><strong>Pekerjaan :</strong> {{
                                     $gugatanCerai->pekerjaan_tergugat }}</div>
-                                    <div class="col-md-6"><strong>Pendidikan :</strong> {{
-                                        $gugatanCerai->pendidikan_tergugat }}</div>
+                                <div class="col-md-6"><strong>Pendidikan :</strong> {{
+                                    $gugatanCerai->pendidikan_tergugat }}</div>
                             </div>
 
                         </li>
@@ -84,10 +84,31 @@
                     </ul>
 
                     <h4 class="text-danger mt-4">Informasi Lainnya</h4>
+                    {{-- <style>
+                        .list-group-item {
+                            padding: 10px 15px;
+                            margin-bottom: 10px;
+                            border: none;
+                            background-color: #f8f9fa;
+                            text-align: justify; /* Tambahkan ini */
+                        }
+                        .list-group-item label {
+                            display: block;
+                            margin-bottom: 5px;
+                            font-weight: bold;
+                        }
+                        .list-group-item strong {
+                            display: block;
+                            margin-bottom: 5px;
+                        }
+                    </style> --}}
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Alasan Cerai:</strong> {{ $gugatanCerai->alasan_cerai }}
+                        <li class="list-group-item" style="text-align: justify;">
+                            <strong>1. {{ $gugatanCerai->alasan_cerai }}</strong>
                         </li>
-                        <li class="list-group-item"><strong>Tempat Menikah:</strong> {{ $gugatanCerai->tempat_menikah }}
+                        <li class="list-group-item">
+                            <strong>Tempat Menikah:</strong>
+                            {{ $gugatanCerai->tempat_menikah }}
                         </li>
                         <!-- Add more fields as needed -->
                     </ul>
