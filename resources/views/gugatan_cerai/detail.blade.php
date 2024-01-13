@@ -17,8 +17,7 @@
                             <div class="row">
                                 <div class="col-md-6"><strong>Nama :</strong> {{ $gugatanCerai->nama_penggugat
                                     }}</div>
-                                <div class="col-md-6"><strong>Binti:</strong> {{
-                                    $gugatanCerai->binti_penggugat }}</div>
+
                             </div>
                         </li>
                         <li class="list-group-item">
@@ -54,8 +53,7 @@
                             <div class="row">
                                 <div class="col-md-6"><strong>Nama :</strong> {{ $gugatanCerai->nama_tergugat
                                     }}</div>
-                                <div class="col-md-6"><strong>Bin:</strong> {{
-                                    $gugatanCerai->bin_tergugat }}</div>
+                                
                             </div>
 
                         </li>

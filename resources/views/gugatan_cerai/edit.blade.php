@@ -26,14 +26,7 @@
                                                     name="nama_penggugat" value="{{ $gugatanCerai->nama_penggugat }}">
                                             </div>
                                         </div>
-                                        <!-- Binti Penggugat -->
-                                        <div class="col-md-6 mb-3">
-                                            <div class="mb-3 mb-4">
-                                                <label class="form-label" for="binti_penggugat">Binti Penggugat:</label>
-                                                <input type="text" class="form-control" id="binti_penggugat"
-                                                    name="binti_penggugat" value="{{ $gugatanCerai->binti_penggugat }}">
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
                                 <div id="personal-data" class="collapse show">
@@ -163,13 +156,7 @@
                                             </div>
                                         </div>
                                         <!-- Binti Penggugat -->
-                                        <div class="col-md-6 mb-3">
-                                            <div class="mb-3 mb-4">
-                                                <label class="form-label" for="bin_tergugat">Bin Tergugat:</label>
-                                                <input type="text" class="form-control" id="bin_tergugat"
-                                                    name="bin_tergugat" value="{{ $gugatanCerai->bin_tergugat }}">
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <div id="personal-data" class="collapse show">

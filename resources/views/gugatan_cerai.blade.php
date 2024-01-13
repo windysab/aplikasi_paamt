@@ -38,20 +38,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
-                                            <div class="mb-3 mb-4">
-                                                <label class="form-label" for="binti_penggugat">Binti:</label>
-                                                <input type="text" class="form-control" id="binti_penggugat"
-                                                    name="binti_penggugat" placeholder="Masukkan Binti"
-                                                    value="{{ old('binti_penggugat') }}" required>
-                                                @error('binti_penggugat')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
 
@@ -240,7 +227,7 @@
                                 <!-- Nama Tergugat -->
                                 <div id="personal-data" class="collapse show">
                                     <div class="row">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-12">
                                             <div class="mb-3 mb-4">
                                                 <label class="form-label" for="nama_tergugat">Nama Penggugat:</label>
                                                 <input type="text" class="form-control" id="nama_tergugat"
@@ -254,20 +241,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
-                                            <div class="mb-3 mb-4">
-                                                <label class="form-label" for="bin_tergugat">Bin:</label>
-                                                <input type="text" class="form-control" id="bin_tergugat"
-                                                    name="bin_tergugat" placeholder="Masukkan Binti"
-                                                    value="{{ old('bin_tergugat') }}" required>
-                                                @error('bin_tergugat')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
 

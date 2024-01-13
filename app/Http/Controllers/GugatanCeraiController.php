@@ -25,10 +25,9 @@ class GugatanCeraiController extends Controller
 
         $request->validate([
             'nama_penggugat' => 'required',
-            'binti_penggugat' => 'required',
+
             'umur_penggugat' => 'required|integer',
             'pekerjaan_penggugat' => 'required',
-            // 'pendidikan_penggugat' => 'required',
             'pendidikan_penggugat' => [
                 'required',
                 function ($attribute, $value, $fail) use ($request) {
@@ -43,7 +42,6 @@ class GugatanCeraiController extends Controller
             ],
             'alamat_penggugat' => 'required',
             'nama_tergugat' => 'required',
-            'bin_tergugat' => 'required',
             'umur_tergugat' => 'required|integer',
             'pekerjaan_tergugat' => 'required',
             'pendidikan_tergugat' => 'required',
@@ -66,8 +64,6 @@ class GugatanCeraiController extends Controller
 
         $gugatanCerai = GugatanCerai::find($id);
         return view('gugatan_cerai.detail', compact('gugatanCerai'));
-
-
     }
 
 
@@ -96,7 +92,6 @@ class GugatanCeraiController extends Controller
         $bulan = $bulanIndonesia[date('n') - 1]; // Mengambil nama bulan dari array berdasarkan bulan saat ini
         $templateProcessor->setValue('tanggal', date('d') . ' ' . $bulan . ' ' . date('Y'));
         $templateProcessor->setValue('nama_penggugat', $gugatanCerai->nama_penggugat);
-        $templateProcessor->setValue('binti_penggugat', $gugatanCerai->binti_penggugat);
         $templateProcessor->setValue('umur_penggugat', $gugatanCerai->umur_penggugat);
         $templateProcessor->setValue('agama_penggugat', $gugatanCerai->agama_penggugat);
         $templateProcessor->setValue('pekerjaan_penggugat', $gugatanCerai->pekerjaan_penggugat);
@@ -104,7 +99,6 @@ class GugatanCeraiController extends Controller
         $templateProcessor->setValue('alamat_penggugat', $gugatanCerai->alamat_penggugat);
         $templateProcessor->setValue('nama_tergugat', $gugatanCerai->nama_tergugat);
         $templateProcessor->setValue('umur_tergugat', $gugatanCerai->umur_tergugat);
-        $templateProcessor->setValue('bin_tergugat', $gugatanCerai->bin_tergugat);
         $templateProcessor->setValue('agama_tergugat', $gugatanCerai->agama_tergugat);
         $templateProcessor->setValue('pekerjaan_tergugat', $gugatanCerai->pekerjaan_tergugat);
         $templateProcessor->setValue('pendidikan_tergugat', $gugatanCerai->pendidikan_tergugat);
