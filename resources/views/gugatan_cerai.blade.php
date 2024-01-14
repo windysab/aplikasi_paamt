@@ -480,8 +480,23 @@
                                                         id="desa_kelurahan_alasan" class="form-control" required>
                                                     Kecamatan <input type="text" name="kecamatan_alasan"
                                                         id="kecamatan_alasan" class="form-control" required>
-                                                    Kabupaten <input type="text" name="kabupaten_alasan"
-                                                        id="kabupaten_alasan" class="form-control" required>
+
+                                                    Kabupaten <select name="kabupaten_alasan" id="kabupaten_alasan"
+                                                        class="form-control" required>
+                                                        <option value="">Pilih Kabupaten</option>
+                                                        
+                                                    </select>
+                                                    Provinsi <select name="provinsi_alasan" id="provinsi_alasan"
+                                                        class="form-control" required>
+                                                        <option value="">Pilih Provinsi</option>
+                                                        <option value="Aceh">Aceh</option>
+                                                        <option value="Sumatera Utara">Sumatera Utara</option>
+                                                        <option value="Sumatera Barat">Sumatera Barat</option>
+                                                        <option value="Riau">Riau</option>
+
+                                                    </select>
+
+
                                                     <h6 class="modal-title" id="exampleModal_alasan">kemudian Tergugat
                                                         mengucapkan shigat taklik talak terhadap Penggugat sesuai dengan
                                                         Kutipan/Duplikat Kutipan Akta Nikah</h6>
@@ -497,7 +512,115 @@
                                                         data-dismiss="modal">Close</button>
                                                 </div>
                                             </form>
+
+
                                             <script>
+                                                document.getElementById('tanggal').addEventListener('change', function() {
+                                                    var tanggal = new Date(this.value);
+                                                    var hari = tanggal.toLocaleString('id-ID', {
+                                                        weekday: 'long'
+                                                    });
+                                                    document.getElementById('hari').value = hari;
+                                                });
+
+                                                // document.getElementById('provinsi_alasan').addEventListener('change', function() {
+                                                //     var provinsi = this.value;
+
+                                                //     // mengambil data provinsi
+                                                //     fetch('https://www.emsifa.com/api-wilayah-indonesia/api/provinces')
+                                                //         .then(response => response.json())
+                                                //         .then(data => {
+                                                //             var provinsiInput = document.getElementById('provinsi_alasan');
+                                                //             provinsiInput.innerHTML = data.map(function(provinsi) {
+                                                //                 return '<option value="' + provinsi + '">' + provinsi + '</option>';
+                                                //             }).join('');
+                                                //         });
+
+                                                //     // Mengambil data kabupaten berdasarkan provinsi
+                                                //     fetch('https://www.emsifa.com/api-wilayah-indonesia/api/regencies' + provinsi)
+                                                //         .then(response => response.json())
+                                                //         .then(data => {
+                                                //             var kabupatenInput = document.getElementById('kabupaten_alasan');
+                                                //             kabupatenInput.innerHTML = data.map(function(kabupaten) {
+                                                //                 return '<option value="' + kabupaten + '">' + kabupaten + '</option>';
+                                                //             }).join('');
+                                                //         });
+                                                //     // Mengambil data kecamatan berdasarkan kabupaten
+                                                //     fetch('https://www.emsifa.com/api-wilayah-indonesia/api/districts' + kabupaten)
+                                                //         .then(response => response.json())
+                                                //         .then(data => {
+                                                //             var kecamatanInput = document.getElementById('kecamatan_alasan');
+                                                //             kecamatanInput.innerHTML = data.map(function(kecamatan) {
+                                                //                 return '<option value="' + kecamatan + '">' + kecamatan + '</option>';
+                                                //             }).join('');
+                                                //         });
+
+                                                //     // Mengambil data desa berdasarkan kecamatan
+
+                                                //     fetch('https://www.emsifa.com/api-wilayah-indonesia/api/villages' + kecamatan)
+                                                //         .then(response => response.json())
+                                                //         .then(data => {
+                                                //             var desaInput = document.getElementById('desa_kelurahan_alasan');
+                                                //             desaInput.innerHTML = data.map(function(desa) {
+                                                //                 return '<option value="' + desa + '">' + desa + '</option>';
+                                                //             }).join('');
+                                                //         });
+                                                // });
+
+                                                // Mengambil data provinsi saat halaman dimuat
+                                                window.onload = function() {
+                                                    fetch('https://www.emsifa.com/api-wilayah-indonesia/api/provinces')
+                                                        .then(response => response.json())
+                                                        .then(data => {
+                                                            var provinsiInput = document.getElementById('provinsi_alasan');
+                                                            provinsiInput.innerHTML = data.map(function(provinsi) {
+                                                                return '<option value="' + provinsi.id + '">' + provinsi.name + '</option>';
+                                                            }).join('');
+                                                        });
+                                                }
+
+                                                document.getElementById('provinsi_alasan').addEventListener('change', function() {
+                                                    var provinsi = this.value;
+
+                                                    // Mengambil data kabupaten berdasarkan provinsi
+                                                    fetch('https://www.emsifa.com/api-wilayah-indonesia/api/regencies/' + provinsi)
+                                                        .then(response => response.json())
+                                                        .then(data => {
+                                                            var kabupatenInput = document.getElementById('kabupaten_alasan');
+                                                            kabupatenInput.innerHTML = data.map(function(kabupaten) {
+                                                                return '<option value="' + kabupaten.id + '">' + kabupaten.name + '</option>';
+                                                            }).join('');
+                                                        });
+                                                });
+
+                                                document.getElementById('kabupaten_alasan').addEventListener('change', function() {
+                                                    var kabupaten = this.value;
+
+                                                    // Mengambil data kecamatan berdasarkan kabupaten
+                                                    fetch('https://www.emsifa.com/api-wilayah-indonesia/api/districts/' + kabupaten)
+                                                        .then(response => response.json())
+                                                        .then(data => {
+                                                            var kecamatanInput = document.getElementById('kecamatan_alasan');
+                                                            kecamatanInput.innerHTML = data.map(function(kecamatan) {
+                                                                return '<option value="' + kecamatan.id + '">' + kecamatan.name + '</option>';
+                                                            }).join('');
+                                                        });
+                                                });
+
+                                                document.getElementById('kecamatan_alasan').addEventListener('change', function() {
+                                                    var kecamatan = this.value;
+
+                                                    // Mengambil data desa berdasarkan kecamatan
+                                                    fetch('https://www.emsifa.com/api-wilayah-indonesia/api/villages/' + kecamatan)
+                                                        .then(response => response.json())
+                                                        .then(data => {
+                                                            var desaInput = document.getElementById('desa_kelurahan_alasan');
+                                                            desaInput.innerHTML = data.map(function(desa) {
+                                                                return '<option value="' + desa.id + '">' + desa.name + '</option>';
+                                                            }).join('');
+                                                        });
+                                                });
+
                                                 document.getElementById('saveButton_alasan').addEventListener('click', function() {
                                                     var hari = document.getElementById('hari').value;
                                                     var tanggal = document.getElementById('tanggal').value;
@@ -507,11 +630,12 @@
                                                     var no_akta_nikah = document.getElementById('no_akta_nikah').value;
                                                     var tanggal_akta_nikah = document.getElementById('tanggal_akta_nikah').value;
 
-                                                    var alasan = `1.	Bahwa Penggugat dengan Tergugat telah melangsungkan pernikahan pada hari ${hari}, tanggal ${tanggal} di Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}, kemudian Tergugat mengucapkan shigat taklik talak terhadap Penggugat sesuai dengan Kutipan/Duplikat Kutipan Akta Nikah Nomor ${no_akta_nikah}, Tanggal Akta Nikah ${tanggal_akta_nikah}`;
+                                                    var alasan = `Bahwa Penggugat dengan Tergugat telah melangsungkan pernikahan pada hari ${hari}, tanggal ${tanggal} di Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}, kemudian Tergugat mengucapkan shigat taklik talak terhadap Penggugat sesuai dengan Kutipan/Duplikat Kutipan Akta Nikah Nomor ${no_akta_nikah}, Tanggal Akta Nikah ${tanggal_akta_nikah}`;
 
                                                     document.getElementById('alasan_cerai').value = alasan;
                                                     $('#exampleModal_alasan').modal('hide');
                                                 });
+
                                             </script>
                                         </div>
                                     </div>
