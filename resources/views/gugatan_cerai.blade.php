@@ -529,7 +529,6 @@
                                                     $('#exampleModal_alasan').modal('hide');
                                                 });
 
-
                                             </script>
                                         </div>
                                     </div>
@@ -559,24 +558,21 @@
                                             </div>
                                             <form id="form" class="p-3">
                                                 <div class="form-group">
-                                                    <label>(a) Di rumah sendiri, di desa</label>
-                                                    <input type="text" id="rumah_sendiri" name="rumah_sendiri"
+                                                    <label>Tempat Tinggal</label>
+                                                    <select id="tempat_tinggal" name="tempat_tinggal"
                                                         class="form-control">
+                                                        <option value="(a) rumah_sendiri">(a) Di rumah sendiri, di desa
+                                                        </option>
+                                                        <option value="(b) rumah_orangtua_penggugat">Di rumah orangtua
+                                                            Penggugat, di desa</option>
+                                                        <option value="(c) rumah_orangtua_tergugat">Di rumah orangtua
+                                                            Tergugat, di desa</option>
+                                                        <option value="(d) rumah_kontrakan">Di rumah kontrakan / kos, di
+                                                            desa</option>
+                                                    </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>(b) Di rumah orangtua Penggugat, di desa</label>
-                                                    <input type="text" id="rumah_orangtua_penggugat"
-                                                        name="rumah_orangtua_penggugat" class="form-control">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>(c) Di rumah orangtua Tergugat, di desa</label>
-                                                    <input type="text" id="rumah_orangtua_tergugat"
-                                                        name="rumah_orangtua_tergugat" class="form-control">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>(d) Di rumah kontrakan / kos, di desa</label>
-                                                    <input type="text" id="rumah_kontrakan" name="rumah_kontrakan"
-                                                        class="form-control">
+                                                <div id="detail_container">
+                                                    <!-- Detail input will be added here -->
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Kumpul baik selama</label>
@@ -587,6 +583,9 @@
                                                             class="form-control">
                                                     </div>
                                                 </div>
+                                                <div id="detail_container">
+                                                    <!-- Detail input will be added here -->
+                                                </div>
                                                 <div class="form-group">
                                                     <label>dan telah dikaruniai</label>
                                                     <input type="number" id="jumlah_anak" name="jumlah_anak"
@@ -596,8 +595,7 @@
                                                 <div id="anak_container">
                                                     <!-- Anak-anak akan ditambahkan di sini -->
                                                 </div>
-                                                <button type="button" id="tambah_anak"
-                                                    class="btn btn-primary mt-3">Tambah Anak</button>
+
                                                 <button type="submit" class="btn btn-success mt-3">Submit</button>
                                             </form>
                                         </div>
@@ -605,31 +603,51 @@
                                 </div>
 
                                 <script>
-                                    document.getElementById('tambah_anak').addEventListener('click', function () {
+                                    document.getElementById('tempat_tinggal').addEventListener('change', function() {
+                                        var tempatTinggal = this.value;
+                                        var detailContainer = document.getElementById('detail_container');
+
+                                        // Clear the container first
+                                        detailContainer.innerHTML = '';
+
+                                        if (tempatTinggal) {
+                                            var detailDiv = document.createElement('div');
+                                            detailDiv.className = 'form-group';
+                                            detailDiv.innerHTML = `
+                                                <label for="detail_${tempatTinggal}">Detail ${tempatTinggal}:</label>
+                                                <input type="text" id="detail_${tempatTinggal}" name="detail_${tempatTinggal}" class="form-control" required>
+                                            `;
+
+                                            detailContainer.appendChild(detailDiv);
+                                        }
+                                    });
+
+                                    document.getElementById('jumlah_anak').addEventListener('input', function() {
+                                        var jumlahAnak = this.value;
                                         var anakContainer = document.getElementById('anak_container');
-                                        var jumlahAnak = anakContainer.children.length + 1;
 
-                                        var anakDiv = document.createElement('div');
-                                        anakDiv.className = 'form-group';
-                                        anakDiv.innerHTML = `
-                                            <label for="anak_${jumlahAnak}">Anak ke-${jumlahAnak}:</label>
-                                            <input type="text" name="anak_${jumlahAnak}" id="anak_${jumlahAnak}" class="form-control" required>
-                                            lahir</label>
-                                        <input type="date" class="form-control" id="tanggal_lahir_anak_${jumlahAnak}" name="tanggal_lahir_anak_${jumlahAnak}">
-                                        `;
+                                        // Clear the container first
+                                        anakContainer.innerHTML = '';
 
-                                        anakContainer.appendChild(anakDiv);
+                                        for (var i = 0; i < jumlahAnak; i++) {
+                                            var anakDiv = document.createElement('div');
+                                            anakDiv.className = 'form-group';
+                                            anakDiv.innerHTML = `
+                                                <label for="anak_${i+1}">Anak ke-${i+1}:</label>
+                                                <input type="text" name="anak_${i+1}" id="anak_${i+1}" class="form-control" required>
+                                                <label for="tanggal_lahir_anak_${i+1}">Tanggal lahir:</label>
+                                                <input type="date" class="form-control" id="tanggal_lahir_anak_${i+1}" name="tanggal_lahir_anak_${i+1}">
+                                            `;
+
+                                            anakContainer.appendChild(anakDiv);
+                                        }
                                     });
 
-                                    document.getElementById('form').addEventListener('submit', function (event) {
-                                        // Add your form submission logic here if needed
+                                    document.getElementById('form').addEventListener('submit', function(event) {
                                         event.preventDefault(); // Prevent the default form submission
-                                    });
-                                    document.getElementById('form').addEventListener('submit', function () {
-                                        var rumahSendiri = document.getElementById('rumah_sendiri').value;
-                                        var rumahOrangtuaPenggugat = document.getElementById('rumah_orangtua_penggugat').value;
-                                        var rumahOrangtuaTergugat = document.getElementById('rumah_orangtua_tergugat').value;
-                                        var rumahKontrakan = document.getElementById('rumah_kontrakan').value;
+
+                                        var tempatTinggal = document.getElementById('tempat_tinggal').value;
+                                        var detailTempatTinggal = document.getElementById('detail_' + tempatTinggal).value;
                                         var tahun = document.getElementById('tahun').value;
                                         var bulan = document.getElementById('bulan').value;
                                         var jumlahAnak = document.getElementById('jumlah_anak').value;
@@ -642,12 +660,13 @@
                                         }
 
                                         var alasan =
-                                            `2.	Bahwa setelah pernikahan tersebut Penggugat dan Tergugat bertempat tinggal (a) di rumah sendiri, di desa ${rumahSendiri}, (b) di rumah orangtua Penggugat, di desa ${rumahOrangtuaPenggugat}, (c) di rumah orangtua Tergugat, di desa ${rumahOrangtuaTergugat}, (d) di rumah kontrakan / kos, di desa ${rumahKontrakan}, kumpul baik selama ${tahun} tahun ${bulan} bulan dan telah dikaruniai ${jumlahAnak} orang anak, yaitu: ${anak.join(', ')}`;
+                                            `2.	Bahwa setelah pernikahan tersebut Penggugat dan Tergugat bertempat tinggal di ${detailTempatTinggal}, kumpul baik selama ${tahun} tahun ${bulan} bulan dan telah dikaruniai ${jumlahAnak} orang anak, yaitu: ${anak.join(', ')}`;
 
                                         document.getElementById('alasan_cerai_2').value = alasan;
                                         $('#exampleModal_alasan2').modal('hide');
                                     });
                                 </script>
+
 
 
                                 <!-- Tempat Menikah -->
