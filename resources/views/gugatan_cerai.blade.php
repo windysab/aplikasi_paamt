@@ -473,7 +473,7 @@
                                             <form id="myForm_tergugat">
                                                 <div class="modal-body">
                                                     Hari <input type="text" name="hari" id="hari" class="form-control"
-                                                        required>
+                                                    required readonly>
                                                     Tanggal <input type="date" name="tanggal" id="tanggal"
                                                         class="form-control" required>
                                                     Desa/Kelurahan <input type="text" name="desa_kelurahan_alasan"
@@ -489,6 +489,10 @@
                                                         id="no_akta_nikah" class="form-control" required>
                                                     Tanggal Akta Nikah <input type="date" name="tanggal_akta_nikah"
                                                         id="tanggal_akta_nikah" class="form-control" required>
+                                                    KUA Kecamatan <input type="text" name="kua_kecamatan"
+                                                        id="kua_kecamatan" class="form-control" required>
+                                                    Kabupaten <input type="text" name="kua_kabupaten"
+                                                        id="kua_kabupaten" class="form-control" required>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-primary" id="saveButton_alasan"
@@ -498,6 +502,13 @@
                                                 </div>
                                             </form>
                                             <script>
+                                                document.getElementById('tanggal').addEventListener('change', function() {
+                                                    var tanggal = new Date(this.value);
+                                                    var hari = tanggal.toLocaleString('id-ID', {
+                                                        weekday: 'long'
+                                                    });
+                                                    document.getElementById('hari').value = hari;
+                                                });
                                                 document.getElementById('saveButton_alasan').addEventListener('click', function() {
                                                     var hari = document.getElementById('hari').value;
                                                     var tanggal = document.getElementById('tanggal').value;
@@ -506,8 +517,10 @@
                                                     var kabupaten = document.getElementById('kabupaten_alasan').value;
                                                     var no_akta_nikah = document.getElementById('no_akta_nikah').value;
                                                     var tanggal_akta_nikah = document.getElementById('tanggal_akta_nikah').value;
+                                                    var kua_kecamatan = document.getElementById('kua_kecamatan').value;
+                                                    var kua_kabupaten = document.getElementById('kua_kabupaten').value;
 
-                                                    var alasan = `1.	Bahwa Penggugat dengan Tergugat telah melangsungkan pernikahan pada hari ${hari}, tanggal ${tanggal} di Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}, kemudian Tergugat mengucapkan shigat taklik talak terhadap Penggugat sesuai dengan Kutipan/Duplikat Kutipan Akta Nikah Nomor ${no_akta_nikah}, Tanggal Akta Nikah ${tanggal_akta_nikah}`;
+                                                    var alasan = `1.	Bahwa Penggugat dengan Tergugat telah melangsungkan pernikahan pada hari ${hari}, tanggal ${tanggal} di Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}, kemudian Tergugat mengucapkan shigat taklik talak terhadap Penggugat sesuai dengan Kutipan/Duplikat Kutipan Akta Nikah Nomor ${no_akta_nikah}, tanggal ${tanggal_akta_nikah} dari Kantor Urusan Agama Kecamatan ${kua_kecamatan}, Kabupaten ${kua_kabupaten}`;
 
                                                     document.getElementById('alasan_cerai').value = alasan;
                                                     $('#exampleModal_alasan').modal('hide');
