@@ -223,7 +223,8 @@
                                                     var kecamatan = document.getElementById('kecamatan').value;
                                                     var kabupaten = document.getElementById('kabupaten').value;
 
-                                                    var alamat = `${jalan}, No. ${no}, RT. ${rt}, RW ${rw}, Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}`;
+                                                    var alamat =
+                                                        `${jalan}, No. ${no}, RT. ${rt}, RW ${rw}, Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}`;
 
                                                     document.getElementById('alamat_penggugat').value = alamat;
                                                     $('#exampleModal').modal('hide');
@@ -428,7 +429,8 @@
                                                     var kecamatan = document.getElementById('kecamatan_tergugat').value;
                                                     var kabupaten = document.getElementById('kabupaten_tergugat').value;
 
-                                                    var alamat = `${jalan}, No. ${no}, RT. ${rt}, RW ${rw}, Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}`;
+                                                    var alamat =
+                                                        `${jalan}, No. ${no}, RT. ${rt}, RW ${rw}, Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}`;
 
                                                     document.getElementById('alamat_tergugat').value = alamat;
                                                     $('#exampleModal_tergugat').modal('hide');
@@ -473,7 +475,7 @@
                                             <form id="myForm_tergugat">
                                                 <div class="modal-body">
                                                     Hari <input type="text" name="hari" id="hari" class="form-control"
-                                                    required readonly>
+                                                        required readonly>
                                                     Tanggal <input type="date" name="tanggal" id="tanggal"
                                                         class="form-control" required>
                                                     Desa/Kelurahan <input type="text" name="desa_kelurahan_alasan"
@@ -491,8 +493,8 @@
                                                         id="tanggal_akta_nikah" class="form-control" required>
                                                     KUA Kecamatan <input type="text" name="kua_kecamatan"
                                                         id="kua_kecamatan" class="form-control" required>
-                                                    Kabupaten <input type="text" name="kua_kabupaten"
-                                                        id="kua_kabupaten" class="form-control" required>
+                                                    Kabupaten <input type="text" name="kua_kabupaten" id="kua_kabupaten"
+                                                        class="form-control" required>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-primary" id="saveButton_alasan"
@@ -520,16 +522,132 @@
                                                     var kua_kecamatan = document.getElementById('kua_kecamatan').value;
                                                     var kua_kabupaten = document.getElementById('kua_kabupaten').value;
 
-                                                    var alasan = `1.	Bahwa Penggugat dengan Tergugat telah melangsungkan pernikahan pada hari ${hari}, tanggal ${tanggal} di Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}, kemudian Tergugat mengucapkan shigat taklik talak terhadap Penggugat sesuai dengan Kutipan/Duplikat Kutipan Akta Nikah Nomor ${no_akta_nikah}, tanggal ${tanggal_akta_nikah} dari Kantor Urusan Agama Kecamatan ${kua_kecamatan}, Kabupaten ${kua_kabupaten}`;
+                                                    var alasan =
+                                                        `1.	Bahwa Penggugat dengan Tergugat telah melangsungkan pernikahan pada hari ${hari}, tanggal ${tanggal} di Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}, kemudian Tergugat mengucapkan shigat taklik talak terhadap Penggugat sesuai dengan Kutipan/Duplikat Kutipan Akta Nikah Nomor ${no_akta_nikah}, tanggal ${tanggal_akta_nikah} dari Kantor Urusan Agama Kecamatan ${kua_kecamatan}, Kabupaten ${kua_kabupaten}`;
 
                                                     document.getElementById('alasan_cerai').value = alasan;
                                                     $('#exampleModal_alasan').modal('hide');
                                                 });
+
+
                                             </script>
                                         </div>
                                     </div>
                                 </div>
 
+                                <div class="form-group">
+                                    <textarea name="alasan_cerai_2" id="alasan_cerai_2" class="form-control"
+                                        placeholder="saasd" required readonly></textarea>
+                                </div>
+                                <!-- Tombol Pop up -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModal_alasan2">
+                                    Klik untuk merubah No.2
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal_alasan2" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModal_alasan2" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModal_alasan2">Bahwa setelah
+                                                    pernikahan tersebut Penggugat dan Tergugat bertempat tinggal</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <form id="form" class="p-3">
+                                                <div class="form-group">
+                                                    <label>(a) Di rumah sendiri, di desa</label>
+                                                    <input type="text" id="rumah_sendiri" name="rumah_sendiri"
+                                                        class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>(b) Di rumah orangtua Penggugat, di desa</label>
+                                                    <input type="text" id="rumah_orangtua_penggugat"
+                                                        name="rumah_orangtua_penggugat" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>(c) Di rumah orangtua Tergugat, di desa</label>
+                                                    <input type="text" id="rumah_orangtua_tergugat"
+                                                        name="rumah_orangtua_tergugat" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>(d) Di rumah kontrakan / kos, di desa</label>
+                                                    <input type="text" id="rumah_kontrakan" name="rumah_kontrakan"
+                                                        class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Kumpul baik selama</label>
+                                                    <div class="d-flex">
+                                                        <input type="number" id="tahun" name="tahun" placeholder="tahun"
+                                                            class="form-control mr-2">
+                                                        <input type="number" id="bulan" name="bulan" placeholder="bulan"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>dan telah dikaruniai</label>
+                                                    <input type="number" id="jumlah_anak" name="jumlah_anak"
+                                                        placeholder="jumlah anak" class="form-control">
+                                                </div>
+                                                <p>orang anak, yaitu:</p>
+                                                <div id="anak_container">
+                                                    <!-- Anak-anak akan ditambahkan di sini -->
+                                                </div>
+                                                <button type="button" id="tambah_anak"
+                                                    class="btn btn-primary mt-3">Tambah Anak</button>
+                                                <button type="submit" class="btn btn-success mt-3">Submit</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <script>
+                                    document.getElementById('tambah_anak').addEventListener('click', function () {
+                                        var anakContainer = document.getElementById('anak_container');
+                                        var jumlahAnak = anakContainer.children.length + 1;
+
+                                        var anakDiv = document.createElement('div');
+                                        anakDiv.className = 'form-group';
+                                        anakDiv.innerHTML = `
+                                            <label for="anak_${jumlahAnak}">Anak ke-${jumlahAnak}:</label>
+                                            <input type="text" name="anak_${jumlahAnak}" id="anak_${jumlahAnak}" class="form-control" required>
+                                            lahir</label>
+                                        <input type="date" class="form-control" id="tanggal_lahir_anak_${jumlahAnak}" name="tanggal_lahir_anak_${jumlahAnak}">
+                                        `;
+
+                                        anakContainer.appendChild(anakDiv);
+                                    });
+
+                                    document.getElementById('form').addEventListener('submit', function (event) {
+                                        // Add your form submission logic here if needed
+                                        event.preventDefault(); // Prevent the default form submission
+                                    });
+                                    document.getElementById('form').addEventListener('submit', function () {
+                                        var rumahSendiri = document.getElementById('rumah_sendiri').value;
+                                        var rumahOrangtuaPenggugat = document.getElementById('rumah_orangtua_penggugat').value;
+                                        var rumahOrangtuaTergugat = document.getElementById('rumah_orangtua_tergugat').value;
+                                        var rumahKontrakan = document.getElementById('rumah_kontrakan').value;
+                                        var tahun = document.getElementById('tahun').value;
+                                        var bulan = document.getElementById('bulan').value;
+                                        var jumlahAnak = document.getElementById('jumlah_anak').value;
+
+                                        var anakContainer = document.getElementById('anak_container');
+                                        var anakInputs = anakContainer.getElementsByTagName('input');
+                                        var anak = [];
+                                        for (var i = 0; i < anakInputs.length; i++) {
+                                            anak.push(anakInputs[i].value);
+                                        }
+
+                                        var alasan =
+                                            `2.	Bahwa setelah pernikahan tersebut Penggugat dan Tergugat bertempat tinggal (a) di rumah sendiri, di desa ${rumahSendiri}, (b) di rumah orangtua Penggugat, di desa ${rumahOrangtuaPenggugat}, (c) di rumah orangtua Tergugat, di desa ${rumahOrangtuaTergugat}, (d) di rumah kontrakan / kos, di desa ${rumahKontrakan}, kumpul baik selama ${tahun} tahun ${bulan} bulan dan telah dikaruniai ${jumlahAnak} orang anak, yaitu: ${anak.join(', ')}`;
+
+                                        document.getElementById('alasan_cerai_2').value = alasan;
+                                        $('#exampleModal_alasan2').modal('hide');
+                                    });
+                                </script>
 
 
                                 <!-- Tempat Menikah -->
