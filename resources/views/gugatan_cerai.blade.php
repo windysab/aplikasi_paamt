@@ -491,8 +491,9 @@
                                             </div>
                                             <form id="form" class="p-3">
                                                 <div class="form-group">
-                                                    <label>Tempat Tinggal</label>
+                                                    <label>Silahkan Pilih :</label>
                                                     <select id="tempat_tinggal" name="tempat_tinggal" class="form-control">
+                                                        <option value="">Pilih tempat tinggal</option>
                                                         <option value="rumah_sendiri">Di rumah sendiri, di desa
                                                         </option>
                                                         <option value="rumah_orangtua_penggugat">Di rumah orangtua
@@ -560,13 +561,19 @@
 
                                         for (var i = 0; i < jumlahAnak; i++) {
                                             var anakDiv = document.createElement('div');
-                                            anakDiv.className = 'form-group';
+                                            anakDiv.className = 'form-group row'; // add row class here
+
                                             anakDiv.innerHTML = `
-                                                <label for="anak_${i+1}">Anak ke-${i+1}:</label>
-                                                <input type="text" name="anak_${i+1}" id="anak_${i+1}" placeholder="isi nama anak dan bin/binti" class="form-control" required>
-                                                <label for="tanggal_lahir_anak_${i+1}">Tanggal lahir:</label>
-                                                <input type="date" class="form-control" id="tanggal_lahir_anak_${i+1}" name="tanggal_lahir_anak_${i+1}">
-                                            `;
+                                            <div class="col-md-6"> <!-- wrap each label-input pair in a col div -->
+            <label for="anak_${i+1}">Anak ke-${i+1}:</label>
+            <input type="text" name="anak_${i+1}" id="anak_${i+1}" placeholder="isi nama anak dan bin/binti" class="form-control" required>
+        </div>
+        <div class="col-md-6"> <!-- wrap each label-input pair in a col div -->
+            <label for="tanggal_lahir_anak_${i+1}">Tanggal lahir:</label>
+            <input type="date" class="form-control" id="tanggal_lahir_anak_${i+1}" name="tanggal_lahir_anak_${i+1}">
+        </div>
+    `;
+
 
                                             anakContainer.appendChild(anakDiv);
                                         }
@@ -597,7 +604,9 @@
                                         }
 
                                         var alasan =
-                                            `2.	Bahwa setelah pernikahan tersebut Penggugat dan Tergugat bertempat tinggal di ${detailTempatTinggal}, kumpul baik selama ${tahun} tahun ${bulan} bulan dan telah dikaruniai ${jumlahAnak} orang anak, yaitu: Nama ${anak.join(', tanggal lahir  ')}`;
+                                            `2.	Bahwa setelah pernikahan tersebut Penggugat dan Tergugat bertempat tinggal di
+                                            ${detailTempatTinggal}
+                                            kumpul baik selama ${tahun} tahun ${bulan} bulan dan telah dikaruniai ${jumlahAnak} orang anak, yaitu: Nama ${anak.join(', tanggal lahir  ')}`;
 
                                         document.getElementById('alasan_cerai_2').value = alasan;
                                         $('#exampleModal_alasan2').modal('hide');
@@ -605,6 +614,95 @@
 
                                 </script>
 
+
+
+                                <!-- Modal -->
+                                <div class="form-group">
+                                    <textarea name="alasan_cerai3" id="alasan_cerai3" class="form-control" placeholder="alasan_cerai" required></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="date">Tanggal:</label>
+                                    <input type="date" id="date" name="date" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="reason">Alasan:</label>
+                                    <select id="reason" name="reason" class="form-control" onchange="showTextarea(this)">
+                                        <option value="">Pilih Alasan</option>
+                                        <option value="a">Mengkonsumsi minum-minuman keras. (jelaskan kejadiannya di tempat yang sudah disediakan di bawah)</option>
+                                        <option value="b">Bermain judi. (jelaskan kejadiannya di tempat yang sudah disediakan di bawah)</option>
+                                        <option value="c">Memukul Penggugat. (jelaskan kejadiannya di tempat yang sudah disediakan di bawah)</option>
+                                        <option value="d">Telah menjalin hubungan asmara dengan perempuan lain. (jelaskan kejadiannya di tempat yang sudah disediakan di bawah)</option>
+                                        <option value="e">Sering keluar pada malam hari / pulang pada waktu dini hari / tidak pulang berhari – hari. (jelaskan kejadiannya di tempat yang sudah disediakan di bawah)</option>
+                                        <option value="f">Malas berkerja. (jelaskan kejadiannya di tempat yang sudah disediakan di bawah)</option>
+                                        <option value="g">Tidak memberi biaya untuk keperluan rumah tangga sehingga tidak mencukupi. (jelaskan kejadiannya di tempat yang sudah disediakan di bawah)</option>
+                                        <option value="h">Perkawinan Penggugat dan Tergugat dijodohkan oleh orang tua masing-masing. (jelaskan kejadiannya di tempat yang sudah disediakan di bawah)</option>
+
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <textarea name="reason_i" id="reason_i" class="form-control" placeholder="Reason" required readonly></textarea>
+                                </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="myModalLabel">Alasan lainnya / Penjelasan kejadian</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <textarea class="form-control" id="reason_i_modal" name="reason_i_modal" rows="3"></textarea>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary" id="saveChanges">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <script>
+                                    function showTextarea(select) {
+                                        if (select.value === 'a' || select.value === 'b' || select.value === 'c' || select.value === 'd' || select.value === 'e' || select.value === 'f' || select.value === 'g' || select.value === 'h') {
+                                            $('#myModal').modal('show');
+                                        }
+                                    }
+
+                                    document.getElementById('saveChanges').addEventListener('click', function() {
+                                        var reason = document.getElementById('reason_i_modal').value;
+                                        document.getElementById('reason_i').value = reason;
+                                        $('#myModal').modal('hide');
+                                        updateTextarea(); // call the function to update the textarea
+                                    });
+
+                                    // Get the date and dropdown elements
+                                    var dateElement = document.getElementById('date');
+                                    var reasonElement = document.getElementById('reason');
+                                    var reasonIElement = document.getElementById('reason_i');
+
+                                    // Function to update the textarea
+                                    function updateTextarea() {
+                                        var date = new Date(dateElement.value);
+                                        var day = date.getDate();
+                                        var month = date.getMonth() + 1; // Months are zero based
+                                        var year = date.getFullYear();
+                                        var reason = reasonElement.value;
+                                        var reasonI = reasonIElement.value;
+
+                                        if (date && reason) { // if both date and reason are selected
+                                            var alasan = `Bahwa sejak tanggal ${day} bulan ${month} tahun ${year}, antara Penggugat dan Tergugat sering terjadi perselisihan dan pertengkaran dikarenakan ${reason} ${reasonI}`;
+                                            document.getElementById('alasan_cerai3').value = alasan;
+                                        }
+                                    }
+
+                                    // Add event listeners to the date and reason elements
+                                    dateElement.addEventListener('change', updateTextarea);
+                                    reasonElement.addEventListener('change', updateTextarea);
+                                    reasonIElement.addEventListener('change', updateTextarea);
+                                </script>
 
 
                                 <!-- Tempat Menikah -->
