@@ -49,6 +49,9 @@ class GugatanCeraiController extends Controller
             'pendidikan_tergugat' => 'required',
             'alamat_tergugat' => 'required',
             'alasan_cerai' => 'required',
+            'alasan_cerai2' => 'required',
+            'alasan_cerai3' => 'required',
+            'separation_details' => 'required',
             'tempat_menikah' => 'required',
 
             // Tambahkan validasi lainnya sesuai kebutuhan
@@ -110,6 +113,9 @@ class GugatanCeraiController extends Controller
         $templateProcessor->setValue('pendidikan_tergugat', $gugatanCerai->pendidikan_tergugat);
         $templateProcessor->setValue('alamat_tergugat', $gugatanCerai->alamat_tergugat);
         $templateProcessor->setValue('alasan_cerai', $gugatanCerai->alasan_cerai);
+        $templateProcessor->setValue('alasan_cerai2', $gugatanCerai->alasan_cerai2);
+        $templateProcessor->setValue('alasan_cerai3', $gugatanCerai->alasan_cerai3);
+        $templateProcessor->setValue('separation_details', $gugatanCerai->separation_details);
 
 
         // Buat nama file hasil replace yang baru
