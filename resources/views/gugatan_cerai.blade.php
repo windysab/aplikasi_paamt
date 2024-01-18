@@ -897,7 +897,7 @@
 
                                 </script>
 
-                                <!-- Textarea -->
+                                {{-- <!-- Textarea -->
                                 <div class="form-group">
                                     <label for="reconciliation_attempts">Upaya Rukun:</label>
                                     <textarea name="reconciliation_attempts" id="reconciliation_attempts" class="form-control" placeholder="Klik untuk mengisi detail" required readonly></textarea>
@@ -1087,7 +1087,7 @@
                                         $('#nafkahTerutangModal').modal('hide');
                                     });
 
-                                </script>
+                                </script> --}}
 
 
 
