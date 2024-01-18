@@ -591,38 +591,7 @@
                                         }
                                     });
 
-                                    // document.getElementById('form').addEventListener('submit', function(event) {
-                                    //     event.preventDefault(); // Prevent the default form submission
-
-                                    //     var tempatTinggal = document.getElementById('tempat_tinggal').value;
-                                    //     var detailTempatTinggal = document.getElementById('detail_' + tempatTinggal).value;
-                                    //     var tahun = document.getElementById('tahun').value;
-                                    //     var bulan = document.getElementById('bulan').value;
-                                    //     var jumlahAnak = document.getElementById('jumlah_anak').value;
-
-                                    //     var anakContainer = document.getElementById('anak_container');
-                                    //     var anakInputs = anakContainer.getElementsByTagName('input');
-                                    //     var anak = [];
-                                    //     for (var i = 0; i < anakInputs.length; i += 2) {
-                                    //         var namaAnak = anakInputs[i].value;
-                                    //         var tanggalLahir = new Date(anakInputs[i + 1].value);
-                                    //         var opsi = {
-                                    //             year: 'numeric'
-                                    //             , month: 'long'
-                                    //             , day: 'numeric'
-                                    //         };
-                                    //         var tanggalLahirIndonesia = tanggalLahir.toLocaleDateString('id-ID', opsi);
-                                    //         anak.push(namaAnak + ', tanggal lahir ' + tanggalLahirIndonesia);
-                                    //     }
-
-                                    //     var alasan =
-                                    //         `2.	Bahwa setelah pernikahan tersebut Penggugat dan Tergugat bertempat tinggal di
-                                    //         ${detailTempatTinggal}
-                                    //         kumpul baik selama ${tahun} tahun ${bulan} bulan dan telah dikaruniai ${jumlahAnak} orang anak, yaitu: Nama ${anak.join(', tanggal lahir  ')}`;
-
-                                    //     document.getElementById('alasan_cerai2').value = alasan;
-                                    //     $('#exampleModal_alasan2').modal('hide');
-                                    // });
+                                    
                                     document.getElementById('form').addEventListener('submit', function(event) {
                                         event.preventDefault(); // Prevent the default form submission
 
@@ -650,34 +619,14 @@
                                             });
                                         }
 
-                                        var alasan = `2. Bahwa setelah pernikahan tersebut Penggugat dan Tergugat bertempat tinggal di
-    ${detailTempatTinggal}
-    Kumpul baik selama ${tahun} tahun ${bulan} bulan, dan telah dikaruniai ${jumlahAnak} orang anak, yaitu:
-    ${anak.map((anak, index) => `${index + 1}. Nama ${anak.nama}, tanggal lahir ${anak.tanggalLahir}`).join("\n")}`;
+                                        var alasan = `2. Bahwa setelah pernikahan tersebut Penggugat dan Tergugat bertempat tinggal di${detailTempatTinggal}
+                                        Kumpul baik selama ${tahun} tahun ${bulan} bulan, dan telah dikaruniai ${jumlahAnak} orang anak, yaitu:
+                                        ${anak.map((anak, index) => `${index + 1}. Nama ${anak.nama}, tanggal lahir ${anak.tanggalLahir}`).join("\n")}`;
 
                                         document.getElementById('alasan_cerai2').value = alasan;
                                         $('#exampleModal_alasan2').modal('hide');
                                     });
-                                    //                                     var detailTempatTinggal = [
-                                    //     "Di rumah sendiri, di desa ...",
-                                    //     "Di rumah orangtua Penggugat, di desa ...",
-                                    //     "Di rumah orangtua Tergugat, di desa ...",
-                                    //     "Di rumah kontrakan / kos, di desa ..."
-                                    // ];
 
-                                    // var anak = [
-                                    //     { nama: "Nama 1", tanggalLahir: "Tanggal 1" },
-                                    //     { nama: "Nama 2", tanggalLahir: "Tanggal 2" },
-                                    //     { nama: "Nama 3", tanggalLahir: "Tanggal 3" },
-                                    //     { nama: "Nama 4", tanggalLahir: "Tanggal 4" }
-                                    // ];
-
-                                    // var alasan = `2. Bahwa setelah pernikahan tersebut Penggugat dan Tergugat bertempat tinggal di
-                                    // ${detailTempatTinggal.map((tempat, index) => `(${String.fromCharCode(97 + index)}) ${tempat}`).join("\n")}
-                                    // Kumpul baik selama ${tahun} tahun ${bulan} bulan, dan telah dikaruniai ${jumlahAnak} orang anak, yaitu:
-                                    // ${anak.map((anak, index) => `${index + 1}. Nama ${anak.nama}, tanggal lahir ${anak.tanggalLahir}`).join("\n")}`;
-
-                                    // console.log(alasan);
 
                                 </script>
                                 <!-- Alasan Cerai3 -->
@@ -857,21 +806,7 @@
                                     });
 
 
-                                    // document.getElementById('saveChanges1').addEventListener('click', function() {
-                                    //     var separation_reason = document.getElementById('separation_reason').value;
-                                    //     var who_left = document.getElementById('who_left').value;
-                                    //     var village = document.getElementById('village').value;
-                                    //     var reason_for_leaving = document.getElementById('reason_for_leaving').value;
-                                    //     var date_left = document.getElementById('date_left').value;
 
-                                    //     var alasan = `4. Bahwa karena hal-hal tersebut di atas, tidak ada lagi kerukunan antara Penggugat dan Tergugat yang mengakibatkan Penggugat dan Tergugat ${separation_reason}, dimana ${who_left} telah pergi meninggalkan rumah kediaman bersama di desa ${village} (karena ${reason_for_leaving}) sejak tanggal ${date_left}`;
-
-                                    //     // Ganti 'separation_details' dengan id elemen yang ingin Anda tetapkan nilai
-
-
-                                    //     document.getElementById('separation_details').value = alasan;
-                                    //     $('#myalasan').modal('hide');
-                                    // });
 
                                     document.getElementById('saveChanges1').addEventListener('click', function() {
                                         var separation_reason = document.getElementById('separation_reason').value;
