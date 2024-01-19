@@ -909,21 +909,7 @@ ${anak.map((anak, index) => `${index + 1}. Nama ${anak.nama}, tanggal lahir ${an
                         });
 
 
-                        // document.getElementById('saveChanges1').addEventListener('click', function() {
-                        //     var separation_reason = document.getElementById('separation_reason').value;
-                        //     var who_left = document.getElementById('who_left').value;
-                        //     var village = document.getElementById('village').value;
-                        //     var reason_for_leaving = document.getElementById('reason_for_leaving').value;
-                        //     var date_left = document.getElementById('date_left').value;
-
-                        //     var alasan = `4. Bahwa karena hal-hal tersebut di atas, tidak ada lagi kerukunan antara Penggugat dan Tergugat yang mengakibatkan Penggugat dan Tergugat ${separation_reason}, dimana ${who_left} telah pergi meninggalkan rumah kediaman bersama di desa ${village} (karena ${reason_for_leaving}) sejak tanggal ${date_left}`;
-
-                        //     // Ganti 'separation_details' dengan id elemen yang ingin Anda tetapkan nilai
-
-
-                        //     document.getElementById('separation_details').value = alasan;
-                        //     $('#myalasan').modal('hide');
-                        // });
+                    
 
                         document.getElementById('saveChanges1').addEventListener('click', function() {
                             var separation_reason = document.getElementById('separation_reason').value;
