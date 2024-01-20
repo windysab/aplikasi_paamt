@@ -160,37 +160,54 @@
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Alamat</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Jalan <input type="text" name="jalan" id="jalan" class="form-control" required>
-                                                    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
-                                                        No. <input type="text" name="no" id="no" class="form-control" required style="width: 30%;">
-                                                        RT. <input type="text" name="rt" id="rt" class="form-control" required style="width: 30%;">
-                                                        RW <input type="text" name="rw" id="rw" class="form-control" required style="width: 30%;">
-                                                    </div>
-                                                    Desa/Kelurahan <input type="text" name="desa_kelurahan" id="desa_kelurahan" class="form-control" required>
-                                                    Kecamatan <input type="text" name="kecamatan" id="kecamatan" class="form-control" required>
-                                                    Kabupaten <input type="text" name="kabupaten" id="kabupaten" class="form-control" required>
-                                                </div>
-                                                <form id="myForm">
-                                                    <!-- Your inputs here -->
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-primary" id="saveButton" data-dismiss="modal">Save</button>
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    </div>
-                                                </form>
+                                            <div class="modal-header bg-success text-white">
+                                                <h5 class="modal-title" id="exampleModalLabel">Alamat</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
                                             </div>
+                                            <form id="myForm">
+                                                <div class="modal-body bg-light">
+                                                    <div class="form-group">
+                                                        <label for="jalan">Jalan</label>
+                                                        <input type="text" name="jalan" id="jalan" class="form-control" required>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-4">
+                                                            <label for="no">No.</label>
+                                                            <input type="text" name="no" id="no" class="form-control" required>
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label for="rt">RT.</label>
+                                                            <input type="text" name="rt" id="rt" class="form-control" required>
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label for="rw">RW</label>
+                                                            <input type="text" name="rw" id="rw" class="form-control" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="desa_kelurahan">Desa/Kelurahan</label>
+                                                        <input type="text" name="desa_kelurahan" id="desa_kelurahan" class="form-control" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="kecamatan">Kecamatan</label>
+                                                        <input type="text" name="kecamatan" id="kecamatan" class="form-control" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="kabupaten">Kabupaten</label>
+                                                        <input type="text" name="kabupaten" id="kabupaten" class="form-control" required>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer btn-light">
+                                                    <button type="button" class="btn btn-success" id="saveButton" data-dismiss="modal">Simpan</button>
+                                                    <button type="button" class="btn btn-info" data-dismiss="modal">Tutup</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
-
                                 </div>
 
 
@@ -348,34 +365,52 @@
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModal_tergugat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel_tergugat" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
-                                            <div class="modal-header">
+                                            <div class="modal-header bg-success text-white">
                                                 <h5 class="modal-title" id="exampleModalLabel_tergugat">Alamat</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <div class="modal-body">
-                                                Jalan <input type="text" name="jalan_tergugat" id="jalan_tergugat" class="form-control" required>
-                                                <div style="display: flex; justify-content: space-between; margin-top: 10px;">
-                                                    No. <input type="text" name="no_tergugat" id="no_tergugat" class="form-control" required style="width: 30%;">
-                                                    RT. <input type="text" name="rt_tergugat" id="rt_tergugat" class="form-control" required style="width: 30%;">
-                                                    RW <input type="text" name="rw_tergugat" id="rw_tergugat" class="form-control" required style="width: 30%;">
-                                                </div>
-                                                Desa/Kelurahan <input type="text" name="desa_kelurahan_tergugat" id="desa_kelurahan_tergugat" class="form-control" required>
-                                                Kecamatan <input type="text" name="kecamatan_tergugat" id="kecamatan_tergugat" class="form-control" required>
-                                                Kabupaten <input type="text" name="kabupaten_tergugat" id="kabupaten_tergugat" class="form-control" required>
-                                            </div>
                                             <form id="myForm_tergugat">
-                                                <!-- Your inputs here -->
-                                                <div class="modal-footer">
-
-                                                    <button type="button" class="btn btn-primary" id="saveButton_tergugat" data-dismiss="modal">Save</button>
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <div class="modal-body bg-light">
+                                                    <div class="form-group">
+                                                        <label for="jalan_tergugat">Jalan</label>
+                                                        <input type="text" name="jalan_tergugat" id="jalan_tergugat" class="form-control" required>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-4">
+                                                            <label for="no_tergugat">No.</label>
+                                                            <input type="text" name="no_tergugat" id="no_tergugat" class="form-control" required>
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label for="rt_tergugat">RT.</label>
+                                                            <input type="text" name="rt_tergugat" id="rt_tergugat" class="form-control" required>
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label for="rw_tergugat">RW</label>
+                                                            <input type="text" name="rw_tergugat" id="rw_tergugat" class="form-control" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="desa_kelurahan_tergugat">Desa/Kelurahan</label>
+                                                        <input type="text" name="desa_kelurahan_tergugat" id="desa_kelurahan_tergugat" class="form-control" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="kecamatan_tergugat">Kecamatan</label>
+                                                        <input type="text" name="kecamatan_tergugat" id="kecamatan_tergugat" class="form-control" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="kabupaten_tergugat">Kabupaten</label>
+                                                        <input type="text" name="kabupaten_tergugat" id="kabupaten_tergugat" class="form-control" required>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer btn btn-light">
+                                                    <button type="button" class="btn btn-success" data-dismiss="saveButton_tergugat">Simpan</button>
+                                                    <button type="button" class="btn btn-info" data-dismiss="modal">Tutup</button>
                                                 </div>
                                             </form>
-
                                         </div>
                                     </div>
                                 </div>
@@ -399,8 +434,6 @@
                                         document.getElementById('alamat_tergugat').value = alamat;
                                         $('#exampleModal_tergugat').modal('hide');
                                     });
-
-
                                     // Rest of your JavaScript code
 
                                 </script>
@@ -417,17 +450,17 @@
                                 </div>
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModal_alasan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel_alasan" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModal_alasan">1. Bahwa Penggugat
+                                            <div class="modal-header bg-success text-white">
+                                                <h5 class="modal-title" id="exampleModalLabel_alasan">1. Bahwa Penggugat
                                                     dengan Tergugat telah melangsungkan pernikahan pada</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <form id="myForm_tergugat">
-                                                <div class="modal-body">
+                                                <div class="modal-body bg-light">
                                                     Hari <input type="text" name="hari" id="hari" class="form-control" required readonly>
                                                     Tanggal <input type="date" name="tanggal" id="tanggal" class="form-control" required>
                                                     Desa/Kelurahan <input type="text" name="desa_kelurahan_alasan" id="desa_kelurahan_alasan" class="form-control" required>
@@ -441,12 +474,11 @@
                                                     KUA Kecamatan <input type="text" name="kua_kecamatan" id="kua_kecamatan" class="form-control" required>
                                                     Kabupaten <input type="text" name="kua_kabupaten" id="kua_kabupaten" class="form-control" required>
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary" id="saveButton_alasan" data-dismiss="modal">Save</button>
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <div class="modal-footer bg-light">
+                                                    <button type="button" class="btn btn-success" id="saveButton_alasan" data-dismiss="modal">Simpan</button>
+                                                    <button type="button" class="btn btn-info" data-dismiss="modal">Tutup</button>
                                                 </div>
                                             </form>
-
                                         </div>
                                     </div>
                                 </div>
@@ -490,9 +522,9 @@
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModal_alasan2" tabindex="-1" role="dialog" aria-labelledby="exampleModal_alasan2" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
-                                            <div class="modal-header">
+                                            <div class="modal-header bg-success text-white">
                                                 <h5 class="modal-title" id="exampleModal_alasan2">Bahwa setelah
                                                     pernikahan tersebut Penggugat dan Tergugat bertempat tinggal</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -500,43 +532,47 @@
                                                 </button>
                                             </div>
                                             <form id="form" class="p-3">
-                                                <div class="form-group">
-                                                    <label>Silahkan Pilih :</label>
-                                                    <select id="tempat_tinggal" name="tempat_tinggal" class="form-control">
-                                                        <option value="">Pilih tempat tinggal</option>
-                                                        <option value="rumah_sendiri">Di rumah sendiri, di desa
-                                                        </option>
-                                                        <option value="rumah_orangtua_penggugat">Di rumah orangtua
-                                                            Penggugat, di desa</option>
-                                                        <option value="rumah_orangtua_tergugat">Di rumah orangtua
-                                                            Tergugat, di desa</option>
-                                                        <option value="rumah_kontrakan">Di rumah kontrakan / kos, di
-                                                            desa</option>
-                                                    </select>
-                                                </div>
-                                                <div id="detail_container">
-                                                    <!-- Detail input will be added here -->
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Kumpul baik selama</label>
-                                                    <div class="d-flex">
-                                                        <input type="number" id="tahun" name="tahun" placeholder="tahun" class="form-control mr-2">
-                                                        <input type="number" id="bulan" name="bulan" placeholder="bulan" class="form-control">
+                                                <div class="modal-body bg-light">
+                                                    <div class="form-group">
+                                                        <label>Silahkan Pilih :</label>
+                                                        <select id="tempat_tinggal" name="tempat_tinggal" class="form-control">
+                                                            <option value="">Pilih tempat tinggal</option>
+                                                            <option value="rumah_sendiri">Di rumah sendiri, di desa
+                                                            </option>
+                                                            <option value="rumah_orangtua_penggugat">Di rumah orangtua
+                                                                Penggugat, di desa</option>
+                                                            <option value="rumah_orangtua_tergugat">Di rumah orangtua
+                                                                Tergugat, di desa</option>
+                                                            <option value="rumah_kontrakan">Di rumah kontrakan / kos, di
+                                                                desa</option>
+                                                        </select>
+                                                    </div>
+                                                    <div id="detail_container">
+                                                        <!-- Detail input will be added here -->
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Kumpul baik selama</label>
+                                                        <div class="d-flex">
+                                                            <input type="number" id="tahun" name="tahun" placeholder="tahun" class="form-control mr-2">
+                                                            <input type="number" id="bulan" name="bulan" placeholder="bulan" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div id="detail_container">
+                                                        <!-- Detail input will be added here -->
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>dan telah dikaruniai</label>
+                                                        <input type="number" id="jumlah_anak" name="jumlah_anak" placeholder="jumlah anak" class="form-control">
+                                                    </div>
+                                                    <p>orang anak, yaitu:</p>
+                                                    <div id="anak_container">
+                                                        <!-- Anak-anak akan ditambahkan di sini -->
                                                     </div>
                                                 </div>
-                                                <div id="detail_container">
-                                                    <!-- Detail input will be added here -->
+                                                <div class="modal-footer bg-light">
+                                                    <button type="submit" class="btn btn-success mt-3">Simpan</button>
+                                                    <button type="button" class="btn btn-info mt-3" data-dismiss="modal">Tutup</button>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>dan telah dikaruniai</label>
-                                                    <input type="number" id="jumlah_anak" name="jumlah_anak" placeholder="jumlah anak" class="form-control">
-                                                </div>
-                                                <p>orang anak, yaitu:</p>
-                                                <div id="anak_container">
-                                                    <!-- Anak-anak akan ditambahkan di sini -->
-                                                </div>
-
-                                                <button type="submit" class="btn btn-success mt-3">Submit</button>
                                             </form>
                                         </div>
                                     </div>
@@ -591,7 +627,7 @@
                                         }
                                     });
 
-                                    
+
                                     document.getElementById('form').addEventListener('submit', function(event) {
                                         event.preventDefault(); // Prevent the default form submission
 
@@ -627,7 +663,6 @@
                                         $('#exampleModal_alasan2').modal('hide');
                                     });
 
-
                                 </script>
                                 <!-- Alasan Cerai3 -->
                                 <div class="form-group">
@@ -637,7 +672,7 @@
                                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
-                                            <div class="modal-header bg-primary text-white">
+                                            <div class="modal-header bg-success text-white">
                                                 <h4 class="modal-title" id="myModalLabel">Alasan lainnya / Penjelasan
                                                     kejadian</h4>
                                             </div>
@@ -707,10 +742,9 @@
                                                     <textarea class="form-control" id="reason_i_modal" name="reason_i_modal" rows="3"></textarea>
                                                 </div>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary" id="saveChanges">Save
-                                                    changes</button>
+                                            <div class="modal-footer bg-light">
+                                                <button type="button" class="btn btn-success" id="saveChanges">Simpan</button>
+                                                <button type="button" class="btn btn-info" data-dismiss="modal">Tutup</button>
                                             </div>
                                         </div>
                                     </div>
@@ -747,9 +781,9 @@
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="myalasan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-dialog modal-dialog-scrollable" role="document">
                                         <div class="modal-content">
-                                            <div class="modal-header">
+                                            <div class="modal-header bg-success text-white">
                                                 <h4 class="modal-title" id="myModalLabel">Isi Detail</h4>
                                             </div>
                                             <div class="modal-body">
@@ -791,10 +825,9 @@
                                                     <input type="date" id="date_left" name="date_left" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary" id="saveChanges1">Save
-                                                    changes</button>
+                                            <div class="modal-footer bg-light">
+                                                <button type="button" class="btn btn-success" id="saveChanges1">Simpan</button>
+                                                <button type="button" class="btn btn-info" data-dismiss="modal">Tutup</button>
                                             </div>
                                         </div>
                                     </div>
@@ -832,23 +865,30 @@
 
                                 </script>
 
-                                {{-- <!-- Textarea -->
+                                {{--
+                                <!-- Textarea -->
                                 <div class="form-group">
                                     <label for="reconciliation_attempts">Upaya Rukun:</label>
-                                    <textarea name="reconciliation_attempts" id="reconciliation_attempts" class="form-control" placeholder="Klik untuk mengisi detail" required readonly></textarea>
+                                    <textarea name="reconciliation_attempts" id="reconciliation_attempts"
+                                        class="form-control" placeholder="Klik untuk mengisi detail" required
+                                        readonly></textarea>
                                 </div>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="reconciliationModal" tabindex="-1" role="dialog" aria-labelledby="reconciliationModalLabel">
+                                <div class="modal fade" id="reconciliationModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="reconciliationModalLabel">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title" id="reconciliationModalLabel">Isi Detail Upaya Rukun</h4>
+                                                <h4 class="modal-title" id="reconciliationModalLabel">Isi Detail Upaya
+                                                    Rukun</h4>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="form-group">
-                                                    <label for="reconciliation_attempts_detail">Detail Upaya Rukun:</label>
-                                                    <select id="reconciliation_attempts_detail" name="reconciliation_attempts_detail" class="form-control">
+                                                    <label for="reconciliation_attempts_detail">Detail Upaya
+                                                        Rukun:</label>
+                                                    <select id="reconciliation_attempts_detail"
+                                                        name="reconciliation_attempts_detail" class="form-control">
                                                         <option value="">Pilih Alasan</option>
                                                         <option value="tidak">Tidak ada upaya rukun</option>
                                                         <option value="ada">Ada upaya rukun</option>
@@ -856,8 +896,10 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary" id="saveReconciliationAttempts">Save changes</button>
+                                                <button type="button" class="btn btn-default"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary"
+                                                    id="saveReconciliationAttempts">Save changes</button>
                                             </div>
                                         </div>
                                     </div>
@@ -881,11 +923,13 @@
                                 <!-- Textarea -->
                                 <div class="form-group">
                                     <label for="nafkah_details">Detail Nafkah:</label>
-                                    <textarea name="nafkah_details" id="nafkah_details" class="form-control" placeholder="Klik untuk mengisi detail" required readonly></textarea>
+                                    <textarea name="nafkah_details" id="nafkah_details" class="form-control"
+                                        placeholder="Klik untuk mengisi detail" required readonly></textarea>
                                 </div>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="nafkahModal" tabindex="-1" role="dialog" aria-labelledby="nafkahModalLabel">
+                                <div class="modal fade" id="nafkahModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="nafkahModalLabel">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -894,29 +938,36 @@
                                             <div class="modal-body">
                                                 <div class="form-group">
                                                     <label for="job">Pekerjaan:</label>
-                                                    <input type="text" id="job" name="job" class="form-control" placeholder="Masukkan pekerjaan" required>
+                                                    <input type="text" id="job" name="job" class="form-control"
+                                                        placeholder="Masukkan pekerjaan" required>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label for="income">Nama Tempat Kerja</label>
-                                                    <input type="text" id="work" name="work" class="form-control" placeholder="Masukkan penghasilan per bulan" required>
+                                                    <input type="text" id="work" name="work" class="form-control"
+                                                        placeholder="Masukkan penghasilan per bulan" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="income">Penghasilan per Bulan:</label>
-                                                    <input type="number" id="income" name="income" class="form-control" placeholder="Masukkan penghasilan per bulan" required>
+                                                    <input type="number" id="income" name="income" class="form-control"
+                                                        placeholder="Masukkan penghasilan per bulan" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="iddah">Nafkah Iddah:</label>
-                                                    <input type="number" id="iddah" name="iddah" class="form-control" placeholder="Masukkan nafkah iddah" required>
+                                                    <input type="number" id="iddah" name="iddah" class="form-control"
+                                                        placeholder="Masukkan nafkah iddah" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="mutah">Mut'ah:</label>
-                                                    <input type="number" id="mutah" name="mutah" class="form-control" placeholder="Masukkan mut'ah" required>
+                                                    <input type="number" id="mutah" name="mutah" class="form-control"
+                                                        placeholder="Masukkan mut'ah" required>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary" id="saveNafkahDetails">Save changes</button>
+                                                <button type="button" class="btn btn-default"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary"
+                                                    id="saveNafkahDetails">Save changes</button>
                                             </div>
                                         </div>
                                     </div>
@@ -948,38 +999,48 @@
                                 <!-- Textarea -->
                                 <div class="form-group">
                                     <label for="nafkah_terutang_details">Detail Nafkah Terutang:</label>
-                                    <textarea name="nafkah_terutang_details" id="nafkah_terutang_details" class="form-control" placeholder="Klik untuk mengisi detail" required readonly></textarea>
+                                    <textarea name="nafkah_terutang_details" id="nafkah_terutang_details"
+                                        class="form-control" placeholder="Klik untuk mengisi detail" required
+                                        readonly></textarea>
                                 </div>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="nafkahTerutangModal" tabindex="-1" role="dialog" aria-labelledby="nafkahTerutangModalLabel">
+                                <div class="modal fade" id="nafkahTerutangModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="nafkahTerutangModalLabel">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title" id="nafkahTerutangModalLabel">Isi Detail Nafkah Terutang</h4>
+                                                <h4 class="modal-title" id="nafkahTerutangModalLabel">Isi Detail Nafkah
+                                                    Terutang</h4>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="form-group">
                                                     <label for="start_month">Bulan Mulai Tidak Memberi Nafkah:</label>
-                                                    <input type="month" id="start_month" name="start_month" class="form-control" required>
+                                                    <input type="month" id="start_month" name="start_month"
+                                                        class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="end_month">Bulan Akhir Tidak Memberi Nafkah:</label>
-                                                    <input type="month" id="end_month" name="end_month" class="form-control" required>
+                                                    <input type="month" id="end_month" name="end_month"
+                                                        class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="months">Jumlah Bulan:</label>
-                                                    <input type="number" id="months" name="months" class="form-control" placeholder="Masukkan jumlah bulan" required>
+                                                    <input type="number" id="months" name="months" class="form-control"
+                                                        placeholder="Masukkan jumlah bulan" required>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label for="amount">Jumlah Nafkah Terutang:</label>
-                                                    <input type="number" id="amount" name="amount" class="form-control" placeholder="Masukkan jumlah nafkah terutang" required>
+                                                    <input type="number" id="amount" name="amount" class="form-control"
+                                                        placeholder="Masukkan jumlah nafkah terutang" required>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary" id="saveNafkahTerutangDetails">Save changes</button>
+                                                <button type="button" class="btn btn-default"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary"
+                                                    id="saveNafkahTerutangDetails">Save changes</button>
                                             </div>
                                         </div>
                                     </div>
