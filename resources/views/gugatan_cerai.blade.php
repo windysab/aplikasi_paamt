@@ -8,8 +8,8 @@
         <div class="col-md-8">
             <div class="custom-accordion">
                 <div class="card">
-                    <div class="card-header bg-danger font-weight-bold text-center">
-                        <h4>Pendaftaran Gugatan Cerai</h4>
+                    <div class="card-header bg-danger text-white text-center py-3">
+                        <h2 class="mb-0">Formulir Gugatan Cerai</h2>
                     </div>
 
                     <div class="card-body bg-success">
@@ -18,7 +18,8 @@
                             @csrf
 
                             <!-- Informasi Penggugat -->
-                            <h4>Informasi Penggugat</h4>
+                            <h3 class="text-white text-center mb-3">Informasi Penggugat
+                            </h3>
                             <div class="container">
 
                                 <!-- Nama Penggugat -->
@@ -26,20 +27,22 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="mb-3 mb-4">
-                                                <label class="form-label" for="nama_penggugat">Nama Penggugat:</label>
-                                                <input type="text" class="form-control" id="nama_penggugat" name="nama_penggugat" placeholder="Masukkan Nama Penggugat" value="{{ old('nama_penggugat') }}" required>
+                                                <label class="form-label" for="nama_penggugat" style="font-weight: bold;">Nama Penggugat:</label>
+                                                <input type="text" class="form-control" id="nama_penggugat" name="nama_penggugat" placeholder="Nama Lengkap Penggugat" value="{{ old('nama_penggugat') }}" required>
                                                 @error('nama_penggugat')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
+                                                <h6 class="text-white text-center mb-3" style="font-style: italic; font-size: 0.75rem;">(Diisi sesuai dengan
+                                                    surat nikah)</h6>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3 mb-4">
-                                                <label class="form-label" for="binti_penggugat">Binti:</label>
-                                                <input type="text" class="form-control" id="binti_penggugat" name="binti_penggugat" placeholder="Masukkan Binti" value="{{ old('binti_penggugat') }}" required>
+                                                <label class="form-label" for="binti_penggugat" style="font-weight: bold;">Binti:</label>
+                                                <input type="text" class="form-control" id="binti_penggugat" name="binti_penggugat" placeholder="Nama Lengkap Binti Penggugat" value="{{ old('binti_penggugat') }}" required>
                                                 @error('binti_penggugat')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
@@ -56,8 +59,8 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="mb-3 mb-4">
-                                                <label class="form-label" for="umur_penggugat">Umur Penggugat:</label>
-                                                <input type="number" class="form-control" id="umur_penggugat" name="umur_penggugat" placeholder="Masukkan Umur" value="{{ old('umur_penggugat') }}" required>
+                                                <label class="form-label" for="umur_penggugat" style="font-weight: bold;">Umur Penggugat:</label>
+                                                <input type="number" class="form-control" id="umur_penggugat" name="umur_penggugat" placeholder="Umur Penggugat" value="{{ old('umur_penggugat') }}" required>
                                                 @error('umur_penggugat')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
@@ -69,8 +72,9 @@
                                         <!-- Agama -->
                                         <div class="col-lg-6">
                                             <div class="mb-3 mb-4">
-                                                <label class="form-label" for="agama_penggugat">Agama:</label>
+                                                <label class="form-label" for="agama_penggugat" style="font-weight: bold;">Agama:</label>
                                                 <select name="agama_penggugat" id="agama_penggugat" class="form-control" required>
+                                                    <option value="">Pilih Agama</option>
                                                     <option value="Islam">Islam</option>
                                                     <option value="Kristen">Kristen</option>
                                                     <option value="Katolik">Katolik</option>
@@ -89,14 +93,15 @@
                                     </div>
                                 </div>
 
+
                                 <!-- Pekerjaan Penggugat -->
                                 <div id="personal-data" class="collapse show">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="mb-3 mb-4">
-                                                <label class="form-label" for="pekerjaan_penggugat">Pekerjaan
+                                                <label class="form-label" for="pekerjaan_penggugat" style="font-weight: bold;">Pekerjaan
                                                     Penggugat:</label>
-                                                <input type="text" class="form-control" id="pekerjaan_penggugat" name="pekerjaan_penggugat" placeholder="Masukkan Pekerjaan Penggugat" value="{{ old('pekerjaan_penggugat') }}" required>
+                                                <input type="text" class="form-control" id="pekerjaan_penggugat" name="pekerjaan_penggugat" placeholder="Pekerjaan Penggugat" value="{{ old('pekerjaan_penggugat') }}" required>
                                                 @error('pekerjaan_penggugat')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
@@ -110,9 +115,10 @@
 
                                         <div class="col-lg-6">
                                             <div class="mb-3 mb-4">
-                                                <label class="form-label" for="pendidikan_penggugat">Pendidikan
+                                                <label class="form-label" for="pendidikan_penggugat" style="font-weight: bold;">Pendidikan
                                                     Penggugat:</label>
                                                 <select name="pendidikan_penggugat" id="pendidikan_penggugat" class="form-control" required onchange="checkOther(this)">
+                                                    <option value="">Pilih Pendidikan</option>
                                                     <option value="tidak_tamat_sd">Tidak Tamat SD</option>
                                                     <option value="sd">SD</option>
                                                     <option value="sltp">SLTP</option>
@@ -124,7 +130,7 @@
                                                     <option value="lain-lain">Lain-lain</option>
                                                 </select>
                                                 <br>
-                                                <input type="text" id="otherField" class="form-control" name="pendidikan_penggugat" style="display: none;" placeholder="Masukkan Pendidikan">
+                                                <input type="text" id="otherField" class="form-control" name="pendidikan_penggugat" style="display: none;" placeholder="Pendidikan Penggugat">
                                                 @error('pendidikan_penggugat')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
@@ -154,8 +160,8 @@
 
                                 <!-- Alamat Penggugat -->
                                 <div class="form-group">
-                                    <label for="alamat_penggugat">Alamat Penggugat:</label>
-                                    <textarea name="alamat_penggugat" id="alamat_penggugat" class="form-control" placeholder="isi Alamat lengkap" required></textarea>
+                                    <label for="alamat_penggugat" style="font-weight: bold;">Alamat Penggugat:</label>
+                                    <textarea name="alamat_penggugat" id="alamat_penggugat" class="form-control" placeholder="Alamat lengkap Penggugat" required></textarea>
                                 </div>
 
                                 <!-- Modal -->
@@ -202,14 +208,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer btn-light">
-                                                    <button type="button" class="btn btn-success" id="saveButton" data-dismiss="modal">Simpan</button>
+                                                    {{-- <button type="button" class="btn btn-success" id="saveButton" data-dismiss="modal">Simpan</button> --}}
+                                                    <button type="button" class="btn btn-success" id="saveButton">Simpan</button>
                                                     <button type="button" class="btn btn-info" data-dismiss="modal">Tutup</button>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-
 
                                 <script>
                                     document.getElementById('alamat_penggugat').addEventListener('focus', function() {
@@ -224,6 +230,12 @@
                                         var kecamatan = document.getElementById('kecamatan').value;
                                         var kabupaten = document.getElementById('kabupaten').value;
 
+                                        // Check if all fields are filled
+                                        if (!jalan || !no || !rt || !rw || !desa_kelurahan || !kecamatan || !kabupaten) {
+                                            swal("Peringatan!", "Mohon lengkapi alamat terlebih dahulu!", "warning");
+                                            return;
+                                        }
+
                                         var alamat =
                                             `${jalan}, No. ${no}, RT. ${rt}, RW ${rw}, Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}`;
 
@@ -233,29 +245,35 @@
                                     // Rest of your JavaScript code
 
                                 </script>
+                                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+                                <h2 class="text-black text-center mb-3">MELAWAN
+                                </h2>
 
                                 <!-- Informasi Tergugat -->
-                                <h4>Informasi Tergugat</h4>
-
+                                <h3 class="text-white text-center mb-3">Informasi Tergugat
+                                </h3>
                                 <!-- Nama Tergugat -->
                                 <div id="personal-data" class="collapse show">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="mb-3 mb-4">
-                                                <label class="form-label" for="nama_tergugat">Nama Penggugat:</label>
-                                                <input type="text" class="form-control" id="nama_tergugat" name="nama_tergugat" placeholder="Masukkan Nama Tergugat" value="{{ old('nama_tergugat') }}" required>
+                                                <label class="form-label" for="nama_tergugat" style="font-weight: bold;">Nama Penggugat:</label>
+                                                <input type="text" class="form-control" id="nama_tergugat" name="nama_tergugat" placeholder="Nama Lengkap Tergugat" value="{{ old('nama_tergugat') }}" required>
                                                 @error('nama_tergugat')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
+                                                <h6 class="text-white text-center mb-3" style="font-style: italic; font-size: 0.75rem;">(Diisi sesuai dengan
+                                                    surat nikah)</h6>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3 mb-4">
-                                                <label class="form-label" for="bin_tergugat">Bin:</label>
-                                                <input type="text" class="form-control" id="bin_tergugat" name="bin_tergugat" placeholder="Masukkan Binti" value="{{ old('bin_tergugat') }}" required>
+                                                <label class="form-label" for="bin_tergugat" style="font-weight: bold;">Bin:</label>
+                                                <input type="text" class="form-control" id="bin_tergugat" name="bin_tergugat" placeholder="Nama Lengkap Bin Tergugat" value="{{ old('bin_tergugat') }}" required>
                                                 @error('bin_tergugat')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
@@ -267,14 +285,13 @@
                                     </div>
                                 </div>
 
-
                                 <!-- Umur Tergugat -->
                                 <div id="personal-data" class="collapse show">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="mb-3 mb-4">
-                                                <label class="form-label" for="umur_penggugat">Umur Tergugat:</label>
-                                                <input type="number" class="form-control" id="umur_tergugat" name="umur_tergugat" placeholder="Masukkan Umur" value="{{ old('umur_tergugat') }}" required>
+                                                <label class="form-label" for="umur_penggugat" style="font-weight: bold;">Umur Tergugat:</label>
+                                                <input type="number" class="form-control" id="umur_tergugat" name="umur_tergugat" placeholder="Umur Tegugat" value="{{ old('umur_tergugat') }}" required>
                                                 @error('umur_tergugat')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
@@ -285,11 +302,11 @@
                                         </div>
 
                                         <!-- Agama -->
-
                                         <div class="col-lg-6">
                                             <div class="mb-3 mb-4">
-                                                <label class="form-label" for="agama_tergugat">Agama:</label>
+                                                <label class="form-label" for="agama_tergugat" style="font-weight: bold;">Agama:</label>
                                                 <select name="agama_tergugat" id="agama_tergugat" class="form-control" required>
+                                                    <option value="">Pilih Agama</option>
                                                     <option value="Islam">Islam</option>
                                                     <option value="Kristen">Kristen</option>
                                                     <option value="Katolik">Katolik</option>
@@ -309,14 +326,13 @@
                                 </div>
 
                                 <!-- Pekerjaan Tergugat -->
-
                                 <div id="personal-data" class="collapse show">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="mb-3 mb-4">
-                                                <label class="form-label" for="pekerjaan_tergugat">Pekerjaan
+                                                <label class="form-label" for="pekerjaan_tergugat" style="font-weight: bold;">Pekerjaan
                                                     Tergugat:</label>
-                                                <input type="text" class="form-control" id="pekerjaan_tergugat" name="pekerjaan_tergugat" placeholder="Masukkan Pekerjaan Tergugat" value="{{ old('pekerjaan_tergugat') }}" required>
+                                                <input type="text" class="form-control" id="pekerjaan_tergugat" name="pekerjaan_tergugat" placeholder="Pekerjaan Tergugat" value="{{ old('pekerjaan_tergugat') }}" required>
                                                 @error('pekerjaan_tergugat')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
@@ -326,13 +342,13 @@
                                             </div>
                                         </div>
 
-
                                         <!-- Pendidikan Penggugat -->
                                         <div class="col-lg-6">
                                             <div class="mb-3 mb-4">
-                                                <label class="form-label" for="pendidikan_tergugat">PPendidikan
+                                                <label class="form-label" for="pendidikan_tergugat" style="font-weight: bold;">PPendidikan
                                                     Tergugat:</label>
                                                 <select name="pendidikan_tergugat" id="pendidikan_tergugat" class="form-control" required onchange="checkOther(this)">
+                                                    <option value="">Pilih Pendidikan</option>
                                                     <option value="tidak_tamat_sd">Tidak Tamat SD</option>
                                                     <option value="sd">SD</option>
                                                     <option value="sltp">SLTP</option>
@@ -359,8 +375,8 @@
                                 <!-- Alamat Tergugat -->
 
                                 <div class="form-group">
-                                    <label for="alamat_tergugat">Alamat Tergugat:</label>
-                                    <textarea name="alamat_tergugat" id="alamat_tergugat" class="form-control" placeholder="isi Alamat lengkap" required></textarea>
+                                    <label for="alamat_tergugat" style="font-weight: bold;">Alamat Tergugat:</label>
+                                    <textarea name="alamat_tergugat" id="alamat_tergugat" class="form-control" placeholder="Alamat lengkap Tergugat" required></textarea>
                                 </div>
 
                                 <!-- Modal -->
@@ -407,7 +423,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer btn btn-light">
-                                                    <button type="button" class="btn btn-success" data-dismiss="saveButton_tergugat">Simpan</button>
+                                                    <button type="button" id="saveButton_tergugat" class="btn btn-success">Simpan</button>
                                                     <button type="button" class="btn btn-info" data-dismiss="modal">Tutup</button>
                                                 </div>
                                             </form>
@@ -428,6 +444,11 @@
                                         var kecamatan = document.getElementById('kecamatan_tergugat').value;
                                         var kabupaten = document.getElementById('kabupaten_tergugat').value;
 
+                                        if (!jalan || !no || !rt || !rw || !desa_kelurahan || !kecamatan || !kabupaten) {
+                                            swal("Peringatan!", "Mohon lengkapi alamat terlebih dahulu!", "warning");
+                                            return;
+                                        }
+
                                         var alamat =
                                             `${jalan}, No. ${no}, RT. ${rt}, RW ${rw}, Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}`;
 
@@ -446,7 +467,9 @@
                                 </h6>
                                 <!-- Alasan Cerai -->
                                 <div class="form-group">
-                                    <textarea name="alasan_cerai" id="alasan_cerai" class="form-control" placeholder="s" required rows="3" style="text-align: justify;"></textarea>
+                                    <textarea name="alasan_cerai" id="alasan_cerai" class="form-control" placeholder="1.	Bahwa Penggugat dengan Tergugat telah melangsungkan pernikahan pada hari .................., tanggal............... di Desa/Kelurahan................................, Kecamatan ......................................, Kabupaten ................................., kemudian Tergugat mengucapkan shigat taklik talak terhadap Penggugat sesuai dengan Kutipan/Duplikat Kutipan Akta Nikah Nomor .........................................., tanggal............... dari Kantor Urusan Agama Kecamatan ......................................, Kabupaten ......................................;" required readonly rows="6" style="text-align: justify; width: 100%;"></textarea>
+                                    <h6 class="text-white text-center mb-3" style="font-style: italic; font-size: 0.75rem;">(Silakan klik pada kolom di atas
+                                        untuk mengisi/edit informasi yang diminta)</h6>
                                 </div>
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModal_alasan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel_alasan" aria-hidden="true">
@@ -475,7 +498,7 @@
                                                     Kabupaten <input type="text" name="kua_kabupaten" id="kua_kabupaten" class="form-control" required>
                                                 </div>
                                                 <div class="modal-footer bg-light">
-                                                    <button type="button" class="btn btn-success" id="saveButton_alasan" data-dismiss="modal">Simpan</button>
+                                                    <button type="button" class="btn btn-success" id="saveButton_alasan">Simpan</button>
                                                     <button type="button" class="btn btn-info" data-dismiss="modal">Tutup</button>
                                                 </div>
                                             </form>
@@ -506,6 +529,13 @@
                                         var kua_kecamatan = document.getElementById('kua_kecamatan').value;
                                         var kua_kabupaten = document.getElementById('kua_kabupaten').value;
 
+
+                                        // Check if all fields are filled
+                                        if (!hari || !tanggal || !desa_kelurahan || !kecamatan || !kabupaten || !no_akta_nikah || !tanggal_akta_nikah || !kua_kecamatan || !kua_kabupaten) {
+                                            swal("Peringatan!", "Mohon lengkapi Data terlebih dahulu!", "warning");
+                                            return;
+                                        }
+
                                         var alasan =
                                             `1.	Bahwa Penggugat dengan Tergugat telah melangsungkan pernikahan pada hari ${hari}, tanggal ${tanggal} di Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}, kemudian Tergugat mengucapkan shigat taklik talak terhadap Penggugat sesuai dengan Kutipan/Duplikat Kutipan Akta Nikah Nomor ${no_akta_nikah}, tanggal ${tanggal_akta_nikah} dari Kantor Urusan Agama Kecamatan ${kua_kecamatan}, Kabupaten ${kua_kabupaten}`;
 
@@ -517,7 +547,20 @@
                                 </script>
 
                                 <div class="form-group">
-                                    <textarea name="alasan_cerai2" id="alasan_cerai2" class="form-control" placeholder="saasd" required readonly rows="3" style="text-align: justify;"></textarea>
+                                    <textarea name="alasan_cerai2" id="alasan_cerai2" class="form-control" placeholder="2.	Bahwa setelah pernikahan tersebut Penggugat dan Tergugat bertempat tinggal
+    (a)	Di rumah sendiri, di desa ................................................................................................
+    (b)	Di rumah orangtua Penggugat, di desa ..........................................................................
+    (c)	Di rumah orangtua Tergugat, di desa .............................................................................
+    (d)	Di rumah kontrakan / kos, di desa ..................................................................................
+
+    Kumpul baik selama....... tahun ....... bulan, dan telah dikaruniai....... orang anak, yaitu:
+    1.	Nama ....................................., tanggal lahir .......................
+    2.	Nama ....................................., tanggal lahir .......................
+    3.	Nama ....................................., tanggal lahir .......................
+    4.	Nama ....................................., tanggal lahir .......................
+    " required readonly rows="6" style="text-align: justify; width: 100%;"></textarea>
+                                    <h6 class="text-white text-center mb-3" style="font-style: italic; font-size: 0.75rem;">(Silakan klik pada kolom di
+                                        atas untuk mengisi/edit informasi yang diminta)</h6>
                                 </div>
 
                                 <!-- Modal -->
@@ -537,14 +580,14 @@
                                                         <label>Silahkan Pilih :</label>
                                                         <select id="tempat_tinggal" name="tempat_tinggal" class="form-control">
                                                             <option value="">Pilih tempat tinggal</option>
-                                                            <option value="rumah_sendiri">Di rumah sendiri, di desa
+                                                            <option value="Di rumah sendiri">Di rumah sendiri, di desa
                                                             </option>
-                                                            <option value="rumah_orangtua_penggugat">Di rumah orangtua
-                                                                Penggugat, di desa</option>
-                                                            <option value="rumah_orangtua_tergugat">Di rumah orangtua
-                                                                Tergugat, di desa</option>
-                                                            <option value="rumah_kontrakan">Di rumah kontrakan / kos, di
-                                                                desa</option>
+                                                            <option value="Di rumah orangtua Penggugat, di desa">Di
+                                                                rumah orangtua Penggugat, di desa</option>
+                                                            <option value="Di rumah orangtua Tergugat, di desa">Di rumah
+                                                                orangtua Tergugat, di desa</option>
+                                                            <option value="Di rumah kontrakan / kos, di desa">Di rumah
+                                                                kontrakan / kos, di desa</option>
                                                         </select>
                                                     </div>
                                                     <div id="detail_container">
@@ -655,9 +698,15 @@
                                             });
                                         }
 
-                                        var alasan = `2. Bahwa setelah pernikahan tersebut Penggugat dan Tergugat bertempat tinggal di${detailTempatTinggal}
-                                        Kumpul baik selama ${tahun} tahun ${bulan} bulan, dan telah dikaruniai ${jumlahAnak} orang anak, yaitu:
-                                        ${anak.map((anak, index) => `${index + 1}. Nama ${anak.nama}, tanggal lahir ${anak.tanggalLahir}`).join("\n")}`;
+                                        // Check if all fields are filled
+                                        if (!tempatTinggal || !detailTempatTinggal || !tahun || !bulan || !jumlahAnak || anak.some(a => !a.nama || !a.tanggalLahir)) {
+                                            swal("Peringatan!", "Mohon lengkapi semua kolom terlebih dahulu!", "warning");
+                                            return;
+                                        }
+
+                                        var alasan = `2. Bahwa setelah pernikahan tersebut Penggugat dan Tergugat bertempat tinggal ${tempatTinggal} ${detailTempatTinggal}.
+Kumpul baik selama ${tahun} tahun ${bulan} bulan, dan telah dikaruniai ${jumlahAnak} orang anak, yaitu:
+${anak.map((anak, index) => `${index + 1}. Nama : ${anak.nama}, tanggal lahir : ${anak.tanggalLahir}`).join("\n")}`;
 
                                         document.getElementById('alasan_cerai2').value = alasan;
                                         $('#exampleModal_alasan2').modal('hide');
@@ -666,7 +715,10 @@
                                 </script>
                                 <!-- Alasan Cerai3 -->
                                 <div class="form-group">
-                                    <textarea name="alasan_cerai3" id="alasan_cerai3" class="form-control" placeholder="alasan_cerai3" required readonly rows="3" style="text-align: justify;"></textarea>
+                                    <textarea name="alasan_cerai3" id="alasan_cerai3" class="form-control" placeholder="3.	Bahwa sejak tanggal ................. bulan ................. tahun ................., antara Penggugat dan Tergugat sering terjadi perselisihan dan pertengkaran dikarenakan Tergugat:
+                                    " required readonly rows="3" style="text-align: justify; width: 100%;"></textarea>
+                                    <h6 class="text-white text-center mb-3" style="font-style: italic; font-size: 0.75rem;">(Silakan klik pada kolom di atas
+                                        untuk mengisi/edit informasi yang diminta)</h6>
                                 </div>
                                 <!-- Modal -->
                                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -766,6 +818,11 @@
                                         var monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
                                         var monthName = monthNames[month - 1];
 
+                                        if (!day || !month || !year || !reason || !reason_i_modal) {
+                                            swal("Peringatan!", "Mohon lengkapi semua kolom terlebih dahulu!", "warning");
+                                            return;
+                                        }
+
                                         var alasan = `3. Bahwa sejak tanggal ${day} bulan ${monthName} tahun ${year}, antara Penggugat dan Tergugat sering terjadi perselisihan dan pertengkaran dikarenakan ${reason} Alasan lainnya / Penjelasan kejadian ${reason_i_modal}`;
 
                                         document.getElementById('alasan_cerai3').value = alasan;
@@ -775,7 +832,9 @@
                                 </script>
 
                                 <div class="form-group">
-                                    <textarea name="separation_details" id="separation_details" class="form-control" placeholder="Klik untuk mengisi detail" required readonly rows="3" style="text-align: justify;"></textarea>
+                                    <textarea name="separation_details" id="separation_details" class="form-control" placeholder="4.	Bahwa karena hal-hal tersebut di atas, tidak ada lagi kerukunan antara Penggugat dan Tergugat yang mengakibatkan Penggugat dan Tergugat (berpisah tempat tinggal/berpisah tempat tidur), dimana (Tergugat/Penggugat) telah pergi meninggalkan rumah kediaman bersama di desa ..............................................................(karena diusir oleh (Penggugat/Tergugat) atau keinginan (Penggugat/Tergugat) sendiri) sejak tanggal ............ bulan ............. tahun ..............." required readonly rows="6" style="text-align: justify;width: 100%;"></textarea>
+                                    <h6 class="text-white text-center mb-3" style="font-style: italic; font-size: 0.75rem;">(Silakan klik pada kolom di atas
+                                        untuk mengisi/edit informasi yang diminta)</h6>
                                 </div>
 
 
@@ -854,6 +913,12 @@
                                             , day: 'numeric'
                                         };
                                         var date_left_formatted = date_left.toLocaleDateString('id-ID', options);
+
+                                        // Check if all fields are filled
+                                        if (!separation_reason || !who_left || !village || !reason_for_leaving || !date_left_formatted) {
+                                            swal("Peringatan!", "Mohon lengkapi semua kolom terlebih dahulu!", "warning");
+                                            return;
+                                        }
 
                                         var alasan = `4. Bahwa karena hal-hal tersebut di atas, tidak ada lagi kerukunan antara Penggugat dan Tergugat yang mengakibatkan Penggugat dan Tergugat ${separation_reason}, dimana ${who_left} telah pergi meninggalkan rumah kediaman bersama di desa ${village} (karena ${reason_for_leaving}) sejak tanggal ${date_left_formatted}`;
 
@@ -1085,17 +1150,9 @@
 
                                 </script> --}}
 
-
-
-                                <!-- Tempat Menikah -->
-                                <div class="form-group">
-                                    <label for="tempat_menikah">Tempat Menikah:</label>
-                                    <input type="text" name="tempat_menikah" id="tempat_menikah" class="form-control" required>
-                                </div>
-
                                 <!-- Tombol Submit -->
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Kirim Gugatan</button>
+                                    <button type="submit" class="btn btn-primary">Kirim Formulir Gugatan</button>
                                 </div>
                                 {{-- <div class="container">
                                     <h2>Button Elements</h2>

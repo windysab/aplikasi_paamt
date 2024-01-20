@@ -51,7 +51,7 @@
                         <h4 class="text-danger mt-4">Informasi Lainnya</h4>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"><strong>Alasan Cerai:</strong> {{ $gugatan->alasan_cerai }}</li>
-                            <li class="list-group-item"><strong>Tempat Menikah:</strong> {{ $gugatan->tempat_menikah }}</li>
+
                             <!-- Add more fields as needed -->
                         </ul>
                         <hr>

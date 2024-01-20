@@ -52,7 +52,7 @@ class GugatanCeraiController extends Controller
             'alasan_cerai2' => 'required',
             'alasan_cerai3' => 'required',
             'separation_details' => 'required',
-            'tempat_menikah' => 'required',
+            
 
             // Tambahkan validasi lainnya sesuai kebutuhan
         ]);

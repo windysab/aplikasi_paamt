@@ -106,10 +106,7 @@
                         <li class="list-group-item" style="text-align: justify;">
                             <strong>1. {{ $gugatanCerai->alasan_cerai }}</strong>
                         </li>
-                        <li class="list-group-item">
-                            <strong>Tempat Menikah:</strong>
-                            {{ $gugatanCerai->tempat_menikah }}
-                        </li>
+                        
                         <!-- Add more fields as needed -->
                     </ul>
                 </div>

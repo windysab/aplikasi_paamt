@@ -34,7 +34,7 @@ class CreateGugatanCeraiTable extends Migration
             $table->text('alasan_cerai2');
             $table->text('alasan_cerai3');
             $table->text('separation_details');
-            $table->string('tempat_menikah');
+            
             $table->timestamps();
         });
     }
