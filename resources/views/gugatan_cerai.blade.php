@@ -476,9 +476,8 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header bg-success text-white">
-                                                <h5 class="modal-title" id="exampleModalLabel_alasan">1. Bahwa Penggugat
-                                                    dengan Tergugat telah melangsungkan pernikahan pada</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <h6 class="modal-title" id="exampleModalLabel_alasan">Silahkan Isi kolom di bawah ini</h6>
+
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
@@ -489,9 +488,9 @@
                                                     Desa/Kelurahan <input type="text" name="desa_kelurahan_alasan" id="desa_kelurahan_alasan" class="form-control" required>
                                                     Kecamatan <input type="text" name="kecamatan_alasan" id="kecamatan_alasan" class="form-control" required>
                                                     Kabupaten <input type="text" name="kabupaten_alasan" id="kabupaten_alasan" class="form-control" required>
-                                                    <h6 class="modal-title" id="exampleModal_alasan">kemudian Tergugat
+                                                    {{-- <h6 class="modal-title" id="exampleModal_alasan">kemudian Tergugat
                                                         mengucapkan shigat taklik talak terhadap Penggugat sesuai dengan
-                                                        Kutipan/Duplikat Kutipan Akta Nikah</h6>
+                                                        Kutipan/Duplikat Kutipan Akta Nikah</h6> --}}
                                                     Nomor Akta Nikah <input type="text" name="no_akta_nikah" id="no_akta_nikah" class="form-control" required>
                                                     Tanggal Akta Nikah <input type="date" name="tanggal_akta_nikah" id="tanggal_akta_nikah" class="form-control" required>
                                                     KUA Kecamatan <input type="text" name="kua_kecamatan" id="kua_kecamatan" class="form-control" required>
@@ -602,8 +601,7 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header bg-success text-white">
-                                                <h5 class="modal-title" id="exampleModal_alasan2">Bahwa setelah
-                                                    pernikahan tersebut Penggugat dan Tergugat bertempat tinggal</h5>
+                                                <h5 class="modal-title" id="exampleModal_alasan2">Silahkan Isi kolom di bawah ini</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -759,8 +757,7 @@ ${anak.map((anak, index) => `${index + 1}. Nama : ${anak.nama}, tanggal lahir : 
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header bg-success text-white">
-                                                <h4 class="modal-title" id="myModalLabel">Alasan lainnya / Penjelasan
-                                                    kejadian</h4>
+                                                <h4 class="modal-title" id="myModalLabel">Silahkan Isi kolom di bawah ini</h4>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="form-group">
@@ -877,7 +874,7 @@ ${anak.map((anak, index) => `${index + 1}. Nama : ${anak.nama}, tanggal lahir : 
                                     <div class="modal-dialog modal-dialog-scrollable" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header bg-success text-white">
-                                                <h4 class="modal-title" id="myModalLabel">Isi Detail</h4>
+                                                <h4 class="modal-title" id="myModalLabel">Silahkan Isi kolom di bawah ini</h4>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="form-group">
