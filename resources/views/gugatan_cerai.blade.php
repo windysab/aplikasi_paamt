@@ -518,6 +518,31 @@
                                         });
                                         document.getElementById('hari').value = hari;
                                     });
+                                    // document.getElementById('saveButton_alasan').addEventListener('click', function() {
+                                    //     var hari = document.getElementById('hari').value;
+                                    //     var tanggal = document.getElementById('tanggal').value;
+                                    //     var desa_kelurahan = document.getElementById('desa_kelurahan_alasan').value;
+                                    //     var kecamatan = document.getElementById('kecamatan_alasan').value;
+                                    //     var kabupaten = document.getElementById('kabupaten_alasan').value;
+                                    //     var no_akta_nikah = document.getElementById('no_akta_nikah').value;
+                                    //     var tanggal_akta_nikah = document.getElementById('tanggal_akta_nikah').value;
+                                    //     var kua_kecamatan = document.getElementById('kua_kecamatan').value;
+                                    //     var kua_kabupaten = document.getElementById('kua_kabupaten').value;
+
+
+                                    //     // Check if all fields are filled
+                                    //     if (!hari || !tanggal || !desa_kelurahan || !kecamatan || !kabupaten || !no_akta_nikah || !tanggal_akta_nikah || !kua_kecamatan || !kua_kabupaten) {
+                                    //         swal("Peringatan!", "Mohon lengkapi Data terlebih dahulu!", "warning");
+                                    //         return;
+                                    //     }
+
+                                    //     var alasan =
+                                    //         `Bahwa Penggugat dengan Tergugat telah melangsungkan pernikahan pada hari ${hari}, tanggal ${tanggal} di Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}, kemudian Tergugat mengucapkan shigat taklik talak terhadap Penggugat sesuai dengan Kutipan/Duplikat Kutipan Akta Nikah Nomor ${no_akta_nikah}, tanggal ${tanggal_akta_nikah} dari Kantor Urusan Agama Kecamatan ${kua_kecamatan}, Kabupaten ${kua_kabupaten}`;
+
+                                    //     document.getElementById('alasan_cerai').value = alasan;
+                                    //     $('#exampleModal_alasan').modal('hide');
+                                    // });
+
                                     document.getElementById('saveButton_alasan').addEventListener('click', function() {
                                         var hari = document.getElementById('hari').value;
                                         var tanggal = document.getElementById('tanggal').value;
@@ -529,6 +554,9 @@
                                         var kua_kecamatan = document.getElementById('kua_kecamatan').value;
                                         var kua_kabupaten = document.getElementById('kua_kabupaten').value;
 
+                                        // Convert date to Indonesian format
+                                        var tanggalIndo = convertDateToIndonesian(tanggal);
+                                        var tanggalAktaNikahIndo = convertDateToIndonesian(tanggal_akta_nikah);
 
                                         // Check if all fields are filled
                                         if (!hari || !tanggal || !desa_kelurahan || !kecamatan || !kabupaten || !no_akta_nikah || !tanggal_akta_nikah || !kua_kecamatan || !kua_kabupaten) {
@@ -537,11 +565,17 @@
                                         }
 
                                         var alasan =
-                                            `1.	Bahwa Penggugat dengan Tergugat telah melangsungkan pernikahan pada hari ${hari}, tanggal ${tanggal} di Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}, kemudian Tergugat mengucapkan shigat taklik talak terhadap Penggugat sesuai dengan Kutipan/Duplikat Kutipan Akta Nikah Nomor ${no_akta_nikah}, tanggal ${tanggal_akta_nikah} dari Kantor Urusan Agama Kecamatan ${kua_kecamatan}, Kabupaten ${kua_kabupaten}`;
+                                            `Bahwa Penggugat dengan Tergugat telah melangsungkan pernikahan pada hari ${hari}, tanggal ${tanggalIndo} di Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}, kemudian Tergugat mengucapkan shigat taklik talak terhadap Penggugat sesuai dengan Kutipan/Duplikat Kutipan Akta Nikah Nomor ${no_akta_nikah}, tanggal ${tanggalAktaNikahIndo} dari Kantor Urusan Agama Kecamatan ${kua_kecamatan}, Kabupaten ${kua_kabupaten}`;
 
                                         document.getElementById('alasan_cerai').value = alasan;
                                         $('#exampleModal_alasan').modal('hide');
                                     });
+
+                                    function convertDateToIndonesian(dateString) {
+                                        var date = new Date(dateString);
+                                        var monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+                                        return date.getDate() + ' ' + monthNames[date.getMonth()] + ' ' + date.getFullYear();
+                                    }
                                     // Rest of your JavaScript code
 
                                 </script>
@@ -704,7 +738,7 @@
                                             return;
                                         }
 
-                                        var alasan = `2. Bahwa setelah pernikahan tersebut Penggugat dan Tergugat bertempat tinggal ${tempatTinggal} ${detailTempatTinggal}.
+                                        var alasan = `Bahwa setelah pernikahan tersebut Penggugat dan Tergugat bertempat tinggal ${tempatTinggal} ${detailTempatTinggal}.
 Kumpul baik selama ${tahun} tahun ${bulan} bulan, dan telah dikaruniai ${jumlahAnak} orang anak, yaitu:
 ${anak.map((anak, index) => `${index + 1}. Nama : ${anak.nama}, tanggal lahir : ${anak.tanggalLahir}`).join("\n")}`;
 
@@ -823,7 +857,7 @@ ${anak.map((anak, index) => `${index + 1}. Nama : ${anak.nama}, tanggal lahir : 
                                             return;
                                         }
 
-                                        var alasan = `3. Bahwa sejak tanggal ${day} bulan ${monthName} tahun ${year}, antara Penggugat dan Tergugat sering terjadi perselisihan dan pertengkaran dikarenakan ${reason} Alasan lainnya / Penjelasan kejadian ${reason_i_modal}`;
+                                        var alasan = `Bahwa sejak tanggal ${day} bulan ${monthName} tahun ${year}, antara Penggugat dan Tergugat sering terjadi perselisihan dan pertengkaran dikarenakan ${reason} Alasan lainnya / Penjelasan kejadian ${reason_i_modal}`;
 
                                         document.getElementById('alasan_cerai3').value = alasan;
                                         $('#myModal').modal('hide');
@@ -920,7 +954,7 @@ ${anak.map((anak, index) => `${index + 1}. Nama : ${anak.nama}, tanggal lahir : 
                                             return;
                                         }
 
-                                        var alasan = `4. Bahwa karena hal-hal tersebut di atas, tidak ada lagi kerukunan antara Penggugat dan Tergugat yang mengakibatkan Penggugat dan Tergugat ${separation_reason}, dimana ${who_left} telah pergi meninggalkan rumah kediaman bersama di desa ${village} (karena ${reason_for_leaving}) sejak tanggal ${date_left_formatted}`;
+                                        var alasan = `Bahwa karena hal-hal tersebut di atas, tidak ada lagi kerukunan antara Penggugat dan Tergugat yang mengakibatkan Penggugat dan Tergugat ${separation_reason}, dimana ${who_left} telah pergi meninggalkan rumah kediaman bersama di desa ${village} (karena ${reason_for_leaving}) sejak tanggal ${date_left_formatted}`;
 
                                         // Ganti 'separation_details' dengan id elemen yang ingin Anda tetapkan nilai
 
