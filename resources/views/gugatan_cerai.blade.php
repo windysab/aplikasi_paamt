@@ -1151,9 +1151,55 @@ ${anak.map((anak, index) => `${index + 1}. Nama : ${anak.nama}, tanggal lahir : 
                                 </script> --}}
 
                                 <!-- Tombol Submit -->
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Kirim Formulir Gugatan</button>
+
                                 </div>
+
+                                <script>
+                                    document.getElementById('form').addEventListener('submit', function(event) {
+                                        var nama_penggugat = document.getElementById('nama_penggugat').value;
+                                        var umur_penggugat = document.getElementById('umur_penggugat').value;
+                                        var pekerjaan_penggugat = document.getElementById('pekerjaan_penggugat').value;
+                                        var alamat_penggugat = document.getElementById('alamat_penggugat').value;
+                                        var nama_tergugat = document.getElementById('nama_tergugat').value;
+                                        var umur_tergugat = document.getElementById('umur_tergugat').value;
+                                        var pekerjaan_tergugat = document.getElementById('pekerjaan_tergugat').value;
+                                        var alamat_tergugat = document.getElementById('alamat_tergugat').value;
+
+                                        var alasan_cerai = document.getElementById('alasan_cerai').value;
+                                        var alasan_cerai2 = document.getElementById('alasan_cerai2').value;
+                                        var alasan_cerai3 = document.getElementById('alasan_cerai3').value;
+                                        var separation_details = document.getElementById('separation_details').value;
+
+                                        if (!nama_penggugat || !umur_penggugat || !pekerjaan_penggugat || !alamat_penggugat || !nama_tergugat || !umur_tergugat || !pekerjaan_tergugat || !alamat_tergugat || !alasan_cerai || !alasan_cerai2 || !alasan_cerai3 || !separation_details) {
+                                            swal("Peringatan!", "Mohon lengkapi semua kolom terlebih dahulu!", "warning");
+                                            return;
+                                        }
+                                    });
+
+
+                                </script> --}}
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary" id="submitButton">Kirim Formulir Gugatan</button>
+                                </div>
+
+                                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                                <script>
+                                    document.getElementById('submitButton').addEventListener('click', function(event) {
+                                        var inputs = document.getElementsByTagName('input');
+                                        for (var i = 0; i < inputs.length; i++) {
+                                            if (inputs[i].value === '') {
+                                                event.preventDefault(); // Prevent the default form submission
+                                                var inputName = inputs[i].getAttribute('id'); // Get the id of the input
+                                                swal("Peringatan!", "Mohon lengkapi kolom " + inputName + " terlebih dahulu!", "warning");
+                                                return;
+                                            }
+                                        }
+                                    });
+
+                                </script>
+
                                 {{-- <div class="container">
                                     <h2>Button Elements</h2>
                                     <a href="#" class="btn btn-info" role="button">Link Button</a>

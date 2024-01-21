@@ -106,7 +106,16 @@
                         <li class="list-group-item" style="text-align: justify;">
                             <strong>1. {{ $gugatanCerai->alasan_cerai }}</strong>
                         </li>
-                        
+                        <li class="list-group-item" style="text-align: justify;">
+                            <strong>2. {{ $gugatanCerai->alasan_cerai2 }}</strong>
+                        </li>
+                        <li class="list-group-item" style="text-align: justify;">
+                            <strong>3. {{ $gugatanCerai->alasan_cerai3 }}</strong>
+                        </li>
+                        <li class="list-group-item" style="text-align: justify;">
+                            <strong>4. {{ $gugatanCerai->separation_details }}</strong>
+                        </li>
+
                         <!-- Add more fields as needed -->
                     </ul>
                 </div>
