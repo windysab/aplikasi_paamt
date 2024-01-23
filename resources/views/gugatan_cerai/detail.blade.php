@@ -7,13 +7,15 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow-lg">
-                <div class="card-header bg-danger text-white" style="text-align: center; font-weight: bold; font-family: Arial, sans-serif;">
-                    <h5>Detail Gugatan Cerai</h5></div>
+                <div class="card-header bg-danger text-white"
+                    style="text-align: center; font-weight: bold; font-family: Arial, sans-serif;">
+                    <h5>Detail Gugatan Cerai</h5>
+                </div>
 
                 <div class="card-body">
                     <!-- Display Gugatan Cerai Details -->
-                    <h5 class="text-danger" style="text-align: center" >Informasi Penggugat</h5>
-                    <ul class="list-group list-group-flush">
+
+                    {{-- <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-md-6"><strong>Nama :</strong> {{ $gugatanCerai->nama_penggugat
@@ -47,78 +49,111 @@
                             $gugatanCerai->alamat_penggugat }}
                         </li>
                         <!-- Add more fields as needed -->
-                    </ul>
+                    </ul> --}}
 
-                    <h4 class="text-danger mt-4">Informasi Tergugat</h4>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-6"><strong>Nama :</strong> {{ $gugatanCerai->nama_tergugat
-                                    }}</div>
-                                <div class="col-md-6"><strong>Bin:</strong> {{
-                                    $gugatanCerai->bin_tergugat }}</div>
-                            </div>
+                    <div class="card">
+                        <div class="card-body">
 
-                        </li>
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-6"><strong>Umur :</strong> {{
-                                    $gugatanCerai->umur_tergugat }} Tahun</div>
-                                <div class="col-md-6"><strong>Agama:</strong> {{
-                                    $gugatanCerai->agama_tergugat }}</div>
-                            </div>
+                            <h5 class="text-title" style="text-align: center">Informasi Penggugat</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-md-6"><strong>Nama :</strong> {{ $gugatanCerai->nama_penggugat
+                                            }}</div>
+                                        <div class="col-md-6"><strong>Binti:</strong> {{ $gugatanCerai->binti_penggugat
+                                            }}</div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-md-6"><strong>Umur :</strong> {{ $gugatanCerai->umur_penggugat
+                                            }} Tahun</div>
+                                        <div class="col-md-6"><strong>Agama :</strong> {{ $gugatanCerai->agama_penggugat
+                                            }}</div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-md-6"><strong>Pekerjaan :</strong> {{
+                                            $gugatanCerai->pekerjaan_penggugat }}</div>
+                                        <div class="col-md-6"><strong>Pendidikan :</strong> {{
+                                            $gugatanCerai->pendidikan_penggugat }}</div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item"><strong>Alamat :</strong> {{ $gugatanCerai->alamat_penggugat
+                                    }}</li>
+                            </ul>
+                        </div>
 
-                        </li>
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-6"><strong>Pekerjaan :</strong> {{
-                                    $gugatanCerai->pekerjaan_tergugat }}</div>
-                                <div class="col-md-6"><strong>Pendidikan :</strong> {{
-                                    $gugatanCerai->pendidikan_tergugat }}</div>
-                            </div>
+                    </div>
 
-                        </li>
-                        <li class="list-group-item"><strong>Alamat :</strong> {{
-                            $gugatanCerai->alamat_tergugat }}
-                        </li>
-                        <!-- Add more fields as needed -->
-                    </ul>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="text-title" style="text-align: center">Informasi Tergugat</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-md-6"><strong>Nama :</strong> {{ $gugatanCerai->nama_tergugat }}</div>
+                                        <div class="col-md-6"><strong>Bin:</strong> {{ $gugatanCerai->bin_tergugat }}</div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-md-6"><strong>Umur :</strong> {{ $gugatanCerai->umur_tergugat }} Tahun</div>
+                                        <div class="col-md-6"><strong>Agama:</strong> {{ $gugatanCerai->agama_tergugat }}</div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-md-6"><strong>Pekerjaan :</strong> {{ $gugatanCerai->pekerjaan_tergugat }}</div>
+                                        <div class="col-md-6"><strong>Pendidikan :</strong> {{ $gugatanCerai->pendidikan_tergugat }}</div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item"><strong>Alamat :</strong> {{ $gugatanCerai->alamat_tergugat }}</li>
+                            </ul>
+                        </div>
+                    </div>
 
                     <h4 class="text-danger mt-4">Informasi Lainnya</h4>
-                    {{-- <style>
-                        .list-group-item {
-                            padding: 10px 15px;
-                            margin-bottom: 10px;
-                            border: none;
-                            background-color: #f8f9fa;
-                            text-align: justify; /* Tambahkan ini */
-                        }
-                        .list-group-item label {
-                            display: block;
-                            margin-bottom: 5px;
-                            font-weight: bold;
-                        }
-                        .list-group-item strong {
-                            display: block;
-                            margin-bottom: 5px;
-                        }
-                    </style> --}}
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item" style="text-align: justify;">
-                            <strong>1. {{ $gugatanCerai->alasan_cerai }}</strong>
-                        </li>
-                        <li class="list-group-item" style="text-align: justify;">
-                            <strong>2. {{ $gugatanCerai->alasan_cerai2 }}</strong>
-                        </li>
-                        <li class="list-group-item" style="text-align: justify;">
-                            <strong>3. {{ $gugatanCerai->alasan_cerai3 }}</strong>
-                        </li>
-                        <li class="list-group-item" style="text-align: justify;">
-                            <strong>4. {{ $gugatanCerai->separation_details }}</strong>
-                        </li>
+                    {{-- <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Alasan Cerai</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <strong>1. </strong> {{ $gugatanCerai->alasan_cerai }}
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>2. </strong> {{ $gugatanCerai->alasan_cerai2 }}
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>3. </strong> {{ $gugatanCerai->alasan_cerai3 }}
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>4. </strong> {{ $gugatanCerai->separation_details }}
+                                </li>
+                            </ul>
+                        </div>
+                    </div> --}}
 
-                        <!-- Add more fields as needed -->
-                    </ul>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Alasan Cerai</h5>
+                            <ul class="list-group list-group-flush text-justify">
+                                <li class="list-group-item">
+                                    <strong>1. </strong> {{ $gugatanCerai->alasan_cerai }}
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>2. </strong> {{ $gugatanCerai->alasan_cerai2 }}
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>3. </strong> {{ $gugatanCerai->alasan_cerai3 }}
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>4. </strong> {{ $gugatanCerai->separation_details }}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card-footer">
