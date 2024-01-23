@@ -15,42 +15,6 @@
                 <div class="card-body">
                     <!-- Display Gugatan Cerai Details -->
 
-                    {{-- <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-6"><strong>Nama :</strong> {{ $gugatanCerai->nama_penggugat
-                                    }}</div>
-                                <div class="col-md-6"><strong>Binti:</strong> {{
-                                    $gugatanCerai->binti_penggugat }}</div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-6"><strong>Umur :</strong> {{
-                                    $gugatanCerai->umur_penggugat }} Tahun</div>
-                                <div class="col-md-6"><strong>Agama :</strong> {{
-                                    $gugatanCerai->agama_penggugat }}</div>
-                            </div>
-
-                        </li>
-                        <li class="list-group-item">
-                            <div class="row">
-
-                                <div class="col-md-6"><strong>Pekerjaan :</strong> {{
-                                    $gugatanCerai->pekerjaan_penggugat }}</div>
-                                <div class="col-md-6"><strong>Pendidikan :</strong> {{
-                                    $gugatanCerai->pendidikan_penggugat }}</div>
-                            </div>
-
-                        </li>
-
-
-                        <li class="list-group-item"><strong>Alamat :</strong> {{
-                            $gugatanCerai->alamat_penggugat }}
-                        </li>
-                        <!-- Add more fields as needed -->
-                    </ul> --}}
-
                     <div class="card">
                         <div class="card-body">
 
