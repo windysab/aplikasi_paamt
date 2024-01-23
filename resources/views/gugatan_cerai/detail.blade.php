@@ -7,11 +7,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow-lg">
-                <div class="card-header bg-danger text-white">Detail Gugatan Cerai</div>
+                <div class="card-header bg-danger text-white" style="text-align: center; font-weight: bold; font-family: Arial, sans-serif;">
+                    <h5>Detail Gugatan Cerai</h5></div>
 
                 <div class="card-body">
                     <!-- Display Gugatan Cerai Details -->
-                    <h4 class="text-danger">Informasi Penggugat</h4>
+                    <h5 class="text-danger" style="text-align: center" >Informasi Penggugat</h5>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <div class="row">
