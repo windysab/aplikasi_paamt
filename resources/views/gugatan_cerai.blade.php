@@ -92,8 +92,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <!-- Pekerjaan Penggugat -->
                                 <div id="personal-data" class="collapse show">
                                     <div class="row">

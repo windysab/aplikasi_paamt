@@ -29,7 +29,7 @@
             <div class="col-md-3">
                 <div class="list-group">
                     <a href="/gugatan_cerai" class="list-group-item list-group-item-action active">Gugatan Cerai</a>
-                    <a href="" class="list-group-item list-group-item-action">Gugatan Perdata</a>
+                    <a href="/permohonan_dispen" class="list-group-item list-group-item-action">Permohonan Dispensansi</a>
                     <!-- Add more links here -->
                 </div>
             </div>

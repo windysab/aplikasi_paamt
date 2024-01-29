@@ -41,8 +41,9 @@ class Permohonan extends Migration
             */
 
             $table->string('kecamatan');
+            $table->string('kabupaten');
             $table->string('surat_keterangan');
-            $table->integer('nomor_surat');
+            $table->string('nomor_surat');
             //Lama hubungan calon
             $table->integer('tahun');
             $table->integer('bulan');

@@ -1,448 +1,415 @@
-<!-- resources/views/gugatan_cerai.blade.php -->
-
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="custom-accordion">
-                <div class="card">
-                    <div class="card-header bg-danger text-white text-center py-3">
-                        <h2 class="mb-0">Formulir Gugatan Cerai</h2>
-                    </div>
-
-                    <div class="card-body bg-success">
-                        <!-- Formulir Pendaftaran Gugatan Cerai -->
-                        <form method="POST" action="{{ route('permohonan_dispen.submit') }}">
-                            @csrf
-
-                            <!-- Informasi Penggugat -->
-                            <h3 class="text-white text-center mb-3">Informasi Penggugat
-                            </h3>
-                            <div class="container">
-
-                                <!-- Nama Penggugat -->
-                                <div id="personal-data" class="collapse show">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="mb-3 mb-4">
-                                                <label class="form-label" for="nama_penggugat" style="font-weight: bold;">Nama Penggugat:</label>
-                                                <input type="text" class="form-control" id="nama_penggugat" name="nama_penggugat" placeholder="Nama Lengkap Penggugat" value="{{ old('nama_penggugat') }}" required>
-                                                @error('nama_penggugat')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
+            <div class="card">
+                <div class="card-header bg-primary text-white text-center py-3">
+                    <h2 class="mb-0">Formulir Permohonan Dispensasi</h2>
+                </div>
+                <div class="card-body bg-success">
+                    <form method="POST" action="{{ route('permohonan_dispen.submit') }}">
+                        @csrf
+                        <h3 class="mb-3">Data Pemohon I</h3>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="nama_pemohonI">Nama Pemohon I:</label>
+                                    <input type="text" class="form-control" id="nama_pemohonI" name="nama_pemohonI"
+                                        placeholder="Nama Lengkap Pemohon I" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="umur_pemohonI">Umur Pemohon I:</label>
+                                    <input type="number" class="form-control" id="umur_pemohonI" name="umur_pemohonI"
+                                        placeholder="Umur Pemohon I" required>
+                                </div>
+                            </div>
+                            <!-- Tambahkan input untuk field lainnya -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="pekerjaan_pemohonI">Pekerjaan Pemohon I:</label>
+                                    <input type="text" class="form-control" id="pekerjaan_pemohonI"
+                                        name="pekerjaan_pemohonI" placeholder="Pekerjaan Pemohon I" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="pendidikan_pemohonI">Pendidikan Pemohon I:</label>
+                                    <select name="pendidikan_pemohonI" id="pendidikan_pemohonI" class="form-control"
+                                        required onchange="checkOther(this)">
+                                        <option value="">Pilih Pendidikan</option>
+                                        <option value="tidak_tamat_sd">Tidak Tamat SD</option>
+                                        <option value="sd">SD</option>
+                                        <option value="sltp">SLTP</option>
+                                        <option value="slta">SLTA</option>
+                                        <option value="d1">D-1</option>
+                                        <option value="d2">D-2</option>
+                                        <option value="d3">D-3</option>
+                                        <option value="sarjana">Sarjana</option>
+                                        <option value="lain-lain">Lain-lain</option>
+                                    </select>
+                                    <br>
+                                    <input type="text" id="otherField_pendidikan_pemohonI" class="form-control"
+                                        name="pendidikan_pemohonI" style="display: none;"
+                                        placeholder="pendidikan_pemohonI">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="alamat_pemohonI">Alamat Pemohon I:</label>
+                            <textarea name="alamat_pemohonI" id="alamat_pemohonI" class="form-control"
+                                placeholder="Alamat lengkap Pemohon I" required></textarea>
+                        </div>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-success text-white">
+                                        <h5 class="modal-title" id="exampleModalLabel">Alamat</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form id="myForm">
+                                        <div class="modal-body bg-light">
+                                            <div class="form-group">
+                                                <label for="jalan">Jalan</label>
+                                                <input type="text" name="jalan" id="jalan" class="form-control"
+                                                    required>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="no">No.</label>
+                                                    <input type="text" name="no" id="no" class="form-control" required>
                                                 </div>
-                                                @enderror
-                                                <h6 class="text-white text-center mb-3" style="font-style: italic; font-size: 0.75rem;">(Diisi sesuai dengan
-                                                    surat nikah)</h6>
+                                                <div class="form-group col-md-4">
+                                                    <label for="rt">RT.</label>
+                                                    <input type="text" name="rt" id="rt" class="form-control" required>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="rw">RW</label>
+                                                    <input type="text" name="rw" id="rw" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="desa_kelurahan">Desa/Kelurahan</label>
+                                                <input type="text" name="desa_kelurahan" id="desa_kelurahan"
+                                                    class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="kecamatan">Kecamatan</label>
+                                                <input type="text" name="kecamatan" id="kecamatan" class="form-control"
+                                                    required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="kabupaten">Kabupaten</label>
+                                                <input type="text" name="kabupaten" id="kabupaten" class="form-control"
+                                                    required>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
-                                            <div class="mb-3 mb-4">
-                                                <label class="form-label" for="binti_penggugat" style="font-weight: bold;">Binti:</label>
-                                                <input type="text" class="form-control" id="binti_penggugat" name="binti_penggugat" placeholder="Nama Lengkap Binti Penggugat" value="{{ old('binti_penggugat') }}" required>
-                                                @error('binti_penggugat')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
+                                        <div class="modal-footer btn-light">
+                                            <button type="button" class="btn btn-success"
+                                                id="saveButton">Simpan</button>
+                                            <button type="button" class="btn btn-info"
+                                                data-dismiss="modal">Tutup</button>
                                         </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            document.getElementById('alamat_pemohonI').addEventListener('focus', function() {
+                                $('#exampleModal').modal('show');
+                            });
+                            document.getElementById('saveButton').addEventListener('click', function() {
+                                var jalan = document.getElementById('jalan').value;
+                                var no = document.getElementById('no').value;
+                                var rt = document.getElementById('rt').value;
+                                var rw = document.getElementById('rw').value;
+                                var desa_kelurahan = document.getElementById('desa_kelurahan').value;
+                                var kecamatan = document.getElementById('kecamatan').value;
+                                var kabupaten = document.getElementById('kabupaten').value;
+                                // Check if all fields are filled
+                                if (!jalan || !no || !rt || !rw || !desa_kelurahan || !kecamatan || !kabupaten) {
+                                    swal("Peringatan!", "Mohon lengkapi alamat terlebih dahulu!", "warning");
+                                    return;
+                                }
+                                var alamat =
+                                    `${jalan}, No. ${no}, RT. ${rt}, RW ${rw}, Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}`;
+                                document.getElementById('alamat_pemohonI').value = alamat;
+                                $('#exampleModal').modal('hide');
+                            });
+                        </script>
+                        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                        <h3 class="mb-3">Data Pemohon II</h3>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="nama_pemohonII">Nama Pemohon II:</label>
+                                    <input type="text" class="form-control" id="nama_pemohonII" name="nama_pemohonII"
+                                        placeholder="Nama Lengkap Pemohon II" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="umur_pemohonII">Umur Pemohon II:</label>
+                                    <input type="number" class="form-control" id="umur_pemohonII" name="umur_pemohonII"
+                                        placeholder="Umur Pemohon II" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="pekerjaan_pemohonII">Pekerjaan Pemohon II:</label>
+                                    <input type="text" class="form-control" id="pekerjaan_pemohonII"
+                                        name="pekerjaan_pemohonII" placeholder="Pekerjaan Pemohon II" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="pendidikan_pemohonII">Pendidikan Pemohon II:</label>
+                                    <select name="pendidikan_pemohonII" id="pendidikan_pemohonII" class="form-control"
+                                        required onchange="checkOther(this)">
+                                        <option value="">Pilih Pendidikan</option>
+                                        <option value="tidak_tamat_sd">Tidak Tamat SD</option>
+                                        <option value="sd">SD</option>
+                                        <option value="sltp">SLTP</option>
+                                        <option value="slta">SLTA</option>
+                                        <option value="d1">D-1</option>
+                                        <option value=" d2">D-2</option>
+                                        <option value="d3">D-3</option>
+                                        <option value="sarjana">Sarjana</option>
+                                        <option value="lain-lain">Lain-lain</option>
+                                    </select>
+                                    <br>
+                                    <input type="text" id="otherField_pendidikan_pemohonII" class="form-control"
+                                        name="pendidikan_pemohonII" style="display: none;"
+                                        placeholder="pendidikan pemohon II">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="alamat_pemohonII">Alamat Pemohon II:</label>
+                                <textarea name="alamat_pemohonII" id="alamat_pemohonII" class="form-control"
+                                    placeholder="Alamat lengkap Pemohon II" required></textarea>
+                            </div>
+                            <div class="modal fade" id="exampleModal_pemohonII" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel_pemohonII" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-success text-white">
+                                            <h5 class="modal-title" id="exampleModalLabel_pemohonII">Alamat</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form id="myForm_pemohonII">
+                                            <div class="modal-body bg-light">
+                                                <div class="form-group">
+                                                    <label for="jalan_tergugat">Jalan</label>
+                                                    <input type="text" name="jalan_tergugat" id="jalan_tergugat"
+                                                        class="form-control" required>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-4">
+                                                        <label for="no_tergugat">No.</label>
+                                                        <input type="text" name="no_tergugat" id="no_tergugat"
+                                                            class="form-control" required>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="rt_tergugat">RT.</label>
+                                                        <input type="text" name="rt_tergugat" id="rt_tergugat"
+                                                            class="form-control" required>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="rw_tergugat">RW</label>
+                                                        <input type="text" name="rw_tergugat" id="rw_tergugat"
+                                                            class="form-control" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="desa_kelurahan_tergugat">Desa/Kelurahan</label>
+                                                    <input type="text" name="desa_kelurahan_tergugat"
+                                                        id="desa_kelurahan_tergugat" class="form-control" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="kecamatan_tergugat">Kecamatan</label>
+                                                    <input type="text" name="kecamatan_tergugat" id="kecamatan_tergugat"
+                                                        class="form-control" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="kabupaten_tergugat">Kabupaten</label>
+                                                    <input type="text" name="kabupaten_tergugat" id="kabupaten_tergugat"
+                                                        class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer btn btn-light">
+                                                <button type="button" id="saveButton_tergugat"
+                                                    class="btn btn-success">Simpan</button>
+                                                <button type="button" class="btn btn-info"
+                                                    data-dismiss="modal">Tutup</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
+                            </div>
+                            <script>
+                                document.getElementById('alamat_pemohonII').addEventListener('focus', function() {
+                                    $('#exampleModal_pemohonII').modal('show');
+                                });
+                                document.getElementById('saveButton_tergugat').addEventListener('click', function() {
+                                    var jalan = document.getElementById('jalan_tergugat').value;
+                                    var no = document.getElementById('no_tergugat').value;
+                                    var rt = document.getElementById('rt_tergugat').value;
+                                    var rw = document.getElementById('rw_tergugat').value;
+                                    var desa_kelurahan = document.getElementById('desa_kelurahan_tergugat').value;
+                                    var kecamatan = document.getElementById('kecamatan_tergugat').value;
+                                    var kabupaten = document.getElementById('kabupaten_tergugat').value;
 
-                                <!-- Umur Penggugat -->
-                                <div id="personal-data" class="collapse show">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="mb-3 mb-4">
-                                                <label class="form-label" for="umur_penggugat" style="font-weight: bold;">Umur Penggugat:</label>
-                                                <input type="number" class="form-control" id="umur_penggugat" name="umur_penggugat" placeholder="Umur Penggugat" value="{{ old('umur_penggugat') }}" required>
-                                                @error('umur_penggugat')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <!-- Agama -->
-                                        <div class="col-lg-6">
-                                            <div class="mb-3 mb-4">
-                                                <label class="form-label" for="agama_penggugat" style="font-weight: bold;">Agama:</label>
-                                                <select name="agama_penggugat" id="agama_penggugat" class="form-control" required>
-                                                    <option value="">Pilih Agama</option>
-                                                    <option value="Islam">Islam</option>
-                                                    <option value="Kristen">Kristen</option>
-                                                    <option value="Katolik">Katolik</option>
-                                                    <option value="Hindu">Hindu</option>
-                                                    <option value="Budha">Budha</option>
-                                                    <!-- Tambahkan opsi lain sesuai dengan kebutuhan -->
-                                                </select>
-                                                @error('agama_penggugat')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <!-- Pekerjaan Penggugat -->
-                                <div id="personal-data" class="collapse show">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="mb-3 mb-4">
-                                                <label class="form-label" for="pekerjaan_penggugat" style="font-weight: bold;">Pekerjaan
-                                                    Penggugat:</label>
-                                                <input type="text" class="form-control" id="pekerjaan_penggugat" name="pekerjaan_penggugat" placeholder="Pekerjaan Penggugat" value="{{ old('pekerjaan_penggugat') }}" required>
-                                                @error('pekerjaan_penggugat')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-
-                                        <!-- Pendidikan Penggugat -->
-
-                                        <div class="col-lg-6">
-                                            <div class="mb-3 mb-4">
-                                                <label class="form-label" for="pendidikan_penggugat" style="font-weight: bold;">Pendidikan
-                                                    Penggugat:</label>
-                                                <select name="pendidikan_penggugat" id="pendidikan_penggugat" class="form-control" required onchange="checkOther(this)">
-                                                    <option value="">Pilih Pendidikan</option>
-                                                    <option value="tidak_tamat_sd">Tidak Tamat SD</option>
-                                                    <option value="sd">SD</option>
-                                                    <option value="sltp">SLTP</option>
-                                                    <option value="slta">SLTA</option>
-                                                    <option value="d1">D-1</option>
-                                                    <option value="d2">D-2</option>
-                                                    <option value="d3">D-3</option>
-                                                    <option value="sarjana">Sarjana</option>
-                                                    <option value="lain-lain">Lain-lain</option>
-                                                </select>
-                                                <br>
-                                                <input type="text" id="otherField" class="form-control" name="pendidikan_penggugat" style="display: none;" placeholder="Pendidikan Penggugat">
-                                                @error('pendidikan_penggugat')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <script>
-                                    function checkOther(select) {
-                                        var otherInputId = select.id === "pendidikan_penggugat" ? "otherField" : "otherField1";
-                                        var otherInput = document.getElementById(otherInputId);
-                                        if (select.value.toLowerCase() === "lain-lain") {
-                                            otherInput.style.display = "block";
-                                            otherInput.value = ""; // clear the input field when "Lain-lain" is selected
-                                        } else {
-                                            otherInput.style.display = "none";
-                                            otherInput.value = select.options[select.selectedIndex]
-                                                .text; // set the value of the input field to the selected option's text
-                                        }
+                                    if (!jalan || !no || !rt || !rw || !desa_kelurahan || !kecamatan || !kabupaten) {
+                                        swal("Peringatan!", "Mohon lengkapi alamat terlebih dahulu!", "warning");
+                                        return;
                                     }
 
-                                </script>
+                                    var alamat =
+                                        `${jalan}, No. ${no}, RT. ${rt}, RW ${rw}, Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}`;
 
-                                <!-- Alamat Penggugat -->
-                                <div class="form-group">
-                                    <label for="alamat_penggugat" style="font-weight: bold;">Alamat Penggugat:</label>
-                                    <textarea name="alamat_penggugat" id="alamat_penggugat" class="form-control" placeholder="Alamat lengkap Penggugat" required></textarea>
+                                    document.getElementById('alamat_pemohonII').value = alamat;
+                                    $('#exampleModal_pemohonII').modal('hide');
+                                });
+                                // Rest of your JavaScript code
+
+                            </script>
+                            <h3 class="mb-3">Data Calon Suami/Isteri</h3>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="nama_calon">Nama Calon Suami/Isteri:</label>
+                                        <input type="text" class="form-control" id="nama_calon" name="nama_calon"
+                                            placeholder="Nama Calon Suami/Isteri" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="umur_calon">Umur Calon Suami/Isteri:</label>
+                                        <input type="number" class="form-control" id="umur_calon" name="umur_calon"
+                                            placeholder="Umur Calon Suami/Isteri" required>
+                                    </div>
                                 </div>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="pekerjaan_calon">Pekerjaan Calon
+                                                Suami/Isteri:</label>
+                                            <input type="text" class="form-control" id="pekerjaan_calon"
+                                                name="pekerjaan_calon" placeholder="Pekerjaan Calon Suami/Isteri"
+                                                required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="pendidikan_calon">Pendidikan Calon
+                                                Suami/Isteri:</label>
+                                            <select name="pendidikan_calon" id="pendidikan_calon" class="form-control"
+                                                required onchange="checkOther(this)">
+                                                <option value="">Pilih Pendidikan</option>
+                                                <option value="tidak_tamat_sd">Tidak Tamat SD</option>
+                                                <option value="sd">SD</option>
+                                                <option value="sltp">SLTP</option>
+                                                <option value="slta">SLTA</option>
+                                                <option value="d1">D-1</option>
+                                                <option value="d2">D-2</option>
+                                                <option value="d3">D-3</option>
+                                                <option value="sarjana">Sarjana</option>
+                                                <option value="lain-lain">Lain-lain</option>
+                                            </select>
+                                            <br>
+                                            <input type="text" id="otherField_pendidikan_calon" class="form-control"
+                                                name="pendidikan_calon" style="display: none;"
+                                                placeholder="pendidikan_calon">
+                                        </div>
+                                        <script>
+                                            function checkOther(select) {
+                                                var otherInputId = "otherField_" + select.id;
+                                                var otherInput = document.getElementById(otherInputId);
+                                                if (select.value.toLowerCase() === "lain-lain") {
+                                                    otherInput.style.display = "block";
+                                                    otherInput.value = ""; // clear the input field when "Lain-lain" is selected
+                                                } else {
+                                                    otherInput.style.display = "none";
+                                                    otherInput.value = select.options[select.selectedIndex]
+                                                        .text; // set the value of the input field to the selected option's text
+                                                }
+                                            }
+                                        </script>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="alamat_calon">Alamat Calon Suami/Isteri:</label>
+                                    <textarea name="alamat_calon" id="alamat_calon" class="form-control"
+                                        placeholder="Alamat lengkap Calon Suami/Isteri" required></textarea>
+                                </div>
+                                <div class="modal fade" id="exampleModal_calon" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel_calon" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header bg-success text-white">
-                                                <h5 class="modal-title" id="exampleModalLabel">Alamat</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <h5 class="modal-title" id="exampleModalLabel_calon">Alamat</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <form id="myForm">
+                                            <form id="myForm_calon">
                                                 <div class="modal-body bg-light">
                                                     <div class="form-group">
-                                                        <label for="jalan">Jalan</label>
-                                                        <input type="text" name="jalan" id="jalan" class="form-control" required>
+                                                        <label for="jalan_calon">Jalan</label>
+                                                        <input type="text" name="jalan_calon" id="jalan_calon"
+                                                            class="form-control" required>
                                                     </div>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-4">
-                                                            <label for="no">No.</label>
-                                                            <input type="text" name="no" id="no" class="form-control" required>
+                                                            <label for="no_calon">No.</label>
+                                                            <input type="text" name="no_calon" id="no_calon"
+                                                                class="form-control" required>
                                                         </div>
                                                         <div class="form-group col-md-4">
-                                                            <label for="rt">RT.</label>
-                                                            <input type="text" name="rt" id="rt" class="form-control" required>
+                                                            <label for="rt_calon">RT.</label>
+                                                            <input type="text" name="rt_calon" id="rt_calon"
+                                                                class="form-control" required>
                                                         </div>
                                                         <div class="form-group col-md-4">
-                                                            <label for="rw">RW</label>
-                                                            <input type="text" name="rw" id="rw" class="form-control" required>
+                                                            <label for="rw_calon">RW</label>
+                                                            <input type="text" name="rw_calon" id="rw_calon"
+                                                                class="form-control" required>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="desa_kelurahan">Desa/Kelurahan</label>
-                                                        <input type="text" name="desa_kelurahan" id="desa_kelurahan" class="form-control" required>
+                                                        <label for="desa_kelurahan_calon">Desa/Kelurahan</label>
+                                                        <input type="text" name="desa_kelurahan_calon"
+                                                            id="desa_kelurahan_calon" class="form-control" required>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="kecamatan">Kecamatan</label>
-                                                        <input type="text" name="kecamatan" id="kecamatan" class="form-control" required>
+                                                        <label for="kecamatan_calon">Kecamatan</label>
+                                                        <input type="text" name="kecamatan_calon" id="kecamatan_calon"
+                                                            class="form-control" required>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="kabupaten">Kabupaten</label>
-                                                        <input type="text" name="kabupaten" id="kabupaten" class="form-control" required>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer btn-light">
-                                                    {{-- <button type="button" class="btn btn-success" id="saveButton" data-dismiss="modal">Simpan</button> --}}
-                                                    <button type="button" class="btn btn-success" id="saveButton">Simpan</button>
-                                                    <button type="button" class="btn btn-info" data-dismiss="modal">Tutup</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <script>
-                                    document.getElementById('alamat_penggugat').addEventListener('focus', function() {
-                                        $('#exampleModal').modal('show');
-                                    });
-                                    document.getElementById('saveButton').addEventListener('click', function() {
-                                        var jalan = document.getElementById('jalan').value;
-                                        var no = document.getElementById('no').value;
-                                        var rt = document.getElementById('rt').value;
-                                        var rw = document.getElementById('rw').value;
-                                        var desa_kelurahan = document.getElementById('desa_kelurahan').value;
-                                        var kecamatan = document.getElementById('kecamatan').value;
-                                        var kabupaten = document.getElementById('kabupaten').value;
-
-                                        // Check if all fields are filled
-                                        if (!jalan || !no || !rt || !rw || !desa_kelurahan || !kecamatan || !kabupaten) {
-                                            swal("Peringatan!", "Mohon lengkapi alamat terlebih dahulu!", "warning");
-                                            return;
-                                        }
-
-                                        var alamat =
-                                            `${jalan}, No. ${no}, RT. ${rt}, RW ${rw}, Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}`;
-
-                                        document.getElementById('alamat_penggugat').value = alamat;
-                                        $('#exampleModal').modal('hide');
-                                    });
-                                    // Rest of your JavaScript code
-
-                                </script>
-                                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-                                <h2 class="text-black text-center mb-3">MELAWAN
-                                </h2>
-
-                                <!-- Informasi Tergugat -->
-                                <h3 class="text-white text-center mb-3">Informasi Tergugat
-                                </h3>
-                                <!-- Nama Tergugat -->
-                                <div id="personal-data" class="collapse show">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="mb-3 mb-4">
-                                                <label class="form-label" for="nama_tergugat" style="font-weight: bold;">Nama Penggugat:</label>
-                                                <input type="text" class="form-control" id="nama_tergugat" name="nama_tergugat" placeholder="Nama Lengkap Tergugat" value="{{ old('nama_tergugat') }}" required>
-                                                @error('nama_tergugat')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                                <h6 class="text-white text-center mb-3" style="font-style: italic; font-size: 0.75rem;">(Diisi sesuai dengan
-                                                    surat nikah)</h6>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="mb-3 mb-4">
-                                                <label class="form-label" for="bin_tergugat" style="font-weight: bold;">Bin:</label>
-                                                <input type="text" class="form-control" id="bin_tergugat" name="bin_tergugat" placeholder="Nama Lengkap Bin Tergugat" value="{{ old('bin_tergugat') }}" required>
-                                                @error('bin_tergugat')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Umur Tergugat -->
-                                <div id="personal-data" class="collapse show">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="mb-3 mb-4">
-                                                <label class="form-label" for="umur_penggugat" style="font-weight: bold;">Umur Tergugat:</label>
-                                                <input type="number" class="form-control" id="umur_tergugat" name="umur_tergugat" placeholder="Umur Tegugat" value="{{ old('umur_tergugat') }}" required>
-                                                @error('umur_tergugat')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-
-                                        <!-- Agama -->
-                                        <div class="col-lg-6">
-                                            <div class="mb-3 mb-4">
-                                                <label class="form-label" for="agama_tergugat" style="font-weight: bold;">Agama:</label>
-                                                <select name="agama_tergugat" id="agama_tergugat" class="form-control" required>
-                                                    <option value="">Pilih Agama</option>
-                                                    <option value="Islam">Islam</option>
-                                                    <option value="Kristen">Kristen</option>
-                                                    <option value="Katolik">Katolik</option>
-                                                    <option value="Hindu">Hindu</option>
-                                                    <option value="Budha">Budha</option>
-                                                    <!-- Tambahkan opsi lain sesuai dengan kebutuhan -->
-                                                </select>
-                                                @error('agama_tergugat')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Pekerjaan Tergugat -->
-                                <div id="personal-data" class="collapse show">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="mb-3 mb-4">
-                                                <label class="form-label" for="pekerjaan_tergugat" style="font-weight: bold;">Pekerjaan
-                                                    Tergugat:</label>
-                                                <input type="text" class="form-control" id="pekerjaan_tergugat" name="pekerjaan_tergugat" placeholder="Pekerjaan Tergugat" value="{{ old('pekerjaan_tergugat') }}" required>
-                                                @error('pekerjaan_tergugat')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-
-                                        <!-- Pendidikan Penggugat -->
-                                        <div class="col-lg-6">
-                                            <div class="mb-3 mb-4">
-                                                <label class="form-label" for="pendidikan_tergugat" style="font-weight: bold;">PPendidikan
-                                                    Tergugat:</label>
-                                                <select name="pendidikan_tergugat" id="pendidikan_tergugat" class="form-control" required onchange="checkOther(this)">
-                                                    <option value="">Pilih Pendidikan</option>
-                                                    <option value="tidak_tamat_sd">Tidak Tamat SD</option>
-                                                    <option value="sd">SD</option>
-                                                    <option value="sltp">SLTP</option>
-                                                    <option value="slta">SLTA</option>
-                                                    <option value="d1">D-1</option>
-                                                    <option value="d2">D-2</option>
-                                                    <option value="d3">D-3</option>
-                                                    <option value="sarjana">Sarjana</option>
-                                                    <option value="lain-lain">Lain-lain</option>
-                                                </select>
-                                                <br>
-                                                <input type="text" id="otherField1" class="form-control" name="pendidikan_tergugat" style="display: none;" placeholder="Masukkan Pendidikan">
-                                                @error('pendidikan_tergugat')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Alamat Tergugat -->
-
-                                <div class="form-group">
-                                    <label for="alamat_tergugat" style="font-weight: bold;">Alamat Tergugat:</label>
-                                    <textarea name="alamat_tergugat" id="alamat_tergugat" class="form-control" placeholder="Alamat lengkap Tergugat" required></textarea>
-                                </div>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal_tergugat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel_tergugat" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header bg-success text-white">
-                                                <h5 class="modal-title" id="exampleModalLabel_tergugat">Alamat</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <form id="myForm_tergugat">
-                                                <div class="modal-body bg-light">
-                                                    <div class="form-group">
-                                                        <label for="jalan_tergugat">Jalan</label>
-                                                        <input type="text" name="jalan_tergugat" id="jalan_tergugat" class="form-control" required>
-                                                    </div>
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-4">
-                                                            <label for="no_tergugat">No.</label>
-                                                            <input type="text" name="no_tergugat" id="no_tergugat" class="form-control" required>
-                                                        </div>
-                                                        <div class="form-group col-md-4">
-                                                            <label for="rt_tergugat">RT.</label>
-                                                            <input type="text" name="rt_tergugat" id="rt_tergugat" class="form-control" required>
-                                                        </div>
-                                                        <div class="form-group col-md-4">
-                                                            <label for="rw_tergugat">RW</label>
-                                                            <input type="text" name="rw_tergugat" id="rw_tergugat" class="form-control" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="desa_kelurahan_tergugat">Desa/Kelurahan</label>
-                                                        <input type="text" name="desa_kelurahan_tergugat" id="desa_kelurahan_tergugat" class="form-control" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="kecamatan_tergugat">Kecamatan</label>
-                                                        <input type="text" name="kecamatan_tergugat" id="kecamatan_tergugat" class="form-control" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="kabupaten_tergugat">Kabupaten</label>
-                                                        <input type="text" name="kabupaten_tergugat" id="kabupaten_tergugat" class="form-control" required>
+                                                        <label for="kabupaten_calon">Kabupaten</label>
+                                                        <input type="text" name="kabupaten_calon" id="kabupaten_calon"
+                                                            class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer btn btn-light">
-                                                    <button type="button" id="saveButton_tergugat" class="btn btn-success">Simpan</button>
-                                                    <button type="button" class="btn btn-info" data-dismiss="modal">Tutup</button>
+                                                    <button type="button" id="saveButton_calon"
+                                                        class="btn btn-success">Simpan</button>
+                                                    <button type="button" class="btn btn-info"
+                                                        data-dismiss="modal">Tutup</button>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-
                                 <script>
-                                    document.getElementById('alamat_tergugat').addEventListener('focus', function() {
-                                        $('#exampleModal_tergugat').modal('show');
+                                    document.getElementById('alamat_calon').addEventListener('focus', function() {
+                                        $('#exampleModal_calon').modal('show');
                                     });
-                                    document.getElementById('saveButton_tergugat').addEventListener('click', function() {
-                                        var jalan = document.getElementById('jalan_tergugat').value;
-                                        var no = document.getElementById('no_tergugat').value;
-                                        var rt = document.getElementById('rt_tergugat').value;
-                                        var rw = document.getElementById('rw_tergugat').value;
-                                        var desa_kelurahan = document.getElementById('desa_kelurahan_tergugat').value;
-                                        var kecamatan = document.getElementById('kecamatan_tergugat').value;
-                                        var kabupaten = document.getElementById('kabupaten_tergugat').value;
+                                    document.getElementById('saveButton_calon').addEventListener('click', function() {
+                                        var jalan = document.getElementById('jalan_calon').value;
+                                        var no = document.getElementById('no_calon').value;
+                                        var rt = document.getElementById('rt_calon').value;
+                                        var rw = document.getElementById('rw_calon').value;
+                                        var desa_kelurahan = document.getElementById('desa_kelurahan_calon').value;
+                                        var kecamatan = document.getElementById('kecamatan_calon').value;
+                                        var kabupaten = document.getElementById('kabupaten_calon').value;
 
                                         if (!jalan || !no || !rt || !rw || !desa_kelurahan || !kecamatan || !kabupaten) {
                                             swal("Peringatan!", "Mohon lengkapi alamat terlebih dahulu!", "warning");
@@ -452,797 +419,514 @@
                                         var alamat =
                                             `${jalan}, No. ${no}, RT. ${rt}, RW ${rw}, Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}`;
 
-                                        document.getElementById('alamat_tergugat').value = alamat;
-                                        $('#exampleModal_tergugat').modal('hide');
+                                        document.getElementById('alamat_calon').value = alamat;
+                                        $('#exampleModal_calon').modal('hide');
                                     });
                                     // Rest of your JavaScript code
 
                                 </script>
-
-
-                                <!-- Informasi Lainnya -->
-                                <h4>Informasi Lainnya</h4>
-                                <h6>Dengan hormat, Penggugat mengajukan cerai gugat dengan alasan-alasan/dalil-dalil
-                                    sebagai berikut :
-                                </h6>
-                                <!-- Alasan Cerai -->
+                                <h3 class="mb-3">Data Calon Suami/Isteri II</h3>
                                 <div class="form-group">
-                                    <textarea name="alasan_cerai" id="alasan_cerai" class="form-control" placeholder="1.	Bahwa Penggugat dengan Tergugat telah melangsungkan pernikahan pada hari .................., tanggal............... di Desa/Kelurahan................................, Kecamatan ......................................, Kabupaten ................................., kemudian Tergugat mengucapkan shigat taklik talak terhadap Penggugat sesuai dengan Kutipan/Duplikat Kutipan Akta Nikah Nomor .........................................., tanggal............... dari Kantor Urusan Agama Kecamatan ......................................, Kabupaten ......................................;" required readonly rows="6" style="text-align: justify; width: 100%;"></textarea>
-                                    <h6 class="text-white text-center mb-3" style="font-style: italic; font-size: 0.75rem;">(Silakan klik pada kolom di atas
-                                        untuk mengisi/edit informasi yang diminta)</h6>
-                                </div>
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal_alasan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel_alasan" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header bg-success text-white">
-                                                <h6 class="modal-title" id="exampleModalLabel_alasan">Silahkan Isi kolom di bawah ini</h6>
-
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <form id="myForm_tergugat">
-                                                <div class="modal-body bg-light">
-                                                    Hari <input type="text" name="hari" id="hari" class="form-control" required readonly>
-                                                    Tanggal <input type="date" name="tanggal" id="tanggal" class="form-control" required>
-                                                    Desa/Kelurahan <input type="text" name="desa_kelurahan_alasan" id="desa_kelurahan_alasan" class="form-control" required>
-                                                    Kecamatan <input type="text" name="kecamatan_alasan" id="kecamatan_alasan" class="form-control" required>
-                                                    Kabupaten <input type="text" name="kabupaten_alasan" id="kabupaten_alasan" class="form-control" required>
-                                                    {{-- <h6 class="modal-title" id="exampleModal_alasan">kemudian Tergugat
-                                                        mengucapkan shigat taklik talak terhadap Penggugat sesuai dengan
-                                                        Kutipan/Duplikat Kutipan Akta Nikah</h6> --}}
-                                                    Nomor Akta Nikah <input type="text" name="no_akta_nikah" id="no_akta_nikah" class="form-control" required>
-                                                    Tanggal Akta Nikah <input type="date" name="tanggal_akta_nikah" id="tanggal_akta_nikah" class="form-control" required>
-                                                    KUA Kecamatan <input type="text" name="kua_kecamatan" id="kua_kecamatan" class="form-control" required>
-                                                    Kabupaten <input type="text" name="kua_kabupaten" id="kua_kabupaten" class="form-control" required>
-                                                </div>
-                                                <div class="modal-footer bg-light">
-                                                    <button type="button" class="btn btn-success" id="saveButton_alasan">Simpan</button>
-                                                    <button type="button" class="btn btn-info" data-dismiss="modal">Tutup</button>
-                                                </div>
-                                            </form>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="nama_calonII">Nama Calon Suami/Isteri II:</label>
+                                            <input type="text" class="form-control" id="nama_calonII"
+                                                name="nama_calonII" placeholder="Nama Calon Suami/Isteri II" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="umur_calonII">Umur Calon Suami/Isteri II:</label>
+                                            <input type="number" class="form-control" id="umur_calonII"
+                                                name="umur_calonII" placeholder="Umur Calon Suami/Isteri II" required>
                                         </div>
                                     </div>
-                                </div>
-
-                                <script>
-                                    document.getElementById('alasan_cerai').addEventListener('focus', function() {
-                                        $('#exampleModal_alasan').modal('show');
-                                    });
-
-                                    document.getElementById('tanggal').addEventListener('change', function() {
-                                        var tanggal = new Date(this.value);
-                                        var hari = tanggal.toLocaleString('id-ID', {
-                                            weekday: 'long'
-                                        });
-                                        document.getElementById('hari').value = hari;
-                                    });
-                                    // document.getElementById('saveButton_alasan').addEventListener('click', function() {
-                                    //     var hari = document.getElementById('hari').value;
-                                    //     var tanggal = document.getElementById('tanggal').value;
-                                    //     var desa_kelurahan = document.getElementById('desa_kelurahan_alasan').value;
-                                    //     var kecamatan = document.getElementById('kecamatan_alasan').value;
-                                    //     var kabupaten = document.getElementById('kabupaten_alasan').value;
-                                    //     var no_akta_nikah = document.getElementById('no_akta_nikah').value;
-                                    //     var tanggal_akta_nikah = document.getElementById('tanggal_akta_nikah').value;
-                                    //     var kua_kecamatan = document.getElementById('kua_kecamatan').value;
-                                    //     var kua_kabupaten = document.getElementById('kua_kabupaten').value;
-
-
-                                    //     // Check if all fields are filled
-                                    //     if (!hari || !tanggal || !desa_kelurahan || !kecamatan || !kabupaten || !no_akta_nikah || !tanggal_akta_nikah || !kua_kecamatan || !kua_kabupaten) {
-                                    //         swal("Peringatan!", "Mohon lengkapi Data terlebih dahulu!", "warning");
-                                    //         return;
-                                    //     }
-
-                                    //     var alasan =
-                                    //         `Bahwa Penggugat dengan Tergugat telah melangsungkan pernikahan pada hari ${hari}, tanggal ${tanggal} di Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}, kemudian Tergugat mengucapkan shigat taklik talak terhadap Penggugat sesuai dengan Kutipan/Duplikat Kutipan Akta Nikah Nomor ${no_akta_nikah}, tanggal ${tanggal_akta_nikah} dari Kantor Urusan Agama Kecamatan ${kua_kecamatan}, Kabupaten ${kua_kabupaten}`;
-
-                                    //     document.getElementById('alasan_cerai').value = alasan;
-                                    //     $('#exampleModal_alasan').modal('hide');
-                                    // });
-
-                                    document.getElementById('saveButton_alasan').addEventListener('click', function() {
-                                        var hari = document.getElementById('hari').value;
-                                        var tanggal = document.getElementById('tanggal').value;
-                                        var desa_kelurahan = document.getElementById('desa_kelurahan_alasan').value;
-                                        var kecamatan = document.getElementById('kecamatan_alasan').value;
-                                        var kabupaten = document.getElementById('kabupaten_alasan').value;
-                                        var no_akta_nikah = document.getElementById('no_akta_nikah').value;
-                                        var tanggal_akta_nikah = document.getElementById('tanggal_akta_nikah').value;
-                                        var kua_kecamatan = document.getElementById('kua_kecamatan').value;
-                                        var kua_kabupaten = document.getElementById('kua_kabupaten').value;
-
-                                        // Convert date to Indonesian format
-                                        var tanggalIndo = convertDateToIndonesian(tanggal);
-                                        var tanggalAktaNikahIndo = convertDateToIndonesian(tanggal_akta_nikah);
-
-                                        // Check if all fields are filled
-                                        if (!hari || !tanggal || !desa_kelurahan || !kecamatan || !kabupaten || !no_akta_nikah || !tanggal_akta_nikah || !kua_kecamatan || !kua_kabupaten) {
-                                            swal("Peringatan!", "Mohon lengkapi Data terlebih dahulu!", "warning");
-                                            return;
-                                        }
-
-                                        var alasan =
-                                            `Bahwa Penggugat dengan Tergugat telah melangsungkan pernikahan pada hari ${hari}, tanggal ${tanggalIndo} di Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}, kemudian Tergugat mengucapkan shigat taklik talak terhadap Penggugat sesuai dengan Kutipan/Duplikat Kutipan Akta Nikah Nomor ${no_akta_nikah}, tanggal ${tanggalAktaNikahIndo} dari Kantor Urusan Agama Kecamatan ${kua_kecamatan}, Kabupaten ${kua_kabupaten}`;
-
-                                        document.getElementById('alasan_cerai').value = alasan;
-                                        $('#exampleModal_alasan').modal('hide');
-                                    });
-
-                                    function convertDateToIndonesian(dateString) {
-                                        var date = new Date(dateString);
-                                        var monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
-                                        return date.getDate() + ' ' + monthNames[date.getMonth()] + ' ' + date.getFullYear();
-                                    }
-                                    // Rest of your JavaScript code
-
-                                </script>
-
-                                <div class="form-group">
-                                    <textarea name="alasan_cerai2" id="alasan_cerai2" class="form-control" placeholder="2.	Bahwa setelah pernikahan tersebut Penggugat dan Tergugat bertempat tinggal
-    (a)	Di rumah sendiri, di desa ................................................................................................
-    (b)	Di rumah orangtua Penggugat, di desa ..........................................................................
-    (c)	Di rumah orangtua Tergugat, di desa .............................................................................
-    (d)	Di rumah kontrakan / kos, di desa ..................................................................................
-
-    Kumpul baik selama....... tahun ....... bulan, dan telah dikaruniai....... orang anak, yaitu:
-    1.	Nama ....................................., tanggal lahir .......................
-    2.	Nama ....................................., tanggal lahir .......................
-    3.	Nama ....................................., tanggal lahir .......................
-    4.	Nama ....................................., tanggal lahir .......................
-    " required readonly rows="6" style="text-align: justify; width: 100%;"></textarea>
-                                    <h6 class="text-white text-center mb-3" style="font-style: italic; font-size: 0.75rem;">(Silakan klik pada kolom di
-                                        atas untuk mengisi/edit informasi yang diminta)</h6>
-                                </div>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal_alasan2" tabindex="-1" role="dialog" aria-labelledby="exampleModal_alasan2" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header bg-success text-white">
-                                                <h5 class="modal-title" id="exampleModal_alasan2">Silahkan Isi kolom di bawah ini</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="pekerjaan_calonII">Pekerjaan Calon
+                                                    Suami/Isteri II:</label>
+                                                <input type="text" class="form-control" id="pekerjaan_calonII"
+                                                    name="pekerjaan_calonII"
+                                                    placeholder="Pekerjaan Calon Suami/Isteri II" required>
                                             </div>
-                                            <form id="form" class="p-3">
-                                                <div class="modal-body bg-light">
-                                                    <div class="form-group">
-                                                        <label>Silahkan Pilih :</label>
-                                                        <select id="tempat_tinggal" name="tempat_tinggal" class="form-control">
-                                                            <option value="">Pilih tempat tinggal</option>
-                                                            <option value="Di rumah sendiri">Di rumah sendiri, di desa
-                                                            </option>
-                                                            <option value="Di rumah orangtua Penggugat, di desa">Di
-                                                                rumah orangtua Penggugat, di desa</option>
-                                                            <option value="Di rumah orangtua Tergugat, di desa">Di rumah
-                                                                orangtua Tergugat, di desa</option>
-                                                            <option value="Di rumah kontrakan / kos, di desa">Di rumah
-                                                                kontrakan / kos, di desa</option>
-                                                        </select>
+                                            <div class="col-md-6">
+                                                <!-- ... -->
+                                                <label for="pendidikan_calonII">Pendidikan Calon
+                                                    Suami/Isteri II:</label>
+                                                <select name="pendidikan_calonII" id="pendidikan_calonII"
+                                                    class="form-control" required onchange="checkOther(this)">
+                                                    <option value="">Pilih Pendidikan</option>
+                                                    <option value="tidak_tamat_sd">Tidak Tamat SD</option>
+                                                    <option value="sd">SD</option>
+                                                    <option value="sltp">SLTP</option>
+                                                    <option value="slta">SLTA</option>
+                                                    <option value="d1">D-1</option>
+                                                    <option value="d2">D-2</option>
+                                                    <option value="d3">D-3</option>
+                                                    <option value="sarjana">Sarjana</option>
+                                                    <option value="lain-lain">Lain-lain</option>
+                                                </select>
+                                                <br>
+                                                <input type="text" id="otherField_pendidikan_calonII"
+                                                    class="form-control" name="pendidikan_calonII"
+                                                    style="display: none;" placeholder="pendidikan_calonII">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="alamat_calonII">Alamat Calon Suami/Isteri II:</label>
+                                            <textarea name="alamat_calonII" id="alamat_calonII" class="form-control"
+                                                placeholder="Alamat lengkap Calon Suami/Isteri II" required></textarea>
+                                        </div>
+                                        <div class="modal fade" id="exampleModal_calonII" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalLabel_calonII" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header bg-success text-white">
+                                                        <h5 class="modal-title" id="exampleModalLabel_calonII">Alamat
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
                                                     </div>
-                                                    <div id="detail_container">
-                                                        <!-- Detail input will be added here -->
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Kumpul baik selama</label>
-                                                        <div class="d-flex">
-                                                            <input type="number" id="tahun" name="tahun" placeholder="tahun" class="form-control mr-2">
-                                                            <input type="number" id="bulan" name="bulan" placeholder="bulan" class="form-control">
+                                                    <form id="myForm_calonII">
+                                                        <div class="modal-body bg-light">
+                                                            <div class="form-group">
+                                                                <label for="jalan_calonII">Jalan</label>
+                                                                <input type="text" name="jalan_calonII"
+                                                                    id="jalan_calonII" class="form-control" required>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-4">
+                                                                    <label for="no_calonII">No.</label>
+                                                                    <input type="text" name="no_calonII" id="no_calonII"
+                                                                        class="form-control" required>
+                                                                </div>
+                                                                <div class="form-group col-md-4">
+                                                                    <label for="rt_calonII">RT.</label>
+                                                                    <input type="text" name="rt_calonII" id="rt_calonII"
+                                                                        class="form-control" required>
+                                                                </div>
+                                                                <div class="form-group col-md-4">
+                                                                    <label for="rw_calonII">RW</label>
+                                                                    <input type="text" name="rw_calonII" id="rw_calonII"
+                                                                        class="form-control" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label
+                                                                    for="desa_kelurahan_calonII">Desa/Kelurahan</label>
+                                                                <input type="text" name="desa_kelurahan_calonII"
+                                                                    id="desa_kelurahan_calonII" class="form-control"
+                                                                    required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="kecamatan_calonII">Kecamatan</label>
+                                                                <input type="text" name="kecamatan_calonII"
+                                                                    id="kecamatan_calonII" class="form-control"
+                                                                    required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="kabupaten_calonII">Kabupaten</label>
+                                                                <input type="text" name="kabupaten_calonII"
+                                                                    id="kabupaten_calonII" class="form-control"
+                                                                    required>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div id="detail_container">
-                                                        <!-- Detail input will be added here -->
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>dan telah dikaruniai</label>
-                                                        <input type="number" id="jumlah_anak" name="jumlah_anak" placeholder="jumlah anak" class="form-control">
-                                                    </div>
-                                                    <p>orang anak, yaitu:</p>
-                                                    <div id="anak_container">
-                                                        <!-- Anak-anak akan ditambahkan di sini -->
-                                                    </div>
+                                                        <div class="modal-footer btn btn-light">
+                                                            <button type="button" id="saveButton_calonII"
+                                                                class="btn btn-success">Simpan</button>
+                                                            <button type="button" class="btn btn-info"
+                                                                data-dismiss="modal">Tutup</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                                <div class="modal-footer bg-light">
-                                                    <button type="submit" class="btn btn-success mt-3">Simpan</button>
-                                                    <button type="button" class="btn btn-info mt-3" data-dismiss="modal">Tutup</button>
-                                                </div>
-                                            </form>
+                                            </div>
+                                            <script>
+                                                document.getElementById('alamat_calonII').addEventListener('focus', function() {
+                                                    $('#exampleModal_calonII').modal('show');
+                                                });
+                                                document.getElementById('saveButton_calonII').addEventListener('click', function() {
+                                                    var jalan = document.getElementById('jalan_calonII').value;
+                                                    var no = document.getElementById('no_calonII').value;
+                                                    var rt = document.getElementById('rt_calonII').value;
+                                                    var rw = document.getElementById('rw_calonII').value;
+                                                    var desa_kelurahan = document.getElementById('desa_kelurahan_calonII').value;
+                                                    var kecamatan = document.getElementById('kecamatan_calonII').value;
+                                                    var kabupaten = document.getElementById('kabupaten_calonII').value;
+                                                    if (!jalan || !no || !rt || !rw || !desa_kelurahan || !kecamatan || !kabupaten) {
+                                                        swal("Peringatan!", "Mohon lengkapi alamat terlebih dahulu!", "warning");
+                                                        return;
+                                                    }
+                                                    var alamat =
+                                                        `${jalan}, No. ${no}, RT. ${rt}, RW ${rw}, Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}`;
+                                                    document.getElementById('alamat_calonII').value = alamat;
+                                                    $('#exampleModal_calonII').modal('hide');
+                                                });
+                                            </script>
                                         </div>
-                                    </div>
-                                </div>
-                                <script>
-                                    document.getElementById('alasan_cerai2').addEventListener('focus', function() {
-                                        $('#exampleModal_alasan2').modal('show');
-                                    });
-                                    document.getElementById('tempat_tinggal').addEventListener('change', function() {
-                                        var tempatTinggal = this.value;
-                                        var detailContainer = document.getElementById('detail_container');
 
-                                        // Clear the container first
-                                        detailContainer.innerHTML = '';
+                                        <h3 class="mb-3">Data Calon Suami Isteri</h3>
+                                        <h5 class="mb-3">Tempat menikah (ditolak)</h5>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="kecamatan">Kecamatan:</label>
+                                                <input type="text" class="form-control" id="kecamatan" name="kecamatan"
+                                                    placeholder="Kecamatan" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="kabupaten">Kabupaten:</label>
+                                                <input type="text" class="form-control" id="kabupaten" name="kabupaten"
+                                                    placeholder="Kabupaten" required>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <h5 class="mb-3">No Surat Penolakan KUA</h5>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="nomor_surat">Nomor Surat:</label>
+                                                <input type="text" class="form-control" id="nomor_surat"
+                                                    name="nomor_surat" placeholder="Nomor Surat" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="tahun">Tahun:</label>
+                                                <input type="number" class="form-control" id="tahun" name="tahun"
+                                                    placeholder="Tahun" required>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <h5 class="mb-3">Lama hubungan calon </h5>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="tahun">Lama Hubungan Calon (Tahun):</label>
+                                                <input type="number" class="form-control" id="tahun" name="tahun"
+                                                    placeholder="Lama Hubungan Calon (Tahun)" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="bulan">Lama Hubungan Calon (Bulan):</label>
+                                                <input type="number" class="form-control" id="bulan" name="bulan"
+                                                    placeholder="Lama Hubungan Calon (Bulan)" required>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="tahun">penghasilan calon (Rp):</label>
+                                                <input type="number" class="form-control" id="penghasilan"
+                                                    name="penghasilan" placeholder="penghasilan calon (Rp)" required>
+                                            </div>
+                                        </div>
+                                        <h3 class="mb-3">Data Mertua Laki-laki</h3>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="nama_mertua_laki">Nama Mertua Laki-laki:</label>
+                                                <input type="text" class="form-control" id="nama_mertua_laki"
+                                                    name="nama_mertua_laki" placeholder="Nama Mertua Laki-laki"
+                                                    required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="umur_mertua_laki">Umur Mertua Laki-laki:</label>
+                                                <input type="number" class="form-control" id="umur_mertua_laki"
+                                                    name="umur_mertua_laki" placeholder="Umur Mertua Laki-laki"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="pekerjaan_mertua_laki">Pekerjaan Mertua Laki-laki:</label>
+                                                <input type="text" class="form-control" id="pekerjaan_mertua_laki"
+                                                    name="pekerjaan_mertua_laki"
+                                                    placeholder="Pekerjaan Mertua Laki-laki" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="pendidikan_mertua_laki">Pendidikan Mertua Laki-laki:</label>
+                                                <select name="pendidikan_mertua_laki" id="pendidikan_mertua_laki"
+                                                    class="form-control" required onchange="checkOther(this)">
+                                                    <option value="">Pilih Pendidikan</option>
+                                                    <option value="tidak_tamat_sd">Tidak Tamat SD</option>
+                                                    <option value="sd">SD</option>
+                                                    <option value="sltp">SLTP</option>
+                                                    <option value="slta">SLTA</option>
+                                                    <option value="d1">D-1</option>
+                                                    <option value="d2">D-2</option>
+                                                    <option value="d3">D-3</option>
+                                                    <option value="sarjana">Sarjana</option>
+                                                    <option value="lain-lain">Lain-lain</option>
+                                                </select>
+                                                <br>
+                                                <input type="text" id="otherField_pendidikan_mertua_laki"
+                                                    class="form-control" name="pendidikan_mertua_laki"
+                                                    style="display: none;" placeholder="pendidikan_mertua_laki">
+                                            </div>
+                                        </div>
 
-                                        if (tempatTinggal) {
-                                            var detailDiv = document.createElement('div');
-                                            detailDiv.className = 'form-group';
-                                            detailDiv.innerHTML = `
-                                                <label for="detail_${tempatTinggal}">Silakan Isi ${tempatTinggal} di desa:</label>
-                                                <input type="text" id="detail_${tempatTinggal}" name="detail_${tempatTinggal}" placeholder="Desa" class="form-control" required>
-                                            `;
+                                        <div class="form-group">
+                                            <label for="alamat_mertua_laki">Alamat Mertua Laki-laki:</label>
+                                            <textarea name="alamat_mertua_laki" id="alamat_calonML" class="form-control"
+                                                placeholder="Alamat lengkap Mertua Laki-laki" required
+                                                readonly></textarea>
+                                        </div>
+                                        <div class="modal fade" id="exampleModal_calonML" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalLabel_calonML" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header bg-success text-white">
+                                                        <h5 class="modal-title" id="exampleModalLabel_calonML">Alamat
+                                                            Calon
+                                                            Mertua Laki-laki
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <form id="myForm_calonML">
+                                                        <div class="modal-body bg-light">
+                                                            <div class="form-group">
+                                                                <label for="jalan_calonML">Jalan</label>
+                                                                <input type="text" name="jalan_calonML"
+                                                                    id="jalan_calonML" class="form-control" required>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-4">
+                                                                    <label for="no_calonML">No.</label>
+                                                                    <input type="text" name="no_calonML" id="no_calonML"
+                                                                        class="form-control" required>
+                                                                </div>
+                                                                <div class="form-group col-md-4">
+                                                                    <label for="rt_calonML">RT.</label>
+                                                                    <input type="text" name="rt_calonML" id="rt_calonML"
+                                                                        class="form-control" required>
+                                                                </div>
+                                                                <div class="form-group col-md-4">
+                                                                    <label for="rw_calonML">RW</label>
+                                                                    <input type="text" name="rw_calonML" id="rw_calonML"
+                                                                        class="form-control" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label
+                                                                    for="desa_kelurahan_calonML">Desa/Kelurahan</label>
+                                                                <input type="text" name="desa_kelurahan_calonML"
+                                                                    id="desa_kelurahan_calonML" class="form-control"
+                                                                    required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="kecamatan_calonML">Kecamatan</label>
+                                                                <input type="text" name="kecamatan_calonML"
+                                                                    id="kecamatan_calonML" class="form-control"
+                                                                    required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="kabupaten_calonML">Kabupaten</label>
+                                                                <input type="text" name="kabupaten_calonML"
+                                                                    id="kabupaten_calonML" class="form-control"
+                                                                    required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer btn btn-light">
+                                                            <button type="button" id="saveButton_calonML"
+                                                                class="btn btn-success">Simpan</button>
+                                                            <button type="button" class="btn btn-info"
+                                                                data-dismiss="modal">Tutup</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
 
-                                            detailContainer.appendChild(detailDiv);
-                                        }
-                                    });
+                                            <!-- Modal -->
+                                            <script>
+                                                document.getElementById('alamat_calonML').addEventListener('focus', function() {
+                                                    $('#exampleModal_calonML').modal('show');
+                                                });
+                                                document.getElementById('saveButton_calonML').addEventListener('click', function() {
+                                                    var jalan = document.getElementById('jalan_calonML').value;
+                                                    var no = document.getElementById('no_calonML').value;
+                                                    var rt = document.getElementById('rt_calonML').value;
+                                                    var rw = document.getElementById('rw_calonML').value;
+                                                    var desa_kelurahan = document.getElementById('desa_kelurahan_calonML').value;
+                                                    var kecamatan = document.getElementById('kecamatan_calonML').value;
+                                                    var kabupaten = document.getElementById('kabupaten_calonML').value;
 
-                                    document.getElementById('jumlah_anak').addEventListener('input', function() {
-                                        var jumlahAnak = this.value;
-                                        var anakContainer = document.getElementById('anak_container');
+                                                    if (!jalan || !no || !rt || !rw || !desa_kelurahan || !kecamatan || !kabupaten) {
+                                                        swal("Peringatan!", "Mohon lengkapi alamat terlebih dahulu!", "warning");
+                                                        return;
+                                                    }
 
-                                        // Clear the container first
-                                        anakContainer.innerHTML = '';
+                                                    var alamat =
+                                                        `${jalan}, No. ${no}, RT. ${rt}, RW ${rw}, Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}`;
 
-                                        for (var i = 0; i < jumlahAnak; i++) {
-                                            var anakDiv = document.createElement('div');
-                                            anakDiv.className = 'form-group row'; // add row class here
+                                                    document.getElementById('alamat_calonML').value = alamat;
+                                                    $('#exampleModal_calonML').modal('hide');
+                                                });
+                                                // Rest of your JavaScript code
 
-                                            anakDiv.innerHTML = `
-                                            <div class="col-md-6"> <!-- wrap each label-input pair in a col div -->
-            <label for="anak_${i+1}">Anak ke-${i+1}:</label>
-            <input type="text" name="anak_${i+1}" id="anak_${i+1}" placeholder="isi nama anak dan bin/binti" class="form-control" required>
-        </div>
-        <div class="col-md-6"> <!-- wrap each label-input pair in a col div -->
-            <label for="tanggal_lahir_anak_${i+1}">Tanggal lahir:</label>
-            <input type="date" class="form-control" id="tanggal_lahir_anak_${i+1}" name="tanggal_lahir_anak_${i+1}">
-        </div>
-    `;
+                                            </script>
+                                        </div>
+                                        <h3 class="mb-3">Data Mertua Perempuan</h3>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="nama_mertua_perempuan">Nama Mertua Perempuan:</label>
+                                                <input type="text" class="form-control" id="nama_mertua_perempuan"
+                                                    name="nama_mertua_perempuan" placeholder="Nama Mertua Perempuan"
+                                                    required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="umur_mertua_perempuan">Umur Mertua Perempuan:</label>
+                                                <input type="number" class="form-control" id="umur_mertua_perempuan"
+                                                    name="umur_mertua_perempuan" placeholder="Umur Mertua Perempuan"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="pekerjaan_mertua_perempuan">Pekerjaan Mertua
+                                                    Perempuan:</label>
+                                                <input type="text" class="form-control" id="pekerjaan_mertua_perempuan"
+                                                    name="pekerjaan_mertua_perempuan"
+                                                    placeholder="Pekerjaan Mertua Perempuan" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="pendidikan_mertua_perempuan">Pendidikan Mertua
+                                                    Perempuan:</label>
+                                                <select name="pendidikan_mertua_perempuan"
+                                                    id="pendidikan_mertua_perempuan" class="form-control" required
+                                                    onchange="checkOther(this)">
+                                                    <option value="">Pilih Pendidikan</option>
+                                                    <option value="tidak_tamat_sd">Tidak Tamat SD</option>
+                                                    <option value="sd">SD</option>
+                                                    <option value="sltp">SLTP</option>
+                                                    <option value="slta">SLTA</option>
+                                                    <option value="d1">D-1</option>
+                                                    <option value="d2">D-2</option>
+                                                    <option value="d3">D-3</option>
+                                                    <option value="sarjana">Sarjana</option>
+                                                    <option value="lain-lain">Lain-lain</option>
+                                                </select>
+                                                <br>
+                                                <input type="text" id="otherField_pendidikan_mertua_perempuan"
+                                                    class="form-control" name="pendidikan_mertua_perempuan"
+                                                    style="display: none;" placeholder="pendidikan_mertua_perempuan">
+                                            </div>
 
-
-                                            anakContainer.appendChild(anakDiv);
-                                        }
-                                    });
-
-
-                                    document.getElementById('form').addEventListener('submit', function(event) {
-                                        event.preventDefault(); // Prevent the default form submission
-
-                                        var tempatTinggal = document.getElementById('tempat_tinggal').value;
-                                        var detailTempatTinggal = document.getElementById('detail_' + tempatTinggal).value;
-                                        var tahun = document.getElementById('tahun').value;
-                                        var bulan = document.getElementById('bulan').value;
-                                        var jumlahAnak = document.getElementById('jumlah_anak').value;
-
-                                        var anakContainer = document.getElementById('anak_container');
-                                        var anakInputs = anakContainer.getElementsByTagName('input');
-                                        var anak = [];
-                                        for (var i = 0; i < anakInputs.length; i += 2) {
-                                            var namaAnak = anakInputs[i].value;
-                                            var tanggalLahir = new Date(anakInputs[i + 1].value);
-                                            var opsi = {
-                                                year: 'numeric'
-                                                , month: 'long'
-                                                , day: 'numeric'
-                                            };
-                                            var tanggalLahirIndonesia = tanggalLahir.toLocaleDateString('id-ID', opsi);
-                                            anak.push({
-                                                nama: namaAnak
-                                                , tanggalLahir: tanggalLahirIndonesia
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="alamat_mertua_perempuan">Alamat Mertua Perempuan:</label>
+                                            <textarea name="alamat_mertua_perempuan" id="alamat_calonMP"
+                                                class="form-control" placeholder="Alamat lengkap Mertua Perempuan"
+                                                required readonly></textarea>
+                                        </div>
+                                        <div class="modal fade" id="exampleModal_calonMP" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalLabel_calonMP" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header bg-success text-white">
+                                                        <h5 class="modal-title" id="exampleModalLabel_calonMP">Alamat
+                                                            Calon
+                                                            Mertua Perempuan
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <form id="myForm_calonMP">
+                                                        <div class="modal-body bg-light">
+                                                            <div class="form-group">
+                                                                <label for="jalan_calonMP">Jalan</label>
+                                                                <input type="text" name="jalan_calonMP"
+                                                                    id="jalan_calonMP" class="form-control" required>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-4">
+                                                                    <label for="no_calonMP">No.</label>
+                                                                    <input type="text" name="no_calonMP" id="no_calonMP"
+                                                                        class="form-control" required>
+                                                                </div>
+                                                                <div class="form-group col-md-4">
+                                                                    <label for="rt_calonMP">RT.</label>
+                                                                    <input type="text" name="rt_calonMP" id="rt_calonMP"
+                                                                        class="form-control" required>
+                                                                </div>
+                                                                <div class="form-group col-md-4">
+                                                                    <label for="rw_calonMP">RW</label>
+                                                                    <input type="text" name="rw_calonMP" id="rw_calonMP"
+                                                                        class="form-control" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label
+                                                                    for="desa_kelurahan_calonMP">Desa/Kelurahan</label>
+                                                                <input type="text" name="desa_kelurahan_calonMP"
+                                                                    id="desa_kelurahan_calonMP" class="form-control"
+                                                                    required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="kecamatan_calonMP">Kecamatan</label>
+                                                                <input type="text" name="kecamatan_calonMP"
+                                                                    id="kecamatan_calonMP" class="form-control"
+                                                                    required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="kabupaten_calonMP">Kabupaten</label>
+                                                                <input type="text" name="kabupaten_calonMP"
+                                                                    id="kabupaten_calonMP" class="form-control"
+                                                                    required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer btn btn-light">
+                                                            <button type="button" id="saveButton_calonMP"
+                                                                class="btn btn-success">Simpan</button>
+                                                            <button type="button" class="btn btn-info"
+                                                                data-dismiss="modal">Tutup</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <script>
+                                                document.getElementById('alamat_calonMP').addEventListener('focus', function() {
+                                                $('#exampleModal_calonMP').modal('show');
                                             });
-                                        }
+                                            document.getElementById('saveButton_calonMP').addEventListener('click', function() {
+                                                var jalan = document.getElementById('jalan_calonMP').value;
+                                                var no = document.getElementById('no_calonMP').value;
+                                                var rt = document.getElementById('rt_calonMP').value;
+                                                var rw = document.getElementById('rw_calonMP').value;
+                                                var desa_kelurahan = document.getElementById('desa_kelurahan_calonMP').value;
+                                                var kecamatan = document.getElementById('kecamatan_calonMP').value;
+                                                var kabupaten = document.getElementById('kabupaten_calonMP').value;
+                                                if (!jalan || !no || !rt || !rw || !desa_kelurahan || !kecamatan || !kabupaten) {
+                                                    swal("Peringatan!", "Mohon lengkapi alamat terlebih dahulu!", "warning");
+                                                    return;
+                                                }
+                                                var alamat =
+                                                    `${jalan}, No. ${no}, RT. ${rt}, RW ${rw}, Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}`;
 
-                                        // Check if all fields are filled
-                                        if (!tempatTinggal || !detailTempatTinggal || !tahun || !bulan || !jumlahAnak || anak.some(a => !a.nama || !a.tanggalLahir)) {
-                                            swal("Peringatan!", "Mohon lengkapi semua kolom terlebih dahulu!", "warning");
-                                            return;
-                                        }
-
-                                        var alasan = `Bahwa setelah pernikahan tersebut Penggugat dan Tergugat bertempat tinggal ${tempatTinggal} ${detailTempatTinggal}.
-Kumpul baik selama ${tahun} tahun ${bulan} bulan, dan telah dikaruniai ${jumlahAnak} orang anak, yaitu:
-${anak.map((anak, index) => `${index + 1}. Nama : ${anak.nama}, tanggal lahir : ${anak.tanggalLahir}`).join("\n")}`;
-
-                                        document.getElementById('alasan_cerai2').value = alasan;
-                                        $('#exampleModal_alasan2').modal('hide');
-                                    });
-
-
-
-                                </script>
-                                <!-- Alasan Cerai3 -->
-                                <div class="form-group">
-                                    <textarea name="alasan_cerai3" id="alasan_cerai3" class="form-control" placeholder="3.	Bahwa sejak tanggal ................. bulan ................. tahun ................., antara Penggugat dan Tergugat sering terjadi perselisihan dan pertengkaran dikarenakan Tergugat:
-                                    " required readonly rows="3" style="text-align: justify; width: 100%;"></textarea>
-                                    <h6 class="text-white text-center mb-3" style="font-style: italic; font-size: 0.75rem;">(Silakan klik pada kolom di atas
-                                        untuk mengisi/edit informasi yang diminta)</h6>
-                                </div>
-                                <!-- Modal -->
-                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header bg-success text-white">
-                                                <h4 class="modal-title" id="myModalLabel">Silahkan Isi kolom di bawah ini</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="form-group">
-                                                    <label for="date">Tanggal:</label>
-                                                    <input type="date" id="date" name="date" class="form-control">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="reason">Alasan:</label>
-                                                    <select id="reason" name="reason" class="form-control" onchange="showTextarea(this)">
-                                                        <option value="">Pilih Alasan</option>
-                                                        <option value="(a) Mengkonsumsi minum-minuman keras. ">
-                                                            Mengkonsumsi minum-minuman keras. (jelaskan
-                                                            kejadiannya di
-                                                            tempat yang sudah disediakan di bawah)</option>
-                                                        <option value="(b) Bermain judi">Bermain judi. (jelaskan
-                                                            kejadiannya di tempat
-                                                            yang
-                                                            sudah
-                                                            disediakan di bawah)</option>
-                                                        <option value="(c) Memukul Penggugat">Memukul Penggugat.
-                                                            (jelaskan kejadiannya di
-                                                            tempat
-                                                            yang sudah
-                                                            disediakan di bawah)</option>
-                                                        <option value="(d) Telah menjalin hubungan asmara dengan perempuan lain">
-                                                            Telah menjalin hubungan asmara dengan
-                                                            perempuan
-                                                            lain.
-                                                            (jelaskan kejadiannya di tempat yang sudah disediakan di
-                                                            bawah)
-                                                        </option>
-                                                        <option value="(e) Sering keluar pada malam hari / pulang pada waktu dini hari / tidak pulang berhari – hari">
-                                                            Sering keluar pada malam hari / pulang pada
-                                                            waktu
-                                                            dini hari /
-                                                            tidak pulang berhari – hari. (jelaskan kejadiannya di tempat
-                                                            yang sudah
-                                                            disediakan di bawah)</option>
-                                                        <option value="(f) Malas berkerja">Malas berkerja. (jelaskan
-                                                            kejadiannya di
-                                                            tempat
-                                                            yang sudah
-                                                            disediakan di bawah)</option>
-                                                        <option value="(g) Tidak memberi biaya untuk keperluan rumah tangga sehingga tidak mencukupi">
-                                                            Tidak memberi biaya untuk keperluan rumah
-                                                            tangga
-                                                            sehingga
-                                                            tidak mencukupi. (jelaskan kejadiannya di tempat yang sudah
-                                                            disediakan di
-                                                            bawah)</option>
-                                                        <option value="(h) Perkawinan Penggugat dan Tergugat dijodohkan oleh orang tua masing-masing">
-                                                            Perkawinan Penggugat dan Tergugat dijodohkan
-                                                            oleh
-                                                            orang tua
-                                                            masing-masing. (jelaskan kejadiannya di tempat yang sudah
-                                                            disediakan di
-                                                            bawah)</option>
-
-                                                    </select>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="reason_i_modal">Penjelasan:</label>
-                                                    <textarea class="form-control" id="reason_i_modal" name="reason_i_modal" rows="3"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer bg-light">
-                                                <button type="button" class="btn btn-success" id="saveChanges">Simpan</button>
-                                                <button type="button" class="btn btn-info" data-dismiss="modal">Tutup</button>
-                                            </div>
+                                                document.getElementById('alamat_calonMP').value = alamat;
+                                                $('#exampleModal_calonMP').modal('hide');
+                                            });
+                                            </script>
                                         </div>
-                                    </div>
-                                </div>
-                                <script>
-                                    document.getElementById('alasan_cerai3').addEventListener('focus', function() {
-                                        $('#myModal').modal('show');
-                                    });
-
-                                    document.getElementById('saveChanges').addEventListener('click', function() {
-
-                                        var date = new Date(document.getElementById('date').value);
-                                        var day = date.getDate();
-                                        var month = date.getMonth() + 1; // Months are zero based
-                                        var year = date.getFullYear();
-                                        var reason = document.getElementById('reason').value;
-                                        var reason_i_modal = document.getElementById('reason_i_modal').value;
-
-                                        var monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
-                                        var monthName = monthNames[month - 1];
-
-                                        if (!day || !month || !year || !reason || !reason_i_modal) {
-                                            swal("Peringatan!", "Mohon lengkapi semua kolom terlebih dahulu!", "warning");
-                                            return;
-                                        }
-
-                                        var alasan = `Bahwa sejak tanggal ${day} bulan ${monthName} tahun ${year}, antara Penggugat dan Tergugat sering terjadi perselisihan dan pertengkaran dikarenakan ${reason} Alasan lainnya / Penjelasan kejadian ${reason_i_modal}`;
-
-                                        document.getElementById('alasan_cerai3').value = alasan;
-                                        $('#myModal').modal('hide');
-                                    });
-
-                                </script>
-
-                                <div class="form-group">
-                                    <textarea name="separation_details" id="separation_details" class="form-control" placeholder="4.	Bahwa karena hal-hal tersebut di atas, tidak ada lagi kerukunan antara Penggugat dan Tergugat yang mengakibatkan Penggugat dan Tergugat (berpisah tempat tinggal/berpisah tempat tidur), dimana (Tergugat/Penggugat) telah pergi meninggalkan rumah kediaman bersama di desa ..............................................................(karena diusir oleh (Penggugat/Tergugat) atau keinginan (Penggugat/Tergugat) sendiri) sejak tanggal ............ bulan ............. tahun ..............." required readonly rows="6" style="text-align: justify;width: 100%;"></textarea>
-                                    <h6 class="text-white text-center mb-3" style="font-style: italic; font-size: 0.75rem;">(Silakan klik pada kolom di atas
-                                        untuk mengisi/edit informasi yang diminta)</h6>
-                                </div>
-
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="myalasan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                    <div class="modal-dialog modal-dialog-scrollable" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header bg-success text-white">
-                                                <h4 class="modal-title" id="myModalLabel">Silahkan Isi kolom di bawah ini</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="form-group">
-                                                    <label for="separation_reason">Alasan Pisah:</label>
-                                                    <select id="separation_reason" name="separation_reason" class="form-control">
-                                                        <option value="">Pilih Alasan</option>
-                                                        <option value="berpisah_tempat_tinggal">Berpisah Tempat Tinggal
-                                                        </option>
-                                                        <option value="berpisah_tempat_tidur">Berpisah Tempat Tidur
-                                                        </option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="who_left">Siapa yang Pergi:</label>
-                                                    <select id="who_left" name="who_left" class="form-control">
-                                                        <option value="">Pilih</option>
-                                                        <option value="tergugat">Tergugat</option>
-                                                        <option value="penggugat">Penggugat</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="village">Desa:</label>
-                                                    <input type="text" id="village" name="village" class="form-control" placeholder="Masukkan nama desa">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="reason_for_leaving">Alasan Meninggalkan:</label>
-                                                    <select id="reason_for_leaving" name="reason_for_leaving" class="form-control">
-                                                        <option value="">Pilih Alasan</option>
-                                                        <option value="diusir">Diusir oleh</option>
-                                                        <option value="keinginan_sendiri">Keinginan Sendiri</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="date_left">Tanggal Meninggalkan:</label>
-                                                    <input type="date" id="date_left" name="date_left" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer bg-light">
-                                                <button type="button" class="btn btn-success" id="saveChanges1">Simpan</button>
-                                                <button type="button" class="btn btn-info" data-dismiss="modal">Tutup</button>
-                                            </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary" id="submitButton">Kirim
+                                                Formulir
+                                                Permohonan Dispensasi</button>
                                         </div>
+                                        <script>
+                                            document.getElementById('submitButton').addEventListener('click', function(event) {
+                                                var inputs = document.getElementsByTagName('input');
+                                                for (var i = 0; i < inputs.length; i++) {
+                                                    if (inputs[i].value === '') {
+                                                        event.preventDefault(); // Prevent the default form submission
+                                                        var inputName = inputs[i].getAttribute('id'); // Get the id of the input
+                                                        swal("Peringatan!", "Mohon lengkapi kolom " + inputName + " terlebih dahulu!", "warning");
+                                                        return;
+                                                    }
+                                                }
+                                            });
+
+                                        </script>
                                     </div>
-                                </div>
-
-                                <script>
-                                    document.getElementById('separation_details').addEventListener('focus', function() {
-                                        $('#myalasan').modal('show');
-                                    });
-
-
-
-
-                                    document.getElementById('saveChanges1').addEventListener('click', function() {
-                                        var separation_reason = document.getElementById('separation_reason').value;
-                                        var who_left = document.getElementById('who_left').value;
-                                        var village = document.getElementById('village').value;
-                                        var reason_for_leaving = document.getElementById('reason_for_leaving').value;
-                                        var date_left = new Date(document.getElementById('date_left').value);
-
-                                        var options = {
-                                            year: 'numeric'
-                                            , month: 'long'
-                                            , day: 'numeric'
-                                        };
-                                        var date_left_formatted = date_left.toLocaleDateString('id-ID', options);
-
-                                        // Check if all fields are filled
-                                        if (!separation_reason || !who_left || !village || !reason_for_leaving || !date_left_formatted) {
-                                            swal("Peringatan!", "Mohon lengkapi semua kolom terlebih dahulu!", "warning");
-                                            return;
-                                        }
-
-                                        var alasan = `Bahwa karena hal-hal tersebut di atas, tidak ada lagi kerukunan antara Penggugat dan Tergugat yang mengakibatkan Penggugat dan Tergugat ${separation_reason}, dimana ${who_left} telah pergi meninggalkan rumah kediaman bersama di desa ${village} (karena ${reason_for_leaving}) sejak tanggal ${date_left_formatted}`;
-
-                                        // Ganti 'separation_details' dengan id elemen yang ingin Anda tetapkan nilai
-
-                                        document.getElementById('separation_details').value = alasan;
-                                        $('#myalasan').modal('hide');
-                                    });
-
-                                </script>
-
-                                {{--
-                                <!-- Textarea -->
-                                <div class="form-group">
-                                    <label for="reconciliation_attempts">Upaya Rukun:</label>
-                                    <textarea name="reconciliation_attempts" id="reconciliation_attempts"
-                                        class="form-control" placeholder="Klik untuk mengisi detail" required
-                                        readonly></textarea>
-                                </div>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="reconciliationModal" tabindex="-1" role="dialog"
-                                    aria-labelledby="reconciliationModalLabel">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title" id="reconciliationModalLabel">Isi Detail Upaya
-                                                    Rukun</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="form-group">
-                                                    <label for="reconciliation_attempts_detail">Detail Upaya
-                                                        Rukun:</label>
-                                                    <select id="reconciliation_attempts_detail"
-                                                        name="reconciliation_attempts_detail" class="form-control">
-                                                        <option value="">Pilih Alasan</option>
-                                                        <option value="tidak">Tidak ada upaya rukun</option>
-                                                        <option value="ada">Ada upaya rukun</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default"
-                                                    data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary"
-                                                    id="saveReconciliationAttempts">Save changes</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <script>
-                                    document.getElementById('reconciliation_attempts').addEventListener('focus', function() {
-                                        $('#reconciliationModal').modal('show');
-                                    });
-
-                                    document.getElementById('saveReconciliationAttempts').addEventListener('click', function() {
-                                        var detail = document.getElementById('reconciliation_attempts_detail').value;
-
-                                        var alasan = `5. Bahwa selama berpisah, antara Penggugat dan Tergugat ${detail} lagi upaya untuk merukunkan Penggugat dan Tergugat baik dari kedua belah pihak maupun dari pihak keluarga`;
-                                        document.getElementById('reconciliation_attempts').value = alasan;
-                                        $('#reconciliationModal').modal('hide');
-                                    });
-
-                                </script>
-
-                                <!-- Textarea -->
-                                <div class="form-group">
-                                    <label for="nafkah_details">Detail Nafkah:</label>
-                                    <textarea name="nafkah_details" id="nafkah_details" class="form-control"
-                                        placeholder="Klik untuk mengisi detail" required readonly></textarea>
-                                </div>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="nafkahModal" tabindex="-1" role="dialog"
-                                    aria-labelledby="nafkahModalLabel">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title" id="nafkahModalLabel">Isi Detail Nafkah</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="form-group">
-                                                    <label for="job">Pekerjaan:</label>
-                                                    <input type="text" id="job" name="job" class="form-control"
-                                                        placeholder="Masukkan pekerjaan" required>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="income">Nama Tempat Kerja</label>
-                                                    <input type="text" id="work" name="work" class="form-control"
-                                                        placeholder="Masukkan penghasilan per bulan" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="income">Penghasilan per Bulan:</label>
-                                                    <input type="number" id="income" name="income" class="form-control"
-                                                        placeholder="Masukkan penghasilan per bulan" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="iddah">Nafkah Iddah:</label>
-                                                    <input type="number" id="iddah" name="iddah" class="form-control"
-                                                        placeholder="Masukkan nafkah iddah" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="mutah">Mut'ah:</label>
-                                                    <input type="number" id="mutah" name="mutah" class="form-control"
-                                                        placeholder="Masukkan mut'ah" required>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default"
-                                                    data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary"
-                                                    id="saveNafkahDetails">Save changes</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <script>
-                                    document.getElementById('nafkah_details').addEventListener('focus', function() {
-                                        $('#nafkahModal').modal('show');
-                                    });
-
-                                    document.getElementById('saveNafkahDetails').addEventListener('click', function() {
-                                        var job = document.getElementById('job').value;
-                                        var work = document.getElementById('work').value;
-                                        var income = document.getElementById('income').value;
-                                        var iddah = document.getElementById('iddah').value;
-                                        var mutah = document.getElementById('mutah').value;
-
-                                        // 6.	Bahwa mengingat Tergugat bekerja sebagai …………………………. di …………………………. dengan penghasilan per bulan sejumlah Rp ……………….., maka jika terjadi perceraian Penggugat mohon agar Tergugat dihukum untuk membayar nafkah selama masa iddah sejumlah Rp ……………….. dan mut’ah berupa uang sejumlah Rp ……………….. yang harus dibayarkan sebelum Tergugat mengambil Akta Cerai; **)
-
-                                        var alasan = `6. Bahwa mengingat Tergugat bekerja sebagai ${job} di ${work} dengan penghasilan per bulan sejumlah Rp ${income}, maka jika terjadi perceraian Penggugat mohon agar Tergugat dihukum untuk membayar nafkah selama masa iddah sejumlah Rp ${iddah} dan mut’ah berupa uang sejumlah Rp ${mutah} yang harus dibayarkan sebelum Tergugat mengambil Akta Cerai; **)`;
-
-                                        document.getElementById('nafkah_details').value = alasan;
-                                        $('#nafkahModal').modal('hide');
-                                    });
-
-                                </script>
-
-                                <!-- Textarea -->
-                                <!-- Textarea -->
-                                <div class="form-group">
-                                    <label for="nafkah_terutang_details">Detail Nafkah Terutang:</label>
-                                    <textarea name="nafkah_terutang_details" id="nafkah_terutang_details"
-                                        class="form-control" placeholder="Klik untuk mengisi detail" required
-                                        readonly></textarea>
-                                </div>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="nafkahTerutangModal" tabindex="-1" role="dialog"
-                                    aria-labelledby="nafkahTerutangModalLabel">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title" id="nafkahTerutangModalLabel">Isi Detail Nafkah
-                                                    Terutang</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="form-group">
-                                                    <label for="start_month">Bulan Mulai Tidak Memberi Nafkah:</label>
-                                                    <input type="month" id="start_month" name="start_month"
-                                                        class="form-control" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="end_month">Bulan Akhir Tidak Memberi Nafkah:</label>
-                                                    <input type="month" id="end_month" name="end_month"
-                                                        class="form-control" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="months">Jumlah Bulan:</label>
-                                                    <input type="number" id="months" name="months" class="form-control"
-                                                        placeholder="Masukkan jumlah bulan" required>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="amount">Jumlah Nafkah Terutang:</label>
-                                                    <input type="number" id="amount" name="amount" class="form-control"
-                                                        placeholder="Masukkan jumlah nafkah terutang" required>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default"
-                                                    data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary"
-                                                    id="saveNafkahTerutangDetails">Save changes</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <script>
-                                    document.getElementById('nafkah_terutang_details').addEventListener('focus', function() {
-                                        $('#nafkahTerutangModal').modal('show');
-                                    });
-
-                                    document.getElementById('start_month').addEventListener('change', calculateMonths);
-                                    document.getElementById('end_month').addEventListener('change', calculateMonths);
-
-                                    function calculateMonths() {
-                                        var startMonth = new Date(document.getElementById('start_month').value);
-                                        var endMonth = new Date(document.getElementById('end_month').value);
-
-                                        var months;
-                                        months = (endMonth.getFullYear() - startMonth.getFullYear()) * 12;
-                                        months -= startMonth.getMonth() + 1;
-                                        months += endMonth.getMonth() + 1;
-                                        months = months <= 0 ? 0 : months;
-
-                                        document.getElementById('months').value = months;
-                                    }
-
-                                    document.getElementById('nafkah_terutang_details').addEventListener('focus', function() {
-                                        $('#nafkahTerutangModal').modal('show');
-                                    });
-
-                                    document.getElementById('saveNafkahTerutangDetails').addEventListener('click', function() {
-                                        var startMonth = new Date(document.getElementById('start_month').value);
-                                        var endMonth = new Date(document.getElementById('end_month').value);
-                                        var months = document.getElementById('months').value;
-                                        var amount = document.getElementById('amount').value;
-
-                                        var detail = `Bahwa selama menikah dengan Penggugat, Tergugat tidak lagi memberikan nafkah lahir berupa uang sejak bulan ${startMonth} sampai bulan ${endMonth}. Oleh karena itu Penggugat memohon agar Tergugat dihukum untuk memberi nafkah terutang (madliyah) selama ${months} bulan sejumlah Rp ${amount} yang harus dibayarkan sebelum Tergugat mengambil Akta Cerai.`;
-
-                                        document.getElementById('nafkah_terutang_details').value = detail;
-                                        $('#nafkahTerutangModal').modal('hide');
-                                    });
-
-                                </script> --}}
-
-                                <!-- Tombol Submit -->
-                                {{-- <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Kirim Formulir Gugatan</button>
-
-                                </div>
-
-                                <script>
-                                    document.getElementById('form').addEventListener('submit', function(event) {
-                                        var nama_penggugat = document.getElementById('nama_penggugat').value;
-                                        var umur_penggugat = document.getElementById('umur_penggugat').value;
-                                        var pekerjaan_penggugat = document.getElementById('pekerjaan_penggugat').value;
-                                        var alamat_penggugat = document.getElementById('alamat_penggugat').value;
-                                        var nama_tergugat = document.getElementById('nama_tergugat').value;
-                                        var umur_tergugat = document.getElementById('umur_tergugat').value;
-                                        var pekerjaan_tergugat = document.getElementById('pekerjaan_tergugat').value;
-                                        var alamat_tergugat = document.getElementById('alamat_tergugat').value;
-
-                                        var alasan_cerai = document.getElementById('alasan_cerai').value;
-                                        var alasan_cerai2 = document.getElementById('alasan_cerai2').value;
-                                        var alasan_cerai3 = document.getElementById('alasan_cerai3').value;
-                                        var separation_details = document.getElementById('separation_details').value;
-
-                                        if (!nama_penggugat || !umur_penggugat || !pekerjaan_penggugat || !alamat_penggugat || !nama_tergugat || !umur_tergugat || !pekerjaan_tergugat || !alamat_tergugat || !alasan_cerai || !alasan_cerai2 || !alasan_cerai3 || !separation_details) {
-                                            swal("Peringatan!", "Mohon lengkapi semua kolom terlebih dahulu!", "warning");
-                                            return;
-                                        }
-                                    });
-
-
-                                </script> --}}
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary" id="submitButton">Kirim Formulir Gugatan</button>
-                                </div>
-
-                                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-                                <script>
-                                    document.getElementById('submitButton').addEventListener('click', function(event) {
-                                        var inputs = document.getElementsByTagName('input');
-                                        for (var i = 0; i < inputs.length; i++) {
-                                            if (inputs[i].value === '') {
-                                                event.preventDefault(); // Prevent the default form submission
-                                                var inputName = inputs[i].getAttribute('id'); // Get the id of the input
-                                                swal("Peringatan!", "Mohon lengkapi kolom " + inputName + " terlebih dahulu!", "warning");
-                                                return;
-                                            }
-                                        }
-                                    });
-
-                                </script>
-
-                                {{-- <div class="container">
-                                    <h2>Button Elements</h2>
-                                    <a href="#" class="btn btn-info" role="button">Link Button</a>
-                                    <button type="button" class="btn btn-info">Button</button>
-                                    <input type="button" class="btn btn-info" value="Input Button">
-                                    <input type="submit" class="btn btn-info" value="Submit Button">
-                                </div> --}}
-
-                        </form>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
