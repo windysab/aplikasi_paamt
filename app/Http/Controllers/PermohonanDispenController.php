@@ -17,9 +17,7 @@ class PermohonanDispenController extends Controller
 
     public function store(Request $request)
     {
-
-
-    $request->validate([
+        $request->validate([
             'nama_pemohonI' => 'required',
             'umur_pemohonI' => 'required',
             'pekerjaan_pemohonI' => 'required',
@@ -30,13 +28,6 @@ class PermohonanDispenController extends Controller
             'pekerjaan_pemohonII' => 'required',
             'pendidikan_pemohonII' => 'required',
             'alamat_pemohonII' => 'required',
-            'kecamatan' => 'required',
-            'kabupaten' => 'required',
-            'surat_keterangan' => 'required',
-            'nomor_surat' => 'required',
-            'tahun' => 'required',
-            'bulan' => 'required',
-            'penghasilan' => 'required',
             'nama_calon' => 'required',
             'umur_calon' => 'required',
             'pekerjaan_calon' => 'required',
@@ -47,36 +38,50 @@ class PermohonanDispenController extends Controller
             'pekerjaan_calonII' => 'required',
             'pendidikan_calonII' => 'required',
             'alamat_calonII' => 'required',
-            'nama_mertua_laki' => 'required',
-            'umur_mertua_laki' => 'required',
-            'pekerjaan_mertua_laki' => 'required',
-            'pendidikan_mertua_laki' => 'required',
-            'alamat_mertua_laki' => 'required',
-            'nama_mertua_perempuan' => 'required',
-            'umur_mertua_perempuan' => 'required',
-            'pekerjaan_mertua_perempuan' => 'required',
-            'pendidikan_mertua_perempuan' => 'required',
-            'alamat_mertua_perempuan' => 'required',
+            'kecamatan' => 'required',
+            'kabupaten' => 'required',
+            'surat_keterangan' => 'required',
+            'nomor_surat' => 'required',
+            'tahun' => 'required',
+            'bulan' => 'required',
+            'penghasilan' => 'required',
+            // 'nama_mertua_laki' => 'required',
+            // 'umur_mertua_laki' => 'required',
+            // 'pekerjaan_mertua_laki' => 'required',
+            // 'pendidikan_mertua_laki' => 'required',
+            // 'alamat_mertua_laki' => 'required',
+            // 'nama_mertua_perempuan' => 'required',
+            // 'umur_mertua_perempuan' => 'required',
+            // 'pekerjaan_mertua_perempuan' => 'required',
+            // 'pendidikan_mertua_perempuan' => 'required',
+            // 'alamat_mertua_perempuan' => 'required',
+
+
         ]);
-
-
-
-
-            // Tambahkan validasi lainnya sesuai kebutuhan
-
+        // Tambahkan validasi lainnya sesuai kebutuhan
 
         // Simpan data ke database
         $permohonan = PermohonanDispen::create($request->all());
+
+        // Redirect user dan kirimkan pesan bahwa permohonan telah berhasil dibuat
+
 
 
         return redirect()->route('permohonan_dispen.detail', ['id' => $permohonan->id])
             ->with('success', 'Permohonan berhasil diajukan!');
     }
+    // public function show($id)
+    // {
+
+    //     $permohonan = PermohonanDispen::find($id);
+    //     return view('permohonan_dispen.detail', compact('permohonan'));
+    // }
+
     public function show($id)
     {
+        $permohonan = PermohonanDispen::findOrFail($id);
 
-        $permohonan = PermohonanDispen::find($id);
-        return view('permohonan_dispen.detail', compact('permohonan'));
+        return view('permohonan_dispen.detail', ['permohonan' => $permohonan]);
     }
 
     public function generateWordDocument($id)
@@ -207,7 +212,4 @@ class PermohonanDispenController extends Controller
         $permohonan = PermohonanDispen::where('nama_pemohonII', 'like', '%' . $search . '%')->paginate(5);
         return view('permohonan_dispen.index', compact('permohonan'));
     }
-
-
 }
-

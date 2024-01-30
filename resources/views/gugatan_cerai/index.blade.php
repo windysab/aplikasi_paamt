@@ -10,7 +10,7 @@
                 <div class="card-header bg-danger text-white">Detail Gugatan Cerai</div>
 
                 <div class="card-body">
-                    @foreach ($permohonan as $dispen)
+                    @foreach ($gugatanCerai as $gugatan)
                         <!-- Display Gugatan Cerai Details -->
                         <h4 class="text-danger">Informasi Penggugat</h4>
                         <ul class="list-group list-group-flush">

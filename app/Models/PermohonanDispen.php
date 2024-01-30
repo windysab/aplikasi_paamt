@@ -12,7 +12,7 @@ class PermohonanDispen extends Model
 
     use HasFactory;
 
-    protected $table = 'permohonan';
+    protected $table = 'permohonan_dispen';
 
 
 
@@ -55,13 +55,6 @@ class PermohonanDispen extends Model
         'pekerjaan_pemohonII',
         'pendidikan_pemohonII',
         'alamat_pemohonII',
-        'kecamatan',
-        'kabupaten',
-        'surat_keterangan',
-        'nomor_surat',
-        'tahun',
-        'bulan',
-        'penghasilan',
         'nama_calon',
         'umur_calon',
         'pekerjaan_calon',
@@ -72,6 +65,12 @@ class PermohonanDispen extends Model
         'pekerjaan_calonII',
         'pendidikan_calonII',
         'alamat_calonII',
+        'kecamatan',
+        'kabupaten',
+        'surat_keterangan',
+        'nomor_surat',
+        'tahun',
+        'bulan',
+        'penghasilan',
     ];
-
 }

@@ -50,27 +50,13 @@
                                     <input type="text" id="otherField_pendidikan_pemohonI" class="form-control"
                                         name="pendidikan_pemohonI" style="display: none;"
                                         placeholder="pendidikan_pemohonI">
-                                        <script>
-                                            function checkOther(select) {
-                                                var otherInputId = "otherField_" + select.id;
-                                                var otherInput = document.getElementById(otherInputId);
-                                                if (select.value.toLowerCase() === "lain-lain") {
-                                                    otherInput.style.display = "block";
-                                                    otherInput.value = ""; // clear the input field when "Lain-lain" is selected
-                                                } else {
-                                                    otherInput.style.display = "none";
-                                                    otherInput.value = select.options[select.selectedIndex]
-                                                        .text; // set the value of the input field to the selected option's text
-                                                }
-                                            }
-                                        </script>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="alamat_pemohonI">Alamat Pemohon I:</label>
                             <textarea name="alamat_pemohonI" id="alamat_pemohonI" class="form-control"
-                                placeholder="Alamat lengkap Pemohon I" required readonly></textarea>
+                                placeholder="Alamat lengkap Pemohon I" required></textarea>
                         </div>
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -82,7 +68,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-
+                                    <form id="myForm">
                                         <div class="modal-body bg-light">
                                             <div class="form-group">
                                                 <label for="jalan">Jalan</label>
@@ -125,7 +111,7 @@
                                             <button type="button" class="btn btn-info"
                                                 data-dismiss="modal">Tutup</button>
                                         </div>
-
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -153,8 +139,6 @@
                             });
                         </script>
                         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-
                         <h3 class="mb-3">Data Pemohon II</h3>
                         <div class="form-group">
                             <div class="row">
@@ -211,7 +195,7 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-
+                                        <form id="myForm_pemohonII">
                                             <div class="modal-body bg-light">
                                                 <div class="form-group">
                                                     <label for="jalan_tergugat">Jalan</label>
@@ -257,7 +241,7 @@
                                                 <button type="button" class="btn btn-info"
                                                     data-dismiss="modal">Tutup</button>
                                             </div>
-
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -288,7 +272,7 @@
                                 // Rest of your JavaScript code
 
                             </script>
-                             <h3 class="mb-3">Data Calon Suami/Isteri</h3>
+                            <h3 class="mb-3">Data Calon Suami/Isteri</h3>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -332,7 +316,20 @@
                                                 name="pendidikan_calon" style="display: none;"
                                                 placeholder="pendidikan_calon">
                                         </div>
-
+                                        <script>
+                                            function checkOther(select) {
+                                                var otherInputId = "otherField_" + select.id;
+                                                var otherInput = document.getElementById(otherInputId);
+                                                if (select.value.toLowerCase() === "lain-lain") {
+                                                    otherInput.style.display = "block";
+                                                    otherInput.value = ""; // clear the input field when "Lain-lain" is selected
+                                                } else {
+                                                    otherInput.style.display = "none";
+                                                    otherInput.value = select.options[select.selectedIndex]
+                                                        .text; // set the value of the input field to the selected option's text
+                                                }
+                                            }
+                                        </script>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -351,7 +348,7 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-
+                                            <form id="myForm_calon">
                                                 <div class="modal-body bg-light">
                                                     <div class="form-group">
                                                         <label for="jalan_calon">Jalan</label>
@@ -397,7 +394,7 @@
                                                     <button type="button" class="btn btn-info"
                                                         data-dismiss="modal">Tutup</button>
                                                 </div>
-
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -491,7 +488,7 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-
+                                                    <form id="myForm_calonII">
                                                         <div class="modal-body bg-light">
                                                             <div class="form-group">
                                                                 <label for="jalan_calonII">Jalan</label>
@@ -541,7 +538,7 @@
                                                             <button type="button" class="btn btn-info"
                                                                 data-dismiss="modal">Tutup</button>
                                                         </div>
-
+                                                    </form>
                                                 </div>
                                             </div>
                                             <script>
@@ -586,11 +583,6 @@
                                         <h5 class="mb-3">No Surat Penolakan KUA</h5>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label for="surat_keterangan">Surat Keterangan dari :</label>
-                                                <input type="text" class="form-control" id="surat_keterangan"
-                                                    name="surat_keterangan" placeholder="Surat Keterangan dari" required>
-                                            </div>
-                                            <div class="col-md-6">
                                                 <label for="nomor_surat">Nomor Surat:</label>
                                                 <input type="text" class="form-control" id="nomor_surat"
                                                     name="nomor_surat" placeholder="Nomor Surat" required>
@@ -623,7 +615,7 @@
                                                     name="penghasilan" placeholder="penghasilan calon (Rp)" required>
                                             </div>
                                         </div>
-                                        {{-- <h3 class="mb-3">Data Mertua Laki-laki</h3>
+                                        <h3 class="mb-3">Data Mertua Laki-laki</h3>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label for="nama_mertua_laki">Nama Mertua Laki-laki:</label>
@@ -687,7 +679,7 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-
+                                                    <form id="myForm_calonML">
                                                         <div class="modal-body bg-light">
                                                             <div class="form-group">
                                                                 <label for="jalan_calonML">Jalan</label>
@@ -737,7 +729,7 @@
                                                             <button type="button" class="btn btn-info"
                                                                 data-dismiss="modal">Tutup</button>
                                                         </div>
-
+                                                    </form>
                                                 </div>
                                             </div>
 
@@ -837,7 +829,7 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-
+                                                    <form id="myForm_calonMP">
                                                         <div class="modal-body bg-light">
                                                             <div class="form-group">
                                                                 <label for="jalan_calonMP">Jalan</label>
@@ -887,7 +879,7 @@
                                                             <button type="button" class="btn btn-info"
                                                                 data-dismiss="modal">Tutup</button>
                                                         </div>
-
+                                                    </form>
                                                 </div>
                                             </div>
                                             <script>
@@ -913,9 +905,7 @@
                                                 $('#exampleModal_calonMP').modal('hide');
                                             });
                                             </script>
-                                        </div> --}}
-
-
+                                        </div>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary" id="submitButton">Kirim
                                                 Formulir

@@ -36,6 +36,29 @@ class Permohonan extends Migration
             $table->text('alamat_pemohonII');
 
 
+
+
+         /*
+             Data calon Mempelai Suami/Isteri
+            */
+
+            $table->string('nama_calon');
+            $table->integer('umur_calon');
+            $table->string('pekerjaan_calon');
+            $table->string('pendidikan_calon');
+            $table->text('alamat_calon');
+
+
+            // /*
+            //  Data calon Mempelai Suami/Isteri
+            // */
+
+            $table->string('nama_calonII');
+            $table->integer('umur_calonII');
+            $table->string('pekerjaan_calonII');
+            $table->string('pendidikan_calonII');
+            $table->text('alamat_calonII');
+
             /*
              Data Calon Suami Isteri
             */
@@ -51,46 +74,25 @@ class Permohonan extends Migration
             // Penghasilan calon suami
             $table->integer('penghasilan');
 
-            /*
-             Data calon Mempelai Suami/Isteri
-            */
+            // /*
+            //  Data Mertua Laki-laki
+            // */
 
-            $table->string('nama_calon');
-            $table->integer('umur_calon');
-            $table->string('pekerjaan_calon');
-            $table->string('pendidikan_calon');
-            $table->text('alamat_calon');
+            // $table->string('nama_mertua_laki');
+            // $table->integer('umur_mertua_laki');
+            // $table->string('pekerjaan_mertua_laki');
+            // $table->string('pendidikan_mertua_laki');
+            // $table->text('alamat_mertua_laki');
 
+            // /*
+            //  Data Mertua Perempuan
+            // */
 
-            /*
-             Data calon Mempelai Suami/Isteri
-            */
-
-            $table->string('nama_calonII');
-            $table->integer('umur_calonII');
-            $table->string('pekerjaan_calonII');
-            $table->string('pendidikan_calonII');
-            $table->text('alamat_calonII');
-
-            /*
-             Data Mertua Laki-laki
-            */
-
-            $table->string('nama_mertua_laki');
-            $table->integer('umur_mertua_laki');
-            $table->string('pekerjaan_mertua_laki');
-            $table->string('pendidikan_mertua_laki');
-            $table->text('alamat_mertua_laki');
-
-            /*
-             Data Mertua Perempuan
-            */
-
-            $table->string('nama_mertua_perempuan');
-            $table->integer('umur_mertua_perempuan');
-            $table->string('pekerjaan_mertua_perempuan');
-            $table->string('pendidikan_mertua_perempuan');
-            $table->text('alamat_mertua_perempuan');
+            // $table->string('nama_mertua_perempuan');
+            // $table->integer('umur_mertua_perempuan');
+            // $table->string('pekerjaan_mertua_perempuan');
+            // $table->string('pendidikan_mertua_perempuan');
+            // $table->text('alamat_mertua_perempuan');
 
 
             $table->timestamps();
