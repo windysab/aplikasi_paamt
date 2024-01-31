@@ -72,8 +72,8 @@
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
-                                        <div class="modal-header bg-success text-white">
-                                            <h5 class="modal-title" id="exampleModalLabel">Alamat</h5>
+                                        <div class="modal-header bg-info text-white">
+                                            <h5 class="modal-title" id="exampleModalLabel">Alamat Calon Pemohon I</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -85,31 +85,35 @@
                                                 <input type="text" name="jalan" id="jalan" class="form-control" required>
                                             </div>
                                             <div class="form-row">
-                                                <div class="form-group col-md-4">
+                                                <div class="form-group col-md-2">
                                                     <label for="no">No.</label>
                                                     <input type="text" name="no" id="no" class="form-control" required>
                                                 </div>
-                                                <div class="form-group col-md-4">
+                                                <div class="form-group col-md-2">
                                                     <label for="rt">RT.</label>
                                                     <input type="text" name="rt" id="rt" class="form-control" required>
                                                 </div>
-                                                <div class="form-group col-md-4">
+                                                <div class="form-group col-md-2">
                                                     <label for="rw">RW</label>
                                                     <input type="text" name="rw" id="rw" class="form-control" required>
                                                 </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label for="desa_kelurahan">Desa/Kelurahan</label>
+                                                    <input type="text" name="desa_kelurahan" id="desa_kelurahan" class="form-control" required>
+                                                </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="desa_kelurahan">Desa/Kelurahan</label>
-                                                <input type="text" name="desa_kelurahan" id="desa_kelurahan" class="form-control" required>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="kecamatan">Kecamatan</label>
+                                                    <input type="text" name="kecamatan" id="kecamatan" class="form-control" required>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="kabupaten">Kabupaten</label>
+                                                    <input type="text" name="kabupaten" id="kabupaten" class="form-control" required>
+                                                </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="kecamatan">Kecamatan</label>
-                                                <input type="text" name="kecamatan" id="kecamatan" class="form-control" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="kabupaten">Kabupaten</label>
-                                                <input type="text" name="kabupaten" id="kabupaten" class="form-control" required>
-                                            </div>
+
                                         </div>
                                         <div class="modal-footer btn-light">
                                             <button type="button" class="btn btn-success" id="saveButton">Simpan</button>
@@ -538,21 +542,48 @@
                                     <label for="tahun">Tanggal Surat :</label>
                                     <input type="date" class="form-control" id="tanggal_surat" name="tanggal_surat" placeholder="Tanggal Surat" required>
                                 </div>
+
+                                {{-- <script>
+                                    document.getElementById('tanggal_surat').addEventListener('change', function (e) {
+                                        var selectedDate = e.target.value;
+                                        // Call your search function here with the selected date
+                                        searchByDate(selectedDate);
+                                    });
+
+                                    function searchByDate(date) {
+                                        // Implement your search logic here
+                                        console.log("Searching for documents on date: " + date);
+                                    }
+                                </script> --}}
+
+                                <script>
+                                    document.getElementById('tanggal_surat').addEventListener('change', function (e) {
+                                        var selectedDate = e.target.value;
+                                        // Call your search function here with the selected date
+                                        searchByDate(selectedDate);
+                                    });
+
+                                    document.getElementById('reset_date').addEventListener('click', function () {
+                                        document.getElementById('tanggal_surat').value = '';
+                                    });
+
+                                    function searchByDate(date) {
+                                        // Implement your search logic here
+                                        console.log("Searching for documents on date: " + date);
+                                    }
+                                </script>
                             </div>
                             <br>
                             <h5 class="mb-3">Lama hubungan calon </h5>
                             <div class="row">
-                                <div class="col-md-6">
-                                    <label for="tahun">Lama Hubungan Calon (Tahun):</label>
-                                    <input type="number" class="form-control" id="tahun" name="tahun" placeholder="Lama Hubungan Calon (Tahun)" required>
+                                <div class="col-md-3">
+                                    <label for="tahun">Berapa Tahun :</label>
+                                    <input type="number" class="form-control" id="tahun" name="tahun" placeholder="-" required min="0" step="1">
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="bulan">Lama Hubungan Calon (Bulan):</label>
-                                    <input type="number" class="form-control" id="bulan" name="bulan" placeholder="Lama Hubungan Calon (Bulan)" required>
+                                <div class="col-md-3">
+                                    <label for="bulan">Berapa Bulan :</label>
+                                    <input type="number" class="form-control" id="bulan" name="bulan" placeholder="-" required min="0" step="1">
                                 </div>
-                            </div>
-                            <br>
-                            <div class="row">
                                 <div class="col-md-6">
                                     <label for="tahun">penghasilan calon (Rp):</label>
                                     <input type="text" class="form-control" id="penghasilan" name="penghasilan" placeholder="penghasilan calon (Rp)" required>
@@ -569,6 +600,24 @@
                                     });
                                 </script>
                             </div>
+                            <br>
+                            {{-- <div class="row">
+                                <div class="col-md-6">
+                                    <label for="tahun">penghasilan calon (Rp):</label>
+                                    <input type="text" class="form-control" id="penghasilan" name="penghasilan" placeholder="penghasilan calon (Rp)" required>
+                                </div>
+
+                                <script>
+                                    document.getElementById('penghasilan').addEventListener('input', function (e) {
+                                        var value = e.target.value.replace(/\D/g, '');
+                                        if (!isNaN(value) && value.length > 0) {
+                                            e.target.value = 'Rp. ' + parseInt(value).toLocaleString('id-ID');
+                                        } else {
+                                            e.target.value = '';
+                                        }
+                                    });
+                                </script>
+                            </div> --}}
                         </div>
                         <div class="card-body bg-info" style="border: 1px solid white; padding: 20px; margin: 10px;">
                             <h3 class="mb-3">Data Mertua Laki-laki</h3>
@@ -812,7 +861,7 @@
 
 
 
-                            <div class="form-group">
+                            <div class="form-group text-center">
                                 <button type="submit" class="btn btn-primary" id="submitButton">Kirim
                                     Formulir
                                     Permohonan Dispensasi</button>
