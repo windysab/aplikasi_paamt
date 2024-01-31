@@ -492,29 +492,29 @@
                                                 </div>
                                             </div>
                                         </div>
-                                            <script>
-                                                document.getElementById('alamat_calonII').addEventListener('focus', function() {
-                                                    $('#exampleModal_calonII').modal('show');
-                                                });
-                                                document.getElementById('saveButton_calonII').addEventListener('click', function() {
-                                                    var jalan = document.getElementById('jalan_calonII').value;
-                                                    var no = document.getElementById('no_calonII').value;
-                                                    var rt = document.getElementById('rt_calonII').value;
-                                                    var rw = document.getElementById('rw_calonII').value;
-                                                    var desa_kelurahan = document.getElementById('desa_kelurahan_calonII').value;
-                                                    var kecamatan = document.getElementById('kecamatan_calonII').value;
-                                                    var kabupaten = document.getElementById('kabupaten_calonII').value;
-                                                    if (!jalan || !no || !rt || !desa_kelurahan || !kecamatan || !kabupaten) {
-                                                        swal("Peringatan!", "Mohon lengkapi data terlebih dahulu!", "warning");
-                                                        return;
-                                                    }
-                                                    var alamat =
-                                                        `${jalan}, No. ${no}, RT. ${rt}, RW ${rw}, Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}`;
-                                                    document.getElementById('alamat_calonII').value = alamat;
-                                                    $('#exampleModal_calonII').modal('hide');
-                                                });
+                                        <script>
+                                            document.getElementById('alamat_calonII').addEventListener('focus', function() {
+                                                $('#exampleModal_calonII').modal('show');
+                                            });
+                                            document.getElementById('saveButton_calonII').addEventListener('click', function() {
+                                                var jalan = document.getElementById('jalan_calonII').value;
+                                                var no = document.getElementById('no_calonII').value;
+                                                var rt = document.getElementById('rt_calonII').value;
+                                                var rw = document.getElementById('rw_calonII').value;
+                                                var desa_kelurahan = document.getElementById('desa_kelurahan_calonII').value;
+                                                var kecamatan = document.getElementById('kecamatan_calonII').value;
+                                                var kabupaten = document.getElementById('kabupaten_calonII').value;
+                                                if (!jalan || !no || !rt || !desa_kelurahan || !kecamatan || !kabupaten) {
+                                                    swal("Peringatan!", "Mohon lengkapi data terlebih dahulu!", "warning");
+                                                    return;
+                                                }
+                                                var alamat =
+                                                    `${jalan}, No. ${no}, RT. ${rt}, RW ${rw}, Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}`;
+                                                document.getElementById('alamat_calonII').value = alamat;
+                                                $('#exampleModal_calonII').modal('hide');
+                                            });
 
-                                            </script>
+                                        </script>
 
                                     </div>
                                 </div>
@@ -563,13 +563,13 @@
                                 </script> --}}
 
                                 <script>
-                                    document.getElementById('tanggal_surat').addEventListener('change', function (e) {
+                                    document.getElementById('tanggal_surat').addEventListener('change', function(e) {
                                         var selectedDate = e.target.value;
                                         // Call your search function here with the selected date
                                         searchByDate(selectedDate);
                                     });
 
-                                    document.getElementById('reset_date').addEventListener('click', function () {
+                                    document.getElementById('reset_date').addEventListener('click', function() {
                                         document.getElementById('tanggal_surat').value = '';
                                     });
 
@@ -577,6 +577,7 @@
                                         // Implement your search logic here
                                         console.log("Searching for documents on date: " + date);
                                     }
+
                                 </script>
                             </div>
                             <br>
@@ -596,7 +597,7 @@
                                 </div>
 
                                 <script>
-                                    document.getElementById('penghasilan').addEventListener('input', function (e) {
+                                    document.getElementById('penghasilan').addEventListener('input', function(e) {
                                         var value = e.target.value.replace(/\D/g, '');
                                         if (!isNaN(value) && value.length > 0) {
                                             e.target.value = 'Rp. ' + parseInt(value).toLocaleString('id-ID');
@@ -604,6 +605,7 @@
                                             e.target.value = '';
                                         }
                                     });
+
                                 </script>
                             </div>
                             <br>
@@ -718,34 +720,34 @@
                                 </div>
                             </div>
 
-                                <!-- Modal -->
-                                <script>
-                                    document.getElementById('alamat_calonML').addEventListener('focus', function() {
-                                        $('#exampleModal_calonML').modal('show');
-                                    });
-                                    document.getElementById('saveButton_calonML').addEventListener('click', function() {
-                                        var jalan = document.getElementById('jalan_calonML').value;
-                                        var no = document.getElementById('no_calonML').value;
-                                        var rt = document.getElementById('rt_calonML').value;
-                                        var rw = document.getElementById('rw_calonML').value;
-                                        var desa_kelurahan = document.getElementById('desa_kelurahan_calonML').value;
-                                        var kecamatan = document.getElementById('kecamatan_calonML').value;
-                                        var kabupaten = document.getElementById('kabupaten_calonML').value;
+                            <!-- Modal -->
+                            <script>
+                                document.getElementById('alamat_calonML').addEventListener('focus', function() {
+                                    $('#exampleModal_calonML').modal('show');
+                                });
+                                document.getElementById('saveButton_calonML').addEventListener('click', function() {
+                                    var jalan = document.getElementById('jalan_calonML').value;
+                                    var no = document.getElementById('no_calonML').value;
+                                    var rt = document.getElementById('rt_calonML').value;
+                                    var rw = document.getElementById('rw_calonML').value;
+                                    var desa_kelurahan = document.getElementById('desa_kelurahan_calonML').value;
+                                    var kecamatan = document.getElementById('kecamatan_calonML').value;
+                                    var kabupaten = document.getElementById('kabupaten_calonML').value;
 
-                                        if (!jalan || !no || !rt || !desa_kelurahan || !kecamatan || !kabupaten) {
-                                            swal("Peringatan!", "Mohon lengkapi data terlebih dahulu!", "warning");
-                                            return;
-                                        }
+                                    if (!jalan || !no || !rt || !desa_kelurahan || !kecamatan || !kabupaten) {
+                                        swal("Peringatan!", "Mohon lengkapi data terlebih dahulu!", "warning");
+                                        return;
+                                    }
 
-                                        var alamat =
-                                            `${jalan}, No. ${no}, RT. ${rt}, RW ${rw}, Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}`;
+                                    var alamat =
+                                        `${jalan}, No. ${no}, RT. ${rt}, RW ${rw}, Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}`;
 
-                                        document.getElementById('alamat_calonML').value = alamat;
-                                        $('#exampleModal_calonML').modal('hide');
-                                    });
-                                    // Rest of your JavaScript code
+                                    document.getElementById('alamat_calonML').value = alamat;
+                                    $('#exampleModal_calonML').modal('hide');
+                                });
+                                // Rest of your JavaScript code
 
-                                </script>
+                            </script>
 
                             <h3 class="mb-3">Data Mertua Perempuan</h3>
                             <div class="row">
@@ -840,30 +842,30 @@
                                     </div>
                                 </div>
                             </div>
-                                <script>
-                                    document.getElementById('alamat_calonMP').addEventListener('focus', function() {
-                                        $('#exampleModal_calonMP').modal('show');
-                                    });
-                                    document.getElementById('saveButton_calonMP').addEventListener('click', function() {
-                                        var jalan = document.getElementById('jalan_calonMP').value;
-                                        var no = document.getElementById('no_calonMP').value;
-                                        var rt = document.getElementById('rt_calonMP').value;
-                                        var rw = document.getElementById('rw_calonMP').value;
-                                        var desa_kelurahan = document.getElementById('desa_kelurahan_calonMP').value;
-                                        var kecamatan = document.getElementById('kecamatan_calonMP').value;
-                                        var kabupaten = document.getElementById('kabupaten_calonMP').value;
-                                        if (!jalan || !no || !rt || !desa_kelurahan || !kecamatan || !kabupaten) {
-                                            swal("Peringatan!", "Mohon lengkapi data terlebih dahulu!", "warning");
-                                            return;
-                                        }
-                                        var alamat =
-                                            `${jalan}, No. ${no}, RT. ${rt}, RW ${rw}, Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}`;
+                            <script>
+                                document.getElementById('alamat_calonMP').addEventListener('focus', function() {
+                                    $('#exampleModal_calonMP').modal('show');
+                                });
+                                document.getElementById('saveButton_calonMP').addEventListener('click', function() {
+                                    var jalan = document.getElementById('jalan_calonMP').value;
+                                    var no = document.getElementById('no_calonMP').value;
+                                    var rt = document.getElementById('rt_calonMP').value;
+                                    var rw = document.getElementById('rw_calonMP').value;
+                                    var desa_kelurahan = document.getElementById('desa_kelurahan_calonMP').value;
+                                    var kecamatan = document.getElementById('kecamatan_calonMP').value;
+                                    var kabupaten = document.getElementById('kabupaten_calonMP').value;
+                                    if (!jalan || !no || !rt || !desa_kelurahan || !kecamatan || !kabupaten) {
+                                        swal("Peringatan!", "Mohon lengkapi data terlebih dahulu!", "warning");
+                                        return;
+                                    }
+                                    var alamat =
+                                        `${jalan}, No. ${no}, RT. ${rt}, RW ${rw}, Desa/Kelurahan ${desa_kelurahan}, Kecamatan ${kecamatan}, Kabupaten ${kabupaten}`;
 
-                                        document.getElementById('alamat_calonMP').value = alamat;
-                                        $('#exampleModal_calonMP').modal('hide');
-                                    });
+                                    document.getElementById('alamat_calonMP').value = alamat;
+                                    $('#exampleModal_calonMP').modal('hide');
+                                });
 
-                                </script>
+                            </script>
 
 
 
@@ -892,22 +894,25 @@
                                     var inputs = document.getElementsByTagName('input');
                                     var emptyInputs = []; // Array to store the ids of empty inputs
 
-                                    for (var i = 0; i < inputs.length; i++) {
-                                        if (inputs[i].value === '') {
-                                            var inputName = inputs[i].getAttribute('id'); // Get the id of the input
-                                            swal("Peringatan!", "Mohon lengkapi kolom " + inputName + " terlebih dahulu!", "warning");
-                                            return; // Add the id to the array
-                                        }
-                                    }
+                                    var exemptedInputs = ['rw', 'rw_tergugat', 'rw_calon', 'rw_calonII', 'rw_calonML', 'rw_calonMP'];
 
-                                    if (emptyInputs.length > 0) { // If there are any empty inputs
-                                        event.preventDefault(); // Prevent the default form submission
-                                        swal("Peringatan!", "Mohon lengkapi kolom " + emptyInputs.join(', ') + " terlebih dahulu!", "warning");
-                                        return;
+                                    for (var i = 0; i < inputs.length; i++) {
+                                        var inputName = inputs[i].getAttribute('id');
+                                        if (inputs[i].value === '' && !exemptedInputs.includes(inputName)) {
+                                            emptyInputs.push(inputName);
+                                            return;
+                                        }
+
+                                        if (emptyInputs.length > 0) {
+                                            event.preventDefault(); // Prevent the default form submission
+                                            swal("Peringatan!", "Mohon lengkapi kolom " + emptyInputs.join(', ') + " terlebih dahulu!", "warning");
+                                            return;
+                                        }
+
                                     }
                                 });
-                            </script>
 
+                            </script>
                         </div>
                 </div>
                 </form>

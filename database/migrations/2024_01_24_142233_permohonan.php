@@ -73,7 +73,7 @@ class Permohonan extends Migration
             $table->integer('bulan');
 
             // Penghasilan calon suami
-            $table->integer('penghasilan');
+            $table->string('penghasilan');
 
             /*
              Data Mertua Laki-laki
