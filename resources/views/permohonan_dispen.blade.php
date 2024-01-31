@@ -73,7 +73,7 @@
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header bg-info text-white">
-                                            <h5 class="modal-title" id="exampleModalLabel">Alamat Calon Pemohon I</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Alamat Pemohon I</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -193,8 +193,8 @@
                                 <div class="modal fade" id="exampleModal_pemohonII" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel_pemohonII" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
-                                            <div class="modal-header bg-success text-white">
-                                                <h5 class="modal-title" id="exampleModalLabel_pemohonII">Alamat</h5>
+                                            <div class="modal-header bg-info text-white">
+                                                <h5 class="modal-title" id="exampleModalLabel_pemohonII">Alamat Pemohon II</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -206,33 +206,35 @@
                                                     <input type="text" name="jalan_tergugat" id="jalan_tergugat" class="form-control" required>
                                                 </div>
                                                 <div class="form-row">
-                                                    <div class="form-group col-md-4">
+                                                    <div class="form-group col-md-2">
                                                         <label for="no_tergugat">No.</label>
                                                         <input type="text" name="no_tergugat" id="no_tergugat" class="form-control" required>
                                                     </div>
-                                                    <div class="form-group col-md-4">
+                                                    <div class="form-group col-md-2">
                                                         <label for="rt_tergugat">RT.</label>
                                                         <input type="text" name="rt_tergugat" id="rt_tergugat" class="form-control" required>
                                                     </div>
-                                                    <div class="form-group col-md-4">
+                                                    <div class="form-group col-md-2">
                                                         <label for="rw_tergugat">RW</label>
                                                         <input type="text" name="rw_tergugat" id="rw_tergugat" class="form-control" required>
                                                     </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="desa_kelurahan_tergugat">Desa/Kelurahan</label>
+                                                        <input type="text" name="desa_kelurahan_tergugat" id="desa_kelurahan_tergugat" class="form-control" required>
+                                                    </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="desa_kelurahan_tergugat">Desa/Kelurahan</label>
-                                                    <input type="text" name="desa_kelurahan_tergugat" id="desa_kelurahan_tergugat" class="form-control" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="kecamatan_tergugat">Kecamatan</label>
-                                                    <input type="text" name="kecamatan_tergugat" id="kecamatan_tergugat" class="form-control" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="kabupaten_tergugat">Kabupaten</label>
-                                                    <input type="text" name="kabupaten_tergugat" id="kabupaten_tergugat" class="form-control" required>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="kecamatan_tergugat">Kecamatan</label>
+                                                        <input type="text" name="kecamatan_tergugat" id="kecamatan_tergugat" class="form-control" required>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="kabupaten_tergugat">Kabupaten</label>
+                                                        <input type="text" name="kabupaten_tergugat" id="kabupaten_tergugat" class="form-control" required>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="modal-footer btn btn-light">
+                                            <div class="modal-footer btn-light">
                                                 <button type="button" id="saveButton_tergugat" class="btn btn-success">Simpan</button>
                                                 <button type="button" class="btn btn-info" data-dismiss="modal">Tutup</button>
                                             </div>
@@ -319,8 +321,8 @@
                                 <div class="modal fade" id="exampleModal_calon" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel_calon" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
-                                            <div class="modal-header bg-success text-white">
-                                                <h5 class="modal-title" id="exampleModalLabel_calon">Alamat</h5>
+                                            <div class="modal-header bg-info text-white">
+                                                <h5 class="modal-title" id="exampleModalLabel_calon">Alamat Calon Suami/Isteri</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -332,30 +334,32 @@
                                                     <input type="text" name="jalan_calon" id="jalan_calon" class="form-control" required>
                                                 </div>
                                                 <div class="form-row">
-                                                    <div class="form-group col-md-4">
+                                                    <div class="form-group col-md-2">
                                                         <label for="no_calon">No.</label>
                                                         <input type="text" name="no_calon" id="no_calon" class="form-control" required>
                                                     </div>
-                                                    <div class="form-group col-md-4">
+                                                    <div class="form-group col-md-2">
                                                         <label for="rt_calon">RT.</label>
                                                         <input type="text" name="rt_calon" id="rt_calon" class="form-control" required>
                                                     </div>
-                                                    <div class="form-group col-md-4">
+                                                    <div class="form-group col-md-2">
                                                         <label for="rw_calon">RW</label>
                                                         <input type="text" name="rw_calon" id="rw_calon" class="form-control" required>
                                                     </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="desa_kelurahan_calon">Desa/Kelurahan</label>
+                                                        <input type="text" name="desa_kelurahan_calon" id="desa_kelurahan_calon" class="form-control" required>
+                                                    </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="desa_kelurahan_calon">Desa/Kelurahan</label>
-                                                    <input type="text" name="desa_kelurahan_calon" id="desa_kelurahan_calon" class="form-control" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="kecamatan_calon">Kecamatan</label>
-                                                    <input type="text" name="kecamatan_calon" id="kecamatan_calon" class="form-control" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="kabupaten_calon">Kabupaten</label>
-                                                    <input type="text" name="kabupaten_calon" id="kabupaten_calon" class="form-control" required>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="kecamatan_calon">Kecamatan</label>
+                                                        <input type="text" name="kecamatan_calon" id="kecamatan_calon" class="form-control" required>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="kabupaten_calon">Kabupaten</label>
+                                                        <input type="text" name="kabupaten_calon" id="kabupaten_calon" class="form-control" required>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="modal-footer btn btn-light">
@@ -439,9 +443,8 @@
                                         <div class="modal fade" id="exampleModal_calonII" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel_calonII" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
-                                                    <div class="modal-header bg-success text-white">
-                                                        <h5 class="modal-title" id="exampleModalLabel_calonII">Alamat
-                                                        </h5>
+                                                    <div class="modal-header bg-info text-white">
+                                                        <h5 class="modal-title" id="exampleModalLabel_calonII">Alamat Calon Suami/Isteri</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -453,30 +456,32 @@
                                                             <input type="text" name="jalan_calonII" id="jalan_calonII" class="form-control" required>
                                                         </div>
                                                         <div class="form-row">
-                                                            <div class="form-group col-md-4">
+                                                            <div class="form-group col-md-2">
                                                                 <label for="no_calonII">No.</label>
                                                                 <input type="text" name="no_calonII" id="no_calonII" class="form-control" required>
                                                             </div>
-                                                            <div class="form-group col-md-4">
+                                                            <div class="form-group col-md-2">
                                                                 <label for="rt_calonII">RT.</label>
                                                                 <input type="text" name="rt_calonII" id="rt_calonII" class="form-control" required>
                                                             </div>
-                                                            <div class="form-group col-md-4">
+                                                            <div class="form-group col-md-2">
                                                                 <label for="rw_calonII">RW</label>
                                                                 <input type="text" name="rw_calonII" id="rw_calonII" class="form-control" required>
                                                             </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="desa_kelurahan_calonII">Desa/Kelurahan</label>
+                                                                <input type="text" name="desa_kelurahan_calonII" id="desa_kelurahan_calonII" class="form-control" required>
+                                                            </div>
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label for="desa_kelurahan_calonII">Desa/Kelurahan</label>
-                                                            <input type="text" name="desa_kelurahan_calonII" id="desa_kelurahan_calonII" class="form-control" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="kecamatan_calonII">Kecamatan</label>
-                                                            <input type="text" name="kecamatan_calonII" id="kecamatan_calonII" class="form-control" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="kabupaten_calonII">Kabupaten</label>
-                                                            <input type="text" name="kabupaten_calonII" id="kabupaten_calonII" class="form-control" required>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="kecamatan_calonII">Kecamatan</label>
+                                                                <input type="text" name="kecamatan_calonII" id="kecamatan_calonII" class="form-control" required>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="kabupaten_calonII">Kabupaten</label>
+                                                                <input type="text" name="kabupaten_calonII" id="kabupaten_calonII" class="form-control" required>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer btn btn-light">
@@ -486,6 +491,7 @@
 
                                                 </div>
                                             </div>
+                                        </div>
                                             <script>
                                                 document.getElementById('alamat_calonII').addEventListener('focus', function() {
                                                     $('#exampleModal_calonII').modal('show');
@@ -509,7 +515,7 @@
                                                 });
 
                                             </script>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -662,11 +668,8 @@
                             <div class="modal fade" id="exampleModal_calonML" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel_calonML" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
-                                        <div class="modal-header bg-success text-white">
-                                            <h5 class="modal-title" id="exampleModalLabel_calonML">Alamat
-                                                Calon
-                                                Mertua Laki-laki
-                                            </h5>
+                                        <div class="modal-header bg-info text-white">
+                                            <h5 class="modal-title" id="exampleModalLabel_calonML">Alamat Calon Mertua Laki-laki</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -678,30 +681,32 @@
                                                 <input type="text" name="jalan_calonML" id="jalan_calonML" class="form-control" required>
                                             </div>
                                             <div class="form-row">
-                                                <div class="form-group col-md-4">
+                                                <div class="form-group col-md-2">
                                                     <label for="no_calonML">No.</label>
                                                     <input type="text" name="no_calonML" id="no_calonML" class="form-control" required>
                                                 </div>
-                                                <div class="form-group col-md-4">
+                                                <div class="form-group col-md-2">
                                                     <label for="rt_calonML">RT.</label>
                                                     <input type="text" name="rt_calonML" id="rt_calonML" class="form-control" required>
                                                 </div>
-                                                <div class="form-group col-md-4">
+                                                <div class="form-group col-md-2">
                                                     <label for="rw_calonML">RW</label>
                                                     <input type="text" name="rw_calonML" id="rw_calonML" class="form-control" required>
                                                 </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="desa_kelurahan_calonML">Desa/Kelurahan</label>
+                                                    <input type="text" name="desa_kelurahan_calonML" id="desa_kelurahan_calonML" class="form-control" required>
+                                                </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="desa_kelurahan_calonML">Desa/Kelurahan</label>
-                                                <input type="text" name="desa_kelurahan_calonML" id="desa_kelurahan_calonML" class="form-control" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="kecamatan_calonML">Kecamatan</label>
-                                                <input type="text" name="kecamatan_calonML" id="kecamatan_calonML" class="form-control" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="kabupaten_calonML">Kabupaten</label>
-                                                <input type="text" name="kabupaten_calonML" id="kabupaten_calonML" class="form-control" required>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="kecamatan_calonML">Kecamatan</label>
+                                                    <input type="text" name="kecamatan_calonML" id="kecamatan_calonML" class="form-control" required>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="kabupaten_calonML">Kabupaten</label>
+                                                    <input type="text" name="kabupaten_calonML" id="kabupaten_calonML" class="form-control" required>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer btn btn-light">
@@ -711,6 +716,7 @@
 
                                     </div>
                                 </div>
+                            </div>
 
                                 <!-- Modal -->
                                 <script>
@@ -740,7 +746,7 @@
                                     // Rest of your JavaScript code
 
                                 </script>
-                            </div>
+
                             <h3 class="mb-3">Data Mertua Perempuan</h3>
                             <div class="row">
                                 <div class="col-md-6">
@@ -785,10 +791,8 @@
                             <div class="modal fade" id="exampleModal_calonMP" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel_calonMP" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
-                                        <div class="modal-header bg-success text-white">
-                                            <h5 class="modal-title" id="exampleModalLabel_calonMP">Alamat
-                                                Mertua Perempuan
-                                            </h5>
+                                        <div class="modal-header bg-info text-white">
+                                            <h5 class="modal-title" id="exampleModalLabel_calonMP">Alamat Mertua Perempuan</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -800,30 +804,32 @@
                                                 <input type="text" name="jalan_calonMP" id="jalan_calonMP" class="form-control" required>
                                             </div>
                                             <div class="form-row">
-                                                <div class="form-group col-md-4">
+                                                <div class="form-group col-md-2">
                                                     <label for="no_calonMP">No.</label>
                                                     <input type="text" name="no_calonMP" id="no_calonMP" class="form-control" required>
                                                 </div>
-                                                <div class="form-group col-md-4">
+                                                <div class="form-group col-md-2">
                                                     <label for="rt_calonMP">RT.</label>
                                                     <input type="text" name="rt_calonMP" id="rt_calonMP" class="form-control" required>
                                                 </div>
-                                                <div class="form-group col-md-4">
+                                                <div class="form-group col-md-2">
                                                     <label for="rw_calonMP">RW</label>
                                                     <input type="text" name="rw_calonMP" id="rw_calonMP" class="form-control" required>
                                                 </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="desa_kelurahan_calonMP">Desa/Kelurahan</label>
+                                                    <input type="text" name="desa_kelurahan_calonMP" id="desa_kelurahan_calonMP" class="form-control" required>
+                                                </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="desa_kelurahan_calonMP">Desa/Kelurahan</label>
-                                                <input type="text" name="desa_kelurahan_calonMP" id="desa_kelurahan_calonMP" class="form-control" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="kecamatan_calonMP">Kecamatan</label>
-                                                <input type="text" name="kecamatan_calonMP" id="kecamatan_calonMP" class="form-control" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="kabupaten_calonMP">Kabupaten</label>
-                                                <input type="text" name="kabupaten_calonMP" id="kabupaten_calonMP" class="form-control" required>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="kecamatan_calonMP">Kecamatan</label>
+                                                    <input type="text" name="kecamatan_calonMP" id="kecamatan_calonMP" class="form-control" required>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="kabupaten_calonMP">Kabupaten</label>
+                                                    <input type="text" name="kabupaten_calonMP" id="kabupaten_calonMP" class="form-control" required>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer btn btn-light">
@@ -833,6 +839,7 @@
 
                                     </div>
                                 </div>
+                            </div>
                                 <script>
                                     document.getElementById('alamat_calonMP').addEventListener('focus', function() {
                                         $('#exampleModal_calonMP').modal('show');
@@ -857,7 +864,7 @@
                                     });
 
                                 </script>
-                            </div>
+
 
 
 
@@ -866,7 +873,7 @@
                                     Formulir
                                     Permohonan Dispensasi</button>
                             </div>
-                            <script>
+                            {{-- <script>
                                 document.getElementById('submitButton').addEventListener('click', function(event) {
                                     var inputs = document.getElementsByTagName('input');
                                     for (var i = 0; i < inputs.length; i++) {
@@ -879,6 +886,26 @@
                                     }
                                 });
 
+                            </script> --}}
+                            <script>
+                                document.getElementById('submitButton').addEventListener('click', function(event) {
+                                    var inputs = document.getElementsByTagName('input');
+                                    var emptyInputs = []; // Array to store the ids of empty inputs
+
+                                    for (var i = 0; i < inputs.length; i++) {
+                                        if (inputs[i].value === '') {
+                                            var inputName = inputs[i].getAttribute('id'); // Get the id of the input
+                                            swal("Peringatan!", "Mohon lengkapi kolom " + inputName + " terlebih dahulu!", "warning");
+                                            return; // Add the id to the array
+                                        }
+                                    }
+
+                                    if (emptyInputs.length > 0) { // If there are any empty inputs
+                                        event.preventDefault(); // Prevent the default form submission
+                                        swal("Peringatan!", "Mohon lengkapi kolom " + emptyInputs.join(', ') + " terlebih dahulu!", "warning");
+                                        return;
+                                    }
+                                });
                             </script>
 
                         </div>
