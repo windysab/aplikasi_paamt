@@ -69,8 +69,20 @@ class PermohonanDispen extends Model
         'kabupaten',
         'surat_keterangan',
         'nomor_surat',
+        'tanggal_surat',
         'tahun',
         'bulan',
         'penghasilan',
+        'nama_mertua_laki',
+        'umur_mertua_laki',
+        'pekerjaan_mertua_laki',
+        'pendidikan_mertua_laki',
+        'alamat_mertua_laki',
+        'nama_mertua_perempuan',
+        'umur_mertua_perempuan',
+        'pekerjaan_mertua_perempuan',
+        'pendidikan_mertua_perempuan',
+        'alamat_mertua_perempuan',
+
     ];
 }

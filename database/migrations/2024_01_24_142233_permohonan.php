@@ -67,6 +67,7 @@ class Permohonan extends Migration
             $table->string('kabupaten');
             $table->string('surat_keterangan');
             $table->string('nomor_surat');
+            $table->date('tanggal_surat');
             //Lama hubungan calon
             $table->integer('tahun');
             $table->integer('bulan');
@@ -74,25 +75,25 @@ class Permohonan extends Migration
             // Penghasilan calon suami
             $table->integer('penghasilan');
 
-            // /*
-            //  Data Mertua Laki-laki
-            // */
+            /*
+             Data Mertua Laki-laki
+            */
 
-            // $table->string('nama_mertua_laki');
-            // $table->integer('umur_mertua_laki');
-            // $table->string('pekerjaan_mertua_laki');
-            // $table->string('pendidikan_mertua_laki');
-            // $table->text('alamat_mertua_laki');
+            $table->string('nama_mertua_laki');
+            $table->integer('umur_mertua_laki');
+            $table->string('pekerjaan_mertua_laki');
+            $table->string('pendidikan_mertua_laki');
+            $table->text('alamat_mertua_laki');
 
-            // /*
-            //  Data Mertua Perempuan
-            // */
+            /*
+             Data Mertua Perempuan
+            */
 
-            // $table->string('nama_mertua_perempuan');
-            // $table->integer('umur_mertua_perempuan');
-            // $table->string('pekerjaan_mertua_perempuan');
-            // $table->string('pendidikan_mertua_perempuan');
-            // $table->text('alamat_mertua_perempuan');
+            $table->string('nama_mertua_perempuan');
+            $table->integer('umur_mertua_perempuan');
+            $table->string('pekerjaan_mertua_perempuan');
+            $table->string('pendidikan_mertua_perempuan');
+            $table->text('alamat_mertua_perempuan');
 
 
             $table->timestamps();

@@ -117,22 +117,28 @@ class GugatanCeraiController extends Controller
 
         // Replace certain characters in the name with a hyphen
         // $filename = 'gugatan_cerai_' . str_replace(['/', '\\', ':', '*', '?', '«', '<', '>', '|'], '-', $gugatanCerai->nama_penggugat) . '.docx';
-        $filename = 'gugatan_cerai_' . preg_replace("/[^A-Za-z0-9 ]/", '', $gugatanCerai->nama_penggugat) . '.docx';
+        // $filename = 'gugatan_cerai_' . preg_replace("/[^A-Za-z0-9 ]/", '', $gugatanCerai->nama_penggugat) . '.docx';
 
-        // Tentukan lokasi penyimpanan file hasil replace
-        $destinationFolder = 'C:\\Users\\user\\Documents\\uji coba\\';
+        // // Tentukan lokasi penyimpanan file hasil replace
+        // $destinationFolder = 'C:\\Users\\user\\Documents\\uji coba\\';
 
-        // Membuat path lengkap ke file
-        $filepath = $destinationFolder . $filename;
+        // // Membuat path lengkap ke file
+        // $filepath = $destinationFolder . $filename;
 
-        // Simpan hasil TemplateProcessor sebagai file Word
-        $templateProcessor->saveAs($filepath);
+        // // Simpan hasil TemplateProcessor sebagai file Word
+        // $templateProcessor->saveAs($filepath);
 
-        // Sanitize the fallback filename
-        $fallbackFilename = str_replace(['/', '\\', ':', '*', '?', '«', '<', '>', '|'], '-', $filename);
+        // // Sanitize the fallback filename
+        // $fallbackFilename = str_replace(['/', '\\', ':', '*', '?', '«', '<', '>', '|'], '-', $filename);
 
-        // Kembalikan file untuk diunduh
-        return response()->download($filepath, $fallbackFilename)->deleteFileAfterSend(true);
+        // // Kembalikan file untuk diunduh
+        // return response()->download($filepath, $fallbackFilename)->deleteFileAfterSend(true);
+
+        $fileName = 'gugatan_cerai_' . $gugatanCerai->nama_penggugat . '.docx';
+        $templateProcessor->saveAs($fileName);
+
+        // Return the Word document...
+        return response()->download($fileName);
     }
 
     public function exportGugatanCerai()
@@ -145,7 +151,7 @@ class GugatanCeraiController extends Controller
         $gugatanCerai = GugatanCerai::find($id);
         return view('gugatan_cerai.edit', compact('gugatanCerai'));
     }
-    
+
     public function update(Request $request, $id)
     {
         $pendidikan_tergugat = $request->input('pendidikan_tergugat');

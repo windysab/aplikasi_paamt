@@ -42,19 +42,20 @@ class PermohonanDispenController extends Controller
             'kabupaten' => 'required',
             'surat_keterangan' => 'required',
             'nomor_surat' => 'required',
+            'tanggal_surat' => 'required',
             'tahun' => 'required',
             'bulan' => 'required',
             'penghasilan' => 'required',
-            // 'nama_mertua_laki' => 'required',
-            // 'umur_mertua_laki' => 'required',
-            // 'pekerjaan_mertua_laki' => 'required',
-            // 'pendidikan_mertua_laki' => 'required',
-            // 'alamat_mertua_laki' => 'required',
-            // 'nama_mertua_perempuan' => 'required',
-            // 'umur_mertua_perempuan' => 'required',
-            // 'pekerjaan_mertua_perempuan' => 'required',
-            // 'pendidikan_mertua_perempuan' => 'required',
-            // 'alamat_mertua_perempuan' => 'required',
+            'nama_mertua_laki' => 'required',
+            'umur_mertua_laki' => 'required',
+            'pekerjaan_mertua_laki' => 'required',
+            'pendidikan_mertua_laki' => 'required',
+            'alamat_mertua_laki' => 'required',
+            'nama_mertua_perempuan' => 'required',
+            'umur_mertua_perempuan' => 'required',
+            'pekerjaan_mertua_perempuan' => 'required',
+            'pendidikan_mertua_perempuan' => 'required',
+            'alamat_mertua_perempuan' => 'required',
 
 
         ]);
@@ -77,10 +78,15 @@ class PermohonanDispenController extends Controller
     //     return view('permohonan_dispen.detail', compact('permohonan'));
     // }
 
+    // public function show($id)
+    // {
+    //     $permohonan = PermohonanDispen::findOrFail($id);
+
+    //     return view('permohonan_dispen.detail', ['permohonan' => $permohonan]);
+    // }
     public function show($id)
     {
-        $permohonan = PermohonanDispen::findOrFail($id);
-
+        $permohonan = PermohonanDispen::find($id);
         return view('permohonan_dispen.detail', ['permohonan' => $permohonan]);
     }
 
@@ -133,28 +139,45 @@ class PermohonanDispenController extends Controller
         $templateProcessor->setValue('pekerjaan_calonII', $permohonan->pekerjaan_calonII);
         $templateProcessor->setValue('pendidikan_calonII', $permohonan->pendidikan_calonII);
         $templateProcessor->setValue('alamat_calonII', $permohonan->alamat_calonII);
+        $templateProcessor->setValue('nama_mertua_laki', $permohonan->nama_mertua_laki);
+        $templateProcessor->setValue('umur_mertua_laki', $permohonan->umur_mertua_laki);
+        $templateProcessor->setValue('pekerjaan_mertua_laki', $permohonan->pekerjaan_mertua_laki);
+        $templateProcessor->setValue('pendidikan_mertua_laki', $permohonan->pendidikan_mertua_laki);
+        $templateProcessor->setValue('alamat_mertua_laki', $permohonan->alamat_mertua_laki);
+        $templateProcessor->setValue('nama_mertua_perempuan', $permohonan->nama_mertua_perempuan);
+        $templateProcessor->setValue('umur_mertua_perempuan', $permohonan->umur_mertua_perempuan);
+        $templateProcessor->setValue('pekerjaan_mertua_perempuan', $permohonan->pekerjaan_mertua_perempuan);
+        $templateProcessor->setValue('pendidikan_mertua_perempuan', $permohonan->pendidikan_mertua_perempuan);
+        $templateProcessor->setValue('alamat_mertua_perempuan', $permohonan->alamat_mertua_perempuan);
 
-        // Replace certain characters in the name with a hyphen
-        // $filename = 'gugatan_cerai_' . str_replace(['/', '\\', ':', '*', '?', '«', '<', '>', '|'], '-', $gugatanCerai->nama_penggugat) . '.docx';
 
-        $filename = 'permohonan_dispen_' . preg_replace("/[^A-Za-z0-9 ]/", '', $permohonan->nama_pemohonI) . '.docx';
 
-        // Tentukan lokasi penyimpanan file hasil replace
-        $destinationFolder = 'C:\\Users\\user\\Documents\\uji coba\\';
 
-        // Membuat path lengkap ke file
-        $filepath = $destinationFolder . $filename;
 
-        // Simpan hasil TemplateProcessor sebagai file Word
-        $templateProcessor->saveAs($filepath);
+        // $filename = 'permohonan_dispen_' . preg_replace("/[^A-Za-z0-9 ]/", '', $permohonan->nama_pemohonI) . '.docx';
 
-        // Sanitize the fallback filename
-        $fallbackFilename = str_replace(['/', '\\', ':', '*', '?', '«', '<', '>', '|'], '-', $filename);
+        // // Tentukan lokasi penyimpanan file hasil replace
+        // $destinationFolder = 'C:\\Users\\user\\Documents\\uji coba\\';
 
-        // Kembalikan file untuk diunduh
-        return response()->download($filepath, $fallbackFilename)->deleteFileAfterSend(true);
+        // // Membuat path lengkap ke file
+        // $filepath = $destinationFolder . $filename;
 
+        // // Simpan hasil TemplateProcessor sebagai file Word
+        // $templateProcessor->saveAs($filepath);
+
+        // // Sanitize the fallback filename
+        // $fallbackFilename = str_replace(['/', '\\', ':', '*', '?', '«', '<', '>', '|'], '-', $filename);
+
+        // // Kembalikan file untuk diunduh
         // return response()->download($filepath, $fallbackFilename)->deleteFileAfterSend(true);
+
+        // // return response()->download($filepath, $fallbackFilename)->deleteFileAfterSend(true);
+
+        $fileName = 'permohonan_dispen_' . $permohonan->nama_pemohonI . '.docx';
+        $templateProcessor->saveAs($fileName);
+
+        // Return the Word document...
+        return response()->download($fileName);
     }
 
 
