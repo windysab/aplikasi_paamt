@@ -890,6 +890,30 @@
 
                             </script> --}}
                             <script>
+                                // document.getElementById('submitButton').addEventListener('click', function(event) {
+                                //     var inputs = document.getElementsByTagName('input');
+                                //     var emptyInputs = []; // Array to store the ids of empty inputs
+
+                                //     var exemptedInputs = ['rw', 'rw_tergugat', 'rw_calon', 'rw_calonII', 'rw_calonML', 'rw_calonMP'];
+
+                                //     for (var i = 0; i < inputs.length; i++) {
+                                //         var inputName = inputs[i].getAttribute('id');
+                                //         if (inputs[i].value === '' && !exemptedInputs.includes(inputName)) {
+                                //             emptyInputs.push(inputName);
+
+
+                                //         }else if (emptyInputs.length > 0) {
+                                //             event.preventDefault(); // Prevent the default form submission
+                                //             swal("Peringatan!", "Mohon lengkapi kolom " + emptyInputs.join(', ') + " terlebih dahulu!", "warning");
+                                //             return;
+                                //         }else if {
+                                //             continue;
+
+
+
+
+                                //     }
+                                // });
                                 document.getElementById('submitButton').addEventListener('click', function(event) {
                                     var inputs = document.getElementsByTagName('input');
                                     var emptyInputs = []; // Array to store the ids of empty inputs
@@ -898,17 +922,14 @@
 
                                     for (var i = 0; i < inputs.length; i++) {
                                         var inputName = inputs[i].getAttribute('id');
-                                        if (inputs[i].value === '' && !exemptedInputs.includes(inputName)) {
+                                        if (inputs[i].value.trim() === '' && !exemptedInputs.includes(inputName)) {
                                             emptyInputs.push(inputName);
-                                            return;
                                         }
+                                    }
 
-                                        if (emptyInputs.length > 0) {
-                                            event.preventDefault(); // Prevent the default form submission
-                                            swal("Peringatan!", "Mohon lengkapi kolom " + emptyInputs.join(', ') + " terlebih dahulu!", "warning");
-                                            return;
-                                        }
-
+                                    if (emptyInputs.length > 0) {
+                                        event.preventDefault(); // Prevent the default form submission
+                                        swal("Peringatan!", "Mohon lengkapi kolom " + emptyInputs.join(', ') + " terlebih dahulu!", "warning");
                                     }
                                 });
 
