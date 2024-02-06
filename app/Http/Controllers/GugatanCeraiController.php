@@ -27,6 +27,7 @@ class GugatanCeraiController extends Controller
             'nama_penggugat' => 'required',
             'binti_penggugat' => 'required',
             'umur_penggugat' => 'required|integer',
+            'agama_penggugat' => 'required',
             'pekerjaan_penggugat' => 'required',
             // 'pendidikan_penggugat' => 'required',
             'pendidikan_penggugat' => [
@@ -44,14 +45,15 @@ class GugatanCeraiController extends Controller
             'alamat_penggugat' => 'required',
             'nama_tergugat' => 'required',
             'bin_tergugat' => 'required',
+            'agama_tergugat' => 'required',
             'umur_tergugat' => 'required|integer',
             'pekerjaan_tergugat' => 'required',
             'pendidikan_tergugat' => 'required',
             'alamat_tergugat' => 'required',
-            'alasan_cerai' => 'required',
-            'alasan_cerai2' => 'required',
-            'alasan_cerai3' => 'required',
-            'separation_details' => 'required',
+            // 'alasan_cerai' => 'required',
+            // 'alasan_cerai2' => 'required',
+            // 'alasan_cerai3' => 'required',
+            // 'separation_details' => 'required',
 
 
             // Tambahkan validasi lainnya sesuai kebutuhan
