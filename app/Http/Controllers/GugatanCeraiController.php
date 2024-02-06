@@ -50,10 +50,10 @@ class GugatanCeraiController extends Controller
             'pekerjaan_tergugat' => 'required',
             'pendidikan_tergugat' => 'required',
             'alamat_tergugat' => 'required',
-            // 'alasan_cerai' => 'required',
-            // 'alasan_cerai2' => 'required',
-            // 'alasan_cerai3' => 'required',
-            // 'separation_details' => 'required',
+            'alasan_cerai' => 'required',
+            'alasan_cerai2' => 'required',
+            'alasan_cerai3' => 'required',
+            'separation_details' => 'required',
 
 
             // Tambahkan validasi lainnya sesuai kebutuhan

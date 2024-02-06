@@ -29,10 +29,10 @@ class CreateGugatanCeraiTable extends Migration
             $table->string('pekerjaan_tergugat');
             $table->string('pendidikan_tergugat');
             $table->text('alamat_tergugat');
-            // $table->text('alasan_cerai');
-            // $table->text('alasan_cerai2');
-            // $table->text('alasan_cerai3');
-            // $table->text('separation_details');
+            $table->text('alasan_cerai');
+            $table->text('alasan_cerai2');
+            $table->text('alasan_cerai3');
+            $table->text('separation_details');
 
             $table->timestamps();
         });

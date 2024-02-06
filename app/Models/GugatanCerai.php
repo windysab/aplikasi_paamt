@@ -29,9 +29,9 @@ class GugatanCerai extends Model
         'pekerjaan_tergugat',
         'pendidikan_tergugat',
         'alamat_tergugat',
-        // 'alasan_cerai',
-        // 'alasan_cerai2',
-        // 'alasan_cerai3',
-        // 'separation_details'
+        'alasan_cerai',
+        'alasan_cerai2',
+        'alasan_cerai3',
+        'separation_details'
     ];
 }
