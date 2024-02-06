@@ -965,7 +965,9 @@ ${anak.map((anak, index) => `${index + 1}. Nama : ${anak.nama}, tanggal lahir : 
 
                         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
                     </form>
+                    
                 </div>
+
 
 
             </div>
