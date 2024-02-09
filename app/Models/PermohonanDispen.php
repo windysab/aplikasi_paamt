@@ -14,36 +14,6 @@ class PermohonanDispen extends Model
 
     protected $table = 'permohonan_dispen';
 
-
-
-    // 'nama_pemohonI' => 'required',
-    //         'umur_pemohonI' => 'required|integer',
-    //         'pekerjaan_pemohonI' => 'required',
-    //         'pendidikan_pemohonI' => 'required',
-    //         'alamat_pemohonI' => 'required',
-    //         'nama_pemohonII' => 'required',
-    //         'umur_pemohonII' => 'required|integer',
-    //         'pekerjaan_pemohonII' => 'required',
-    //         'pendidikan_pemohonII' => 'required',
-    //         'alamat_pemohonII' => 'required',
-    //         'kecamatan' => 'required',
-    //         'kabupaten' => 'required',
-    //         'surat_keterangan' => 'required',
-    //         'nomor_surat' => 'required|integer',
-    //         'tahun' => 'required|integer',
-    //         'bulan' => 'required|integer',
-    //         'penghasilan' => 'required|integer',
-    //         'nama_calon' => 'required',
-    //         'umur_calon' => 'required|integer',
-    //         'pekerjaan_calon' => 'required',
-    //         'pendidikan_calon' => 'required',
-    //         'alamat_calon' => 'required',
-    //         'nama_calonII' => 'required',
-    //         'umur_calonII' => 'required|integer',
-    //         'pekerjaan_calonII' => 'required',
-    //         'pendidikan_calonII' => 'required',
-    //         'alamat_calonII' => 'required',
-
     protected $fillable = [
         'nama_pemohonI',
         'umur_pemohonI',
@@ -83,6 +53,15 @@ class PermohonanDispen extends Model
         'pekerjaan_mertua_perempuan',
         'pendidikan_mertua_perempuan',
         'alamat_mertua_perempuan',
+        'slug'
 
     ];
+
+
+
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

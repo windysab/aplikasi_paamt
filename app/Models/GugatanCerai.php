@@ -32,6 +32,12 @@ class GugatanCerai extends Model
         'alasan_cerai',
         'alasan_cerai2',
         'alasan_cerai3',
-        'separation_details'
+        'separation_details',
+        'slug'
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

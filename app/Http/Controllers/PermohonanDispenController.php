@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\PermohonanDispen;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\PermohonanDispen;
 use PhpOffice\PhpWord\TemplateProcessor;
 
 class PermohonanDispenController extends Controller
@@ -14,6 +15,66 @@ class PermohonanDispenController extends Controller
     {
         return view('permohonan_dispen');
     }
+
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'nama_pemohonI' => 'required',
+    //         'umur_pemohonI' => 'required',
+    //         'pekerjaan_pemohonI' => 'required',
+    //         'pendidikan_pemohonI' => 'required',
+    //         'alamat_pemohonI' => 'required',
+    //         'nama_pemohonII' => 'required',
+    //         'umur_pemohonII' => 'required',
+    //         'pekerjaan_pemohonII' => 'required',
+    //         'pendidikan_pemohonII' => 'required',
+    //         'alamat_pemohonII' => 'required',
+    //         'nama_calon' => 'required',
+    //         'umur_calon' => 'required',
+    //         'pekerjaan_calon' => 'required',
+    //         'pendidikan_calon' => 'required',
+    //         'alamat_calon' => 'required',
+    //         'nama_calonII' => 'required',
+    //         'umur_calonII' => 'required',
+    //         'pekerjaan_calonII' => 'required',
+    //         'pendidikan_calonII' => 'required',
+    //         'alamat_calonII' => 'required',
+    //         'kecamatan' => 'required',
+    //         'kabupaten' => 'required',
+    //         'surat_keterangan' => 'required',
+    //         'nomor_surat' => 'required',
+    //         'tanggal_surat' => 'required',
+    //         'tahun' => 'required',
+    //         'bulan' => 'required',
+    //         'penghasilan' => 'required',
+    //         'nama_mertua_laki' => 'required',
+    //         'umur_mertua_laki' => 'required',
+    //         'pekerjaan_mertua_laki' => 'required',
+    //         'pendidikan_mertua_laki' => 'required',
+    //         'alamat_mertua_laki' => 'required',
+    //         'nama_mertua_perempuan' => 'required',
+    //         'umur_mertua_perempuan' => 'required',
+    //         'pekerjaan_mertua_perempuan' => 'required',
+    //         'pendidikan_mertua_perempuan' => 'required',
+    //         'alamat_mertua_perempuan' => 'required',
+
+
+    //     ]);
+    //     // Tambahkan validasi lainnya sesuai kebutuhan
+
+    //     // Simpan data ke database
+
+
+    //     $permohonanDispen = PermohonanDispen::create($request->all());
+
+
+    //     dd($permohonanDispen->slug);
+    //     return redirect()->route('permohonan_dispen.detail', ['permohonanDispen' => $permohonanDispen->slug])
+    //         ->with('success', 'Permohonan berhasil diajukan!');
+
+
+
+    // }
 
     public function store(Request $request)
     {
@@ -59,36 +120,29 @@ class PermohonanDispenController extends Controller
 
 
         ]);
-        // Tambahkan validasi lainnya sesuai kebutuhan
 
         // Simpan data ke database
-        $permohonan = PermohonanDispen::create($request->all());
+        $permohonanDispenData = $request->all();
+        // $permohonanDispenData['slug'] = Str::slug($request->nama_pemohonI) . '-' . Str::random(40);
+        $permohonanDispenData['slug'] = Str::slug($request->id) . '-' . Str::random(40);
 
-        // Redirect user dan kirimkan pesan bahwa permohonan telah berhasil dibuat
 
+        $permohonanDispen = PermohonanDispen::create($permohonanDispenData);
 
-
-        return redirect()->route('permohonan_dispen.detail', ['id' => $permohonan->id])
+        return redirect()->route('permohonan_dispen.detail', ['permohonanDispen' => $permohonanDispen->slug])
             ->with('success', 'Permohonan berhasil diajukan!');
     }
-    // public function show($id)
-    // {
 
-    //     $permohonan = PermohonanDispen::find($id);
-    //     return view('permohonan_dispen.detail', compact('permohonan'));
-    // }
 
-    // public function show($id)
-    // {
-    //     $permohonan = PermohonanDispen::findOrFail($id);
 
-    //     return view('permohonan_dispen.detail', ['permohonan' => $permohonan]);
-    // }
-    public function show($id)
+
+    public function show(PermohonanDispen $permohonanDispen)
     {
-        $permohonan = PermohonanDispen::find($id);
-        return view('permohonan_dispen.detail', ['permohonan' => $permohonan]);
+        // return view('permohonan_dispen.detail', compact('permohonanDispen'));
+        return view('permohonan_dispen.detail', ['permohonan' => $permohonanDispen]);
     }
+
+
 
     public function generateWordDocument($id)
     {
@@ -150,28 +204,6 @@ class PermohonanDispenController extends Controller
         $templateProcessor->setValue('pendidikan_mertua_perempuan', $permohonan->pendidikan_mertua_perempuan);
         $templateProcessor->setValue('alamat_mertua_perempuan', $permohonan->alamat_mertua_perempuan);
 
-
-
-
-
-        // $filename = 'permohonan_dispen_' . preg_replace("/[^A-Za-z0-9 ]/", '', $permohonan->nama_pemohonI) . '.docx';
-
-        // // Tentukan lokasi penyimpanan file hasil replace
-        // $destinationFolder = 'C:\\Users\\user\\Documents\\uji coba\\';
-
-        // // Membuat path lengkap ke file
-        // $filepath = $destinationFolder . $filename;
-
-        // // Simpan hasil TemplateProcessor sebagai file Word
-        // $templateProcessor->saveAs($filepath);
-
-        // // Sanitize the fallback filename
-        // $fallbackFilename = str_replace(['/', '\\', ':', '*', '?', '«', '<', '>', '|'], '-', $filename);
-
-        // // Kembalikan file untuk diunduh
-        // return response()->download($filepath, $fallbackFilename)->deleteFileAfterSend(true);
-
-        // // return response()->download($filepath, $fallbackFilename)->deleteFileAfterSend(true);
 
         $fileName = 'permohonan_dispen_' . $permohonan->nama_pemohonI . '.docx';
         $templateProcessor->saveAs($fileName);

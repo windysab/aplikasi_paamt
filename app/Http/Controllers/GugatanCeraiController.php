@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
+
 use App\Models\GugatanCerai;
 
 use Illuminate\Http\Request;
-
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\IOFactory;
-use PhpOffice\PhpWord\TemplateProcessor;
 use App\Exports\GugatanCeraiExport;
 use Maatwebsite\Excel\Facades\Excel;
+use PhpOffice\PhpWord\TemplateProcessor;
 
 class GugatanCeraiController extends Controller
 {
@@ -60,17 +61,19 @@ class GugatanCeraiController extends Controller
         ]);
 
         // Simpan data ke database
-        $gugatanCerai = GugatanCerai::create($request->all());
 
-        // Redireksi atau tindakan lainnya setelah penyimpanan
-        // return redirect()->route('gugatan_cerai.form')->with('success', 'Gugatan Cerai berhasil diajukan!');
-        return redirect()->route('gugatan_cerai.detail', ['id' => $gugatanCerai->id])->with('success', 'Gugatan Cerai berhasil disimpan!');
+        $gugatanCerai = $request->all();
+        $gugatanCerai['slug'] = Str::slug($request->id) . '-' . Str::random(40);
+        $gugatanCerai = GugatanCerai::create($gugatanCerai);
+
+
+        return redirect()->route('gugatan_cerai.detail', ['gugatanCerai' => $gugatanCerai->slug])->with('success', 'Gugatan Cerai berhasil disimpan!');
     }
-    public function show($id)
-    {
 
-        $gugatanCerai = GugatanCerai::find($id);
-        return view('gugatan_cerai.detail', compact('gugatanCerai'));
+    public function show(GugatanCerai $gugatanCerai)
+    {
+        ;
+        return view('gugatan_cerai.detail', ['gugatanCerai' => $gugatanCerai]);
     }
 
 
@@ -117,24 +120,7 @@ class GugatanCeraiController extends Controller
         $templateProcessor->setValue('alasan_cerai3', $gugatanCerai->alasan_cerai3);
         $templateProcessor->setValue('separation_details', $gugatanCerai->separation_details);
 
-        // Replace certain characters in the name with a hyphen
-        // $filename = 'gugatan_cerai_' . str_replace(['/', '\\', ':', '*', '?', '«', '<', '>', '|'], '-', $gugatanCerai->nama_penggugat) . '.docx';
-        // $filename = 'gugatan_cerai_' . preg_replace("/[^A-Za-z0-9 ]/", '', $gugatanCerai->nama_penggugat) . '.docx';
-
-        // // Tentukan lokasi penyimpanan file hasil replace
-        // $destinationFolder = 'C:\\Users\\user\\Documents\\uji coba\\';
-
-        // // Membuat path lengkap ke file
-        // $filepath = $destinationFolder . $filename;
-
-        // // Simpan hasil TemplateProcessor sebagai file Word
-        // $templateProcessor->saveAs($filepath);
-
-        // // Sanitize the fallback filename
-        // $fallbackFilename = str_replace(['/', '\\', ':', '*', '?', '«', '<', '>', '|'], '-', $filename);
-
-        // // Kembalikan file untuk diunduh
-        // return response()->download($filepath, $fallbackFilename)->deleteFileAfterSend(true);
+        
 
         $fileName = 'gugatan_cerai_' . $gugatanCerai->nama_penggugat . '.docx';
         $templateProcessor->saveAs($fileName);

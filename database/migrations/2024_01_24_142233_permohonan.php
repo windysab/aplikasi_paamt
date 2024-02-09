@@ -13,17 +13,25 @@ class Permohonan extends Migration
      */
     public function up()
     {
+
+        // Schema::table('permohonan_dispen', function (Blueprint $table) {
+        //     $table->string('slug')->unique()->after('alamat_mertua_perempuan');
+        // });
         Schema::create('permohonan_dispen', function (Blueprint $table) {
             $table->id();
             /*
              Data Pemohon I ( Ayah )
             */
 
+
             $table->string('nama_pemohonI');
             $table->integer('umur_pemohonI');
             $table->string('pekerjaan_pemohonI');
             $table->string('pendidikan_pemohonI');
             $table->text('alamat_pemohonI');
+
+
+
 
             /*
              Data Pemohon II ( Ibu )
@@ -34,6 +42,9 @@ class Permohonan extends Migration
             $table->string('pekerjaan_pemohonII');
             $table->string('pendidikan_pemohonII');
             $table->text('alamat_pemohonII');
+
+
+
 
 
 
@@ -59,6 +70,8 @@ class Permohonan extends Migration
             $table->string('pendidikan_calonII');
             $table->text('alamat_calonII');
 
+
+
             /*
              Data Calon Suami Isteri
             */
@@ -68,9 +81,13 @@ class Permohonan extends Migration
             $table->string('surat_keterangan');
             $table->string('nomor_surat');
             $table->date('tanggal_surat');
+
+
+
             //Lama hubungan calon
             $table->integer('tahun');
             $table->integer('bulan');
+
 
             // Penghasilan calon suami
             $table->string('penghasilan');
@@ -94,6 +111,8 @@ class Permohonan extends Migration
             $table->string('pekerjaan_mertua_perempuan');
             $table->string('pendidikan_mertua_perempuan');
             $table->text('alamat_mertua_perempuan');
+            $table->string('slug')->unique(); 
+
 
 
             $table->timestamps();
