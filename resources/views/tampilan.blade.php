@@ -25,22 +25,17 @@
         </div>
     </nav>
     <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="list-group">
-                    <a href="/gugatan_cerai" class="list-group-item list-group-item-action active">Gugatan Cerai</a>
-                    <a href="/permohonan_dispen" class="list-group-item list-group-item-action">Permohonan Dispensansi</a>
-                    <!-- Add more links here -->
-                </div>
-            </div>
-            <div class="col-md-9">
-
-
+        <div class="col-md-3">
+            <div class="list-group">
+                <a href="/gugatan_cerai" class="list-group-item list-group-item-action active rounded-0">Gugatan Cerai</a>
+                <a href="/permohonan_dispen" class="list-group-item list-group-item-action rounded-0">Permohonan Dispensansi</a>
+                <!-- Add more links here -->
             </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

@@ -16,65 +16,7 @@ class PermohonanDispenController extends Controller
         return view('permohonan_dispen');
     }
 
-    // public function store(Request $request)
-    // {
-    //     $request->validate([
-    //         'nama_pemohonI' => 'required',
-    //         'umur_pemohonI' => 'required',
-    //         'pekerjaan_pemohonI' => 'required',
-    //         'pendidikan_pemohonI' => 'required',
-    //         'alamat_pemohonI' => 'required',
-    //         'nama_pemohonII' => 'required',
-    //         'umur_pemohonII' => 'required',
-    //         'pekerjaan_pemohonII' => 'required',
-    //         'pendidikan_pemohonII' => 'required',
-    //         'alamat_pemohonII' => 'required',
-    //         'nama_calon' => 'required',
-    //         'umur_calon' => 'required',
-    //         'pekerjaan_calon' => 'required',
-    //         'pendidikan_calon' => 'required',
-    //         'alamat_calon' => 'required',
-    //         'nama_calonII' => 'required',
-    //         'umur_calonII' => 'required',
-    //         'pekerjaan_calonII' => 'required',
-    //         'pendidikan_calonII' => 'required',
-    //         'alamat_calonII' => 'required',
-    //         'kecamatan' => 'required',
-    //         'kabupaten' => 'required',
-    //         'surat_keterangan' => 'required',
-    //         'nomor_surat' => 'required',
-    //         'tanggal_surat' => 'required',
-    //         'tahun' => 'required',
-    //         'bulan' => 'required',
-    //         'penghasilan' => 'required',
-    //         'nama_mertua_laki' => 'required',
-    //         'umur_mertua_laki' => 'required',
-    //         'pekerjaan_mertua_laki' => 'required',
-    //         'pendidikan_mertua_laki' => 'required',
-    //         'alamat_mertua_laki' => 'required',
-    //         'nama_mertua_perempuan' => 'required',
-    //         'umur_mertua_perempuan' => 'required',
-    //         'pekerjaan_mertua_perempuan' => 'required',
-    //         'pendidikan_mertua_perempuan' => 'required',
-    //         'alamat_mertua_perempuan' => 'required',
-
-
-    //     ]);
-    //     // Tambahkan validasi lainnya sesuai kebutuhan
-
-    //     // Simpan data ke database
-
-
-    //     $permohonanDispen = PermohonanDispen::create($request->all());
-
-
-    //     dd($permohonanDispen->slug);
-    //     return redirect()->route('permohonan_dispen.detail', ['permohonanDispen' => $permohonanDispen->slug])
-    //         ->with('success', 'Permohonan berhasil diajukan!');
-
-
-
-    // }
+    
 
     public function store(Request $request)
     {
