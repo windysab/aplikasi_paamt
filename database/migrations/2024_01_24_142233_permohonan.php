@@ -47,14 +47,12 @@ class Permohonan extends Migration
 
 
 
-
-
-         /*
+            /*
              Data calon Mempelai Suami/Isteri
             */
 
             $table->string('nama_calon');
-            $table->integer('umur_calon');
+            $table->date('tanggal_lahir_calon'); //tambahkan kolom tanggal lahir (tanggal_lahir_calon)
             $table->string('pekerjaan_calon');
             $table->string('pendidikan_calon');
             $table->text('alamat_calon');
@@ -65,7 +63,7 @@ class Permohonan extends Migration
             // */
 
             $table->string('nama_calonII');
-            $table->integer('umur_calonII');
+            $table->date('tanggal_lahir_calonII'); //tambahkan kolom tanggal lahir (tanggal_lahir_calon)
             $table->string('pekerjaan_calonII');
             $table->string('pendidikan_calonII');
             $table->text('alamat_calonII');
@@ -111,7 +109,7 @@ class Permohonan extends Migration
             $table->string('pekerjaan_mertua_perempuan');
             $table->string('pendidikan_mertua_perempuan');
             $table->text('alamat_mertua_perempuan');
-            $table->string('slug')->unique(); 
+            $table->string('slug')->unique();
 
 
 

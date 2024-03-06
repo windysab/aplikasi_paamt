@@ -120,9 +120,9 @@ class GugatanCeraiController extends Controller
         $templateProcessor->setValue('alasan_cerai3', $gugatanCerai->alasan_cerai3);
         $templateProcessor->setValue('separation_details', $gugatanCerai->separation_details);
 
-        
 
-        $fileName = 'gugatan_cerai_' . $gugatanCerai->nama_penggugat . '.docx';
+
+        $fileName = 'Gugatan_cerai_' . $gugatanCerai->nama_penggugat . '.docx';
         $templateProcessor->saveAs($fileName);
 
         // Return the Word document...

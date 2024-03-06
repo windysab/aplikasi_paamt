@@ -282,8 +282,8 @@
                                         <input type="text" class="form-control" id="nama_calon" name="nama_calon" placeholder="Nama Calon Suami/Isteri" required>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="umur_calon">Umur Calon Suami/Isteri:</label>
-                                        <input type="number" class="form-control" id="umur_calon" name="umur_calon" placeholder="Umur Calon Suami/Isteri" required>
+                                        <label for="tanggal_lahir_calon">Tanggal Lahir Calon Suami/Isteri:</label>
+                                        <input type="date" class="form-control" id="tanggal_lahir_calon" name="tanggal_lahir_calon" placeholder="Tanggal Lahir Calon Suami/Isteri" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -405,8 +405,8 @@
                                             <input type="text" class="form-control" id="nama_calonII" name="nama_calonII" placeholder="Nama Calon Suami/Isteri II" required>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="umur_calonII">Umur Calon Suami/Isteri II:</label>
-                                            <input type="number" class="form-control" id="umur_calonII" name="umur_calonII" placeholder="Umur Calon Suami/Isteri II" required>
+                                            <label for="tanggal_lahir_calonII">Tanggal Lahir Calon Suami/Isteri II:</label>
+                                            <input type="Date" class="form-control" id="tanggal_lahir_calonII" name="tanggal_lahir_calonII" placeholder="Tanggal Lahir Calon Suami/Isteri II" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -875,7 +875,7 @@
                         </div>
 
                         <script>
-                            
+
                             document.getElementById('submitButton').addEventListener('click', function(event) {
                                 var inputs = document.getElementsByTagName('input');
                                 var emptyInputs = []; // Array to store the ids of empty inputs

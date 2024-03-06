@@ -16,7 +16,7 @@ class PermohonanDispenController extends Controller
         return view('permohonan_dispen');
     }
 
-    
+
 
     public function store(Request $request)
     {
@@ -32,12 +32,12 @@ class PermohonanDispenController extends Controller
             'pendidikan_pemohonII' => 'required',
             'alamat_pemohonII' => 'required',
             'nama_calon' => 'required',
-            'umur_calon' => 'required',
+            'tanggal_lahir_calon' => 'required',
             'pekerjaan_calon' => 'required',
             'pendidikan_calon' => 'required',
             'alamat_calon' => 'required',
             'nama_calonII' => 'required',
-            'umur_calonII' => 'required',
+            'tanggal_lahir_calonII' => 'required',
             'pekerjaan_calonII' => 'required',
             'pendidikan_calonII' => 'required',
             'alamat_calonII' => 'required',
@@ -126,12 +126,12 @@ class PermohonanDispenController extends Controller
         $templateProcessor->setValue('bulan', $permohonan->bulan);
         $templateProcessor->setValue('penghasilan', $permohonan->penghasilan);
         $templateProcessor->setValue('nama_calon', $permohonan->nama_calon);
-        $templateProcessor->setValue('umur_calon', $permohonan->umur_calon);
+        $templateProcessor->setValue('tanggal_lahir_calon', $permohonan->tanggal_lahir_calon);
         $templateProcessor->setValue('pekerjaan_calon', $permohonan->pekerjaan_calon);
         $templateProcessor->setValue('pendidikan_calon', $permohonan->pendidikan_calon);
         $templateProcessor->setValue('alamat_calon', $permohonan->alamat_calon);
         $templateProcessor->setValue('nama_calonII', $permohonan->nama_calonII);
-        $templateProcessor->setValue('umur_calonII', $permohonan->umur_calonII);
+        $templateProcessor->setValue('tanggal_lahir_calonII', $permohonan->tanggal_lahir_calonII);
         $templateProcessor->setValue('pekerjaan_calonII', $permohonan->pekerjaan_calonII);
         $templateProcessor->setValue('pendidikan_calonII', $permohonan->pendidikan_calonII);
         $templateProcessor->setValue('alamat_calonII', $permohonan->alamat_calonII);
